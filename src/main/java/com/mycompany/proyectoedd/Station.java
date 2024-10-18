@@ -9,9 +9,9 @@ package com.mycompany.proyectoedd;
  * @author astv06
  */
 public class Station {
-    private String Sdata;
-    private String SList;
-    private List Conections;
+    private String Sdata;//infotmation of the station
+    private String SList;//information of the list 
+    private List Conections;// conections of the station
 
     public Station(String data, String SList) {
         this.Sdata = data;

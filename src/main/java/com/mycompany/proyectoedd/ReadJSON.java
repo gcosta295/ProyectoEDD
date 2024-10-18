@@ -10,6 +10,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  *
@@ -17,7 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class ReadJSON {
     private String text;
-
+    private String test;
     public ReadJSON() {
     }
         
@@ -54,7 +56,14 @@ public class ReadJSON {
           }
         
       }
-
+    
+    
+    public void Parse(){
+         JSONObject coderollsJSONObject = new JSONObject(text);
+         JSONArray lineasdemetro = coderollsJSONObject.getJSONArray("Metro de Caracas");
+         test = test +lineasdemetro.toString();
+         test = test.substring(5, test.length() - 1);
+    }
     /**
      * @return the text
      */
@@ -68,5 +77,15 @@ public class ReadJSON {
     public void setText(String text) {
         this.text = text;
     }
-    
+    public String getTest() {
+        return test;
+    }
+
+    /**
+     * @param text the text to set
+     */
+    public void setTest(String text) {
+        this.text = test;
+    }
+   
 }
