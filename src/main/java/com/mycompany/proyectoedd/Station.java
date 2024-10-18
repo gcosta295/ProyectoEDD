@@ -13,9 +13,9 @@ public class Station {
     private String SList;
     private List Conections;
 
-    public Station(String data, String SList) {
-        this.Sdata = data;
-        this.SList = SList;
+    public Station() {
+        this.Sdata = null;
+        this.SList = null;
         this.Conections = new List();
     }
 

@@ -54,7 +54,7 @@ class List {
     }
     
     public List AddToList(List L){                          //Add a new station on the list
-        Station S = new Station("hola",L.getLname());       //Create a new station
+        Station S = new Station();                          //Create a new station
         if (L.getLong()==0){                                //If the list is empty the statios will be the firth
             L.setSFirth(S);
             L.setSLast(S);
@@ -62,12 +62,15 @@ class List {
         else{
             Station SAux = L.getSLast();
             List LAux = SAux.getConections();
-            if (LAux == null){
-                LAux.setSFirth(SAux);
+            int LongList = LAux.getLong();
+            if (LongList == 0){
+                LAux.setSFirth(S);
                 LAux.setSLast(S);
+                LAux.setLong(1);
             }
             else{
                 LAux.setSLast(S);
+                LAux.setLong(LongList + 1);
             }
             SAux.setConections(LAux);
             L.setSLast(S);                                  //If the list isn't empty the station will be thw new last
