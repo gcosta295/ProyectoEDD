@@ -60,7 +60,7 @@ class List {
             L.setSLast(S);
         }
         else{
-            Station SAux = L.getSLast();
+            Station SAux = L.getSLast();                    //Not jet had made the conections of the station S
             List LAux = SAux.getConections();
             int LongList = LAux.getLong();
             if (LongList == 0){
@@ -72,6 +72,11 @@ class List {
                 LAux.setSLast(S);
                 LAux.setLong(LongList + 1);
             }
+            List LAux1 = S.getConections();
+            LAux1.setSFirth(SAux);
+            LAux1.setSLast(SAux);
+            LAux1.setLong(1);
+            S.setConections(LAux1);
             SAux.setConections(LAux);
             L.setSLast(S);                                  //If the list isn't empty the station will be thw new last
         }
