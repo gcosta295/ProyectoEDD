@@ -10,8 +10,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 
 /**
  *
@@ -58,12 +61,48 @@ public class ReadJSON {
       }
     
     
-    public void Parse(){
-         JSONObject coderollsJSONObject = new JSONObject(text);
-         JSONArray lineasdemetro = coderollsJSONObject.getJSONArray("Metro de Caracas");
-         test = test +lineasdemetro.toString();
-         test = test.substring(5, test.length() - 1);
+        public void Parse() { // en teoria deberia recibir como parametro el grafo, pero falta crearlo
+        String jsonString = text;
+               
+
+        try {
+            JSONParser parser = new JSONParser(); //creates a json parsser, to parse the json string
+            JSONArray linesArray = (JSONArray) parser.parse(jsonString); //the JSONArray allows to parse through the string
+            
+            for (Object lineObject : linesArray) { //iterates through each metroline in the array
+                JSONObject lineJson = (JSONObject) lineObject;
+                
+                for (Object lineNameObject : lineJson.keySet()) { //each metroline is transformed into an object
+                    String lineName = (String) lineNameObject; //transform the metroline name into a string
+                    System.out.println("Linea: " + lineName);
+                    List metroline = new List(); // Creates a list of metroline, where each line will be stored 
+                    // Create graph / here the metroline should be added
+                    metroline.setLname(lineName); //sets the name of the new metroline
+                   
+                    JSONArray stationsArray = (JSONArray) lineJson.get(lineName); //creates an array of the metroline we are currently parsing
+                    
+                    for (Object stationObject : stationsArray) { //creates an object of each station in the array, iterating over them
+                        if (stationObject instanceof JSONObject) { //esto es lo de las estaciones con llaves, me falta arreglarlo
+                            JSONObject connection = (JSONObject) stationObject;
+                            for (Object stationNameObject : connection.keySet()) {
+                                String stationName = (String) stationNameObject;
+                                String connectionName = connection.get(stationNameObject).toString();
+//                                System.out.println("  " + stationName + " (Connection: " + connectionName + ")");
+                            }
+                        } else { 
+                            String station = (String) stationObject; //gets the name of the station
+                            metroline.AddStationToList(metroline, station); //adds the iterated station into our own list class
+                            
+                            System.out.println("  " + station); 
+                        }
+                    }
+                }
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
+    
     /**
      * @return the text
      */

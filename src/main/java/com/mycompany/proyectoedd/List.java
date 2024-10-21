@@ -78,6 +78,34 @@ class List {
         L.setLong(Long + 1);                                //Changes le long of the list
         return L;
     } 
+    
+    public List AddStationToList(List L, String a){      //Add an existing station to the list, used for parsing JSON
+        Station S = new Station();    
+        S.setSdata(a); // Create a new station with the String given
+        S.setSList(L.getLname()); //the created station gets the name of the list
+        if (L.getLong()==0){                                
+            L.setSFirth(S);
+            L.setSLast(S);
+        }
+        else{
+            Station SAux = L.getSLast();
+            List LAux = SAux.getConections();
+            int LongList = LAux.getLong();
+            if (LongList == 0){
+                LAux.setSFirth(S);
+                LAux.setSLast(S);
+                LAux.setLong(1);
+            }
+            else{
+                LAux.setSLast(S);
+                LAux.setLong(LongList + 1);
+            }
+            SAux.setConections(LAux);
+            L.setSLast(S);                                  //If the list isn't empty the station will be thw new last
+        }
+        L.setLong(Long + 1);                                //Changes le long of the list
+        return L;
+    } 
     /*
     llamo a la variable auxiliar
     busco las conexiones de la variable auxiliar
