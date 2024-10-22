@@ -8,73 +8,53 @@ package com.mycompany.proyectoedd;
  *
  * @author astv06
  */
-class List {
-    private String Lname;           //Name of the List
-    private Station SFirth;         //Firth of the List
-    private Station SLast;          //Last of the List 
-    private int Long;               //Length of the 
+public class List {
+    private Station sFirst;
+    private Station sLast;
+    private int len;
 
-    public List() {     
-        this.Lname = null;
-        this.Long = 0;
-        this.SFirth = null;
-        this.SLast = null;
-    }
-
-    public String getLname() {       
-        return Lname;
-    }
-
-    public void setLname(String Lname) {
-        this.Lname = Lname;
+    public List() {
+        this.sFirst = null;
+        this.sLast = null;
+        this.len = 0;
     }
     
-    public Station getSFirth() {    
-        return SFirth;
-    }
-
-    public Station getSLast() {     
-        return SLast;
-    }
-
-    public int getLong() {
-        return Long;
-    }
-
-    public void setSFirth(Station SFirth) {
-        this.SFirth = SFirth;
-    }
-
-    public void setSLast(Station SLast) {
-        this.SLast = SLast;
-    }
-
-    public void setLong(int Long) {
-        this.Long = Long;
+    public int getlen(){
+        return this.len;
     }
     
-    public List AddToList(List L){                          //Add a new station on the list
-        Station S = new Station();                          //Create a new station
-        if (L.getLong()==0){                                //If the list is empty the statios will be the firth
-            L.setSFirth(S);
-            L.setSLast(S);
+    /*Add an element that you give to the method in the last position 
+        and make the conection in the list with the others items*/
+    
+    public void AddStation (Station s){
+        if (this.len!=0){
+            Station sAux = this.sLast;
+            sAux.setnext(s);
+            this.sLast = s;
         }
         else{
-            Station SAux = L.getSLast();
-            List LAux = SAux.getConections();
-            int LongList = LAux.getLong();
-            if (LongList == 0){
-                LAux.setSFirth(S);
-                LAux.setSLast(S);
-                LAux.setLong(1);
+            this.sFirst = s;
+            this.sLast = s;
+        }
+        this.len += 1;
+    }
+    
+    /*Serch in the list that you give to the funtion the item that have 
+    the index that you give too*/
+    
+    public Station getStation(List l, int i){
+        int j = 1;
+        Station sAux = l.sFirst;
+        while (j<=i){
+            if (j!=i){
+                j+=1;
+                sAux=sAux.getNext();
             }
             else{
-                LAux.setSLast(S);
-                LAux.setLong(LongList + 1);
+                return sAux;
             }
-            SAux.setConections(LAux);
-            L.setSLast(S);                                  //If the list isn't empty the station will be thw new last
         }
+<<<<<<< HEAD
         L.setLong(Long + 1);                                //Changes le long of the list
         return L;
     } 
@@ -121,4 +101,23 @@ class List {
         parca cada uno de los 
         
     }*/
+=======
+        return sAux;
+    }
+    
+    /*confir if in the list that you give exist 
+    an element that you give too*/
+    
+    public boolean inList(Station s){
+        Station sAux = sFirst;
+        while (sAux != null){
+            if(sAux.equals(s)){
+                return true;
+            }
+            sAux = sAux.getNext();
+        }
+        return false;
+    }
+    
+>>>>>>> origin/astv06
 }
