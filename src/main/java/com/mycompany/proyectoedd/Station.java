@@ -9,59 +9,40 @@ package com.mycompany.proyectoedd;
  * @author astv06
  */
 public class Station {
-    private String Sdata;
-    private String SList;
-    private List Conections;
+    private String sData;                   //Name of the station
+    private Station next;                   //Next station of the line
+    private List conections;                //Conections of the stations
+    private boolean Sucursal;               //State of sucursal
 
-    public Station() {
-        this.Sdata = null;
-        this.SList = null;
-        this.Conections = new List();
-    }
-
-    public String getSdata() {
-        return Sdata;
+    public Station(String sData) {
+        this.sData = sData;
+        this.next = null;
+        this.conections = new List(); 
+        this.Sucursal = false;
     }
 
-    public void setSdata(String data) {
-        this.Sdata = data;
+    public Station getNext() {
+        return next;
     }
-    
-    public List getConections() {
-        return Conections;
-    }
-    
-    public void setConections(List Conections) {
-        this.Conections = Conections;
-    }
-    
-    public String getSList() {
-        return SList;
-    }
-    
-    public void setSList(String SList) {
-        this.SList = SList;
-    }
-    
-    /*public Line last(Line Firth){
-        if (Firth.getLnext()==null){
-            return Firth;
-        }
-        else{
-            Line Laux = Firth.getLnext();
-            while (Laux.getLnext()!=null){
-                Laux = Laux.getLnext();
-            }
-            return Laux;
-        }
-    }*/
-    /*public Station Slast (Station Firth){
-        
-    }*/
 
+    public String getsData() {
+        return sData;
+    }
     
-
+    public List getconections(){
+        return conections;
+    }
     
-
+    public void setsData(String data) {
+        this.sData = data;
+    }
+    
+    public void setnext(Station next){
+        this.next = next;
+    }
+    
+    public void conect(Station s){
+        this.conections.AddStation(s);
+    }
     
 }

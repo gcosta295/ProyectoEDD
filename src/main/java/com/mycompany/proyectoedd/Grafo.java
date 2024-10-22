@@ -8,7 +8,12 @@ package com.mycompany.proyectoedd;
  *
  * @author astv06
  */
-class Grafo {
-    private String Name;
+public class Grafo {
+    
+    private List listStations;
+
+    public Grafo() {
+        this.listStations = new List();
+    }
     
 }
