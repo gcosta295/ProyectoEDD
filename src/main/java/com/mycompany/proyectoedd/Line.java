@@ -10,7 +10,7 @@ package com.mycompany.proyectoedd;
  */
 class Line {
     private String lName;               //Name of the Line
-    private List stations;              //Station list of the line
+    private List stations;              //Station list of the line.
 
     public Line(String lName) {     
         this.lName = lName;

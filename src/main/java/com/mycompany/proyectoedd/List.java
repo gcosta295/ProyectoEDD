@@ -26,7 +26,7 @@ public class List {
     /*Add an element that you give to the method in the last position 
         and make the conection in the list with the others items*/
     
-    public void AddStation (Station s){
+    public void AddStation (Station s){ //adds an station to the list.
         if (this.len!=0){
             Station sAux = this.sLast;
             sAux.setnext(s);
