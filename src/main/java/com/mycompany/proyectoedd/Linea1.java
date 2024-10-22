@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.proyectoedd;
+import org.graphstream.graph.*; //importe de la libreria de graphstream
+
 
 /**
  *

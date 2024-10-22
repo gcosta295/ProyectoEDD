@@ -11,6 +11,13 @@
             <artifactId>AbsoluteLayout</artifactId>
             <version>RELEASE220</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.graphstream/gs-core -->
+<dependency>
+    <groupId>org.graphstream</groupId>
+    <artifactId>gs-core</artifactId>
+    <version>2.0</version>
+</dependency>
+
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
