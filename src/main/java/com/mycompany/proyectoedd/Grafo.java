@@ -10,7 +10,7 @@ package com.mycompany.proyectoedd;
  */
 public class Grafo {
     
-    private List listStations;
+    private List listStations; //ignoramos esto
 
     public Grafo() {
         this.listStations = new List();
