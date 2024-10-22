@@ -8,8 +8,18 @@ package com.mycompany.proyectoedd;
  *
  * @author astv06
  */
+<<<<<<< HEAD
 class Grafo {
    
+=======
+public class Grafo {
+    
+    private List listStations;
+
+    public Grafo() {
+        this.listStations = new List();
+    }
+>>>>>>> origin/astv06
     
 }
 
