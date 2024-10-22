@@ -9,46 +9,59 @@ package com.mycompany.proyectoedd;
  * @author astv06
  */
 public class Station {
-<<<<<<< HEAD
     private String Sdata;//infotmation of the station
     private String SList;//information of the list 
     private List Conections;// conections of the station
-=======
-    private String sData;                   //Name of the station
-    private Station next;                   //Next station of the line
-    private List conections;                //Conections of the stations
-    private boolean Sucursal;               //State of sucursal
->>>>>>> origin/astv06
 
-    public Station(String sData) {
-        this.sData = sData;
-        this.next = null;
-        this.conections = new List(); 
-        this.Sucursal = false;
+    public Station() {
+        this.Sdata = null;
+        this.SList = null;
+        this.Conections = new List();
     }
 
-    public Station getNext() {
-        return next;
+    public String getSdata() {
+        return Sdata;
     }
 
-    public String getsData() {
-        return sData;
+    public void setSdata(String data) {
+        this.Sdata = data;
     }
     
-    public List getconections(){
-        return conections;
+    public List getConections() {
+        return Conections;
     }
     
-    public void setsData(String data) {
-        this.sData = data;
+    public void setConections(List Conections) {
+        this.Conections = Conections;
     }
     
-    public void setnext(Station next){
-        this.next = next;
+    public String getSList() {
+        return SList;
     }
     
-    public void conect(Station s){
-        this.conections.AddStation(s);
+    public void setSList(String SList) {
+        this.SList = SList;
     }
+    
+    /*public Line last(Line Firth){
+        if (Firth.getLnext()==null){
+            return Firth;
+        }
+        else{
+            Line Laux = Firth.getLnext();
+            while (Laux.getLnext()!=null){
+                Laux = Laux.getLnext();
+            }
+            return Laux;
+        }
+    }*/
+    /*public Station Slast (Station Firth){
+        
+    }*/
+
+    
+
+    
+
     
 }
