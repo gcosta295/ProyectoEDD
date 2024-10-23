@@ -72,11 +72,11 @@ public class W3 extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(B_show_graph)
-                        .addGap(18, 18, 18)
+                        .addGap(26, 26, 26)
                         .addComponent(B_add_line)
-                        .addGap(18, 18, 18)
+                        .addGap(26, 26, 26)
                         .addComponent(B_change_T)))
-                .addGap(0, 60, Short.MAX_VALUE))
+                .addGap(0, 44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

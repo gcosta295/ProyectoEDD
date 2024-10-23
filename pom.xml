@@ -19,19 +19,5 @@
 </dependency>
 
     </dependencies>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>22</maven.compiler.source>
-        <maven.compiler.target>22</maven.compiler.target>
-        <exec.mainClass>com.mycompany.proyectoedd.ProyectoEDD</exec.mainClass>
-    </properties>
-    <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.graphstream/gs-core -->
-<dependency>
-    <groupId>org.graphstream</groupId>
-    <artifactId>gs-core</artifactId>
-    <version>2.0</version>
-</dependency>
-
-    </dependencies>
+    
 </project>

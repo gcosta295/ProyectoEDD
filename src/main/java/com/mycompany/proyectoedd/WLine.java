@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
  * @author Nathaly
  */
 public class WLine extends javax.swing.JFrame {
+    static Line newline;
 
     /**
      * Creates new form Linea2
@@ -61,6 +62,11 @@ public class WLine extends javax.swing.JFrame {
         });
 
         B_nameLine.setText("Guardar");
+        B_nameLine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_nameLineActionPerformed(evt);
+            }
+        });
 
         B_numberStations.setText("Guardar");
         B_numberStations.addActionListener(new java.awt.event.ActionListener() {
@@ -70,6 +76,11 @@ public class WLine extends javax.swing.JFrame {
         });
 
         B_addNewLine.setText("Agregar Linea");
+        B_addNewLine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_addNewLineActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -140,9 +151,24 @@ public class WLine extends javax.swing.JFrame {
         int num = Integer.parseInt(Snumber);        
         
         for (int i = 0; i < num; i++){
-            JOptionPane.showInputDialog(this, "Escribe el nombre de las Stations: "); //agregar que cada nombre es una station (volver objects)
+            //JOptionPane.showInputDialog(this, "Escribe el nombre de las Stations: "); //agregar que cada nombre es una station (volver objects)
+            String stationName = JOptionPane.showInputDialog(this, "Escribe el nombre de las Stations: "); //agregar que cada nombre es una station (volver objects)
+            Station newstation = new Station(stationName);
         }
+        
     }//GEN-LAST:event_B_numberStationsActionPerformed
+
+    private void B_nameLineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_nameLineActionPerformed
+        
+        String lineName = input_nameLine.getText();
+        
+    }//GEN-LAST:event_B_nameLineActionPerformed
+
+    private void B_addNewLineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_addNewLineActionPerformed
+        
+        Line newline = new Line(lineName); //preguntar a gaby
+        newline.getStations().AddStation(newstation);
+    }//GEN-LAST:event_B_addNewLineActionPerformed
 
     /**
      * @param args the command line arguments
