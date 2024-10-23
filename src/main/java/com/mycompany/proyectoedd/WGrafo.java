@@ -32,6 +32,8 @@ public class WGrafo extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         B_back_3 = new javax.swing.JButton();
+        B_show_graph = new javax.swing.JButton();
+        B_add_sucursal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,6 +48,10 @@ public class WGrafo extends javax.swing.JFrame {
                 B_back_3ActionPerformed(evt);
             }
         });
+
+        B_show_graph.setText("grafo");
+
+        B_add_sucursal.setText("añadir sucursal");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -63,6 +69,12 @@ public class WGrafo extends javax.swing.JFrame {
                         .addGap(19, 19, 19)
                         .addComponent(B_back_3)))
                 .addContainerGap(259, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(B_add_sucursal)
+                    .addComponent(B_show_graph))
+                .addGap(101, 101, 101))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -70,7 +82,11 @@ public class WGrafo extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)
+                .addGap(38, 38, 38)
+                .addComponent(B_show_graph)
+                .addGap(53, 53, 53)
+                .addComponent(B_add_sucursal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(B_back_3)
                 .addGap(19, 19, 19))
         );
@@ -121,7 +137,9 @@ public class WGrafo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton B_add_sucursal;
     private javax.swing.JButton B_back_3;
+    private javax.swing.JButton B_show_graph;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

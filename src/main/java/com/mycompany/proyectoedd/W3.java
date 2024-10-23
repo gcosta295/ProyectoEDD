@@ -29,7 +29,7 @@ public class W3 extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        B_show_graph = new javax.swing.JButton();
+        B_graph = new javax.swing.JButton();
         B_add_line = new javax.swing.JButton();
         B_change_T = new javax.swing.JButton();
 
@@ -37,10 +37,10 @@ public class W3 extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        B_show_graph.setText("Mostrar Grafo");
-        B_show_graph.addActionListener(new java.awt.event.ActionListener() {
+        B_graph.setText("Mostrar Grafo");
+        B_graph.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_show_graphActionPerformed(evt);
+                B_graphActionPerformed(evt);
             }
         });
 
@@ -71,12 +71,12 @@ public class W3 extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addComponent(B_show_graph)
-                        .addGap(18, 18, 18)
+                        .addComponent(B_graph)
+                        .addGap(26, 26, 26)
                         .addComponent(B_add_line)
-                        .addGap(18, 18, 18)
+                        .addGap(26, 26, 26)
                         .addComponent(B_change_T)))
-                .addGap(0, 60, Short.MAX_VALUE))
+                .addGap(0, 44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,7 +86,7 @@ public class W3 extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(B_show_graph)
+                    .addComponent(B_graph)
                     .addComponent(B_add_line)
                     .addComponent(B_change_T))
                 .addContainerGap(128, Short.MAX_VALUE))
@@ -101,11 +101,11 @@ public class W3 extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_B_change_TActionPerformed
 
-    private void B_show_graphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_show_graphActionPerformed
+    private void B_graphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_graphActionPerformed
         WGrafo ventana = new WGrafo();
         ventana.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_B_show_graphActionPerformed
+    }//GEN-LAST:event_B_graphActionPerformed
 
     private void B_add_lineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_add_lineActionPerformed
         WLine ventana = new WLine();
@@ -152,7 +152,7 @@ public class W3 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton B_add_line;
     private javax.swing.JButton B_change_T;
-    private javax.swing.JButton B_show_graph;
+    private javax.swing.JButton B_graph;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

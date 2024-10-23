@@ -4,16 +4,19 @@
  */
 package com.mycompany.proyectoedd;
 
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author Nathaly
  */
 public class W1 extends javax.swing.JFrame {
-
+    ReadJSON L;
     /**
      * Creates new form Ventana1
      */
     public W1() {
+        this.L = new ReadJSON();
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -29,7 +32,9 @@ public class W1 extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        B_next_1 = new javax.swing.JButton();
+        B_carga_JSON = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,12 +43,16 @@ public class W1 extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("JSON");
 
-        B_next_1.setText("Siguiente");
-        B_next_1.addActionListener(new java.awt.event.ActionListener() {
+        B_carga_JSON.setText("Cargar tu JSON");
+        B_carga_JSON.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_next_1ActionPerformed(evt);
+                B_carga_JSONActionPerformed(evt);
             }
         });
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -52,36 +61,47 @@ public class W1 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(267, Short.MAX_VALUE)
-                .addComponent(B_next_1)
-                .addGap(54, 54, 54))
+                .addContainerGap(128, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(B_carga_JSON, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(115, 115, 115)
+                .addGap(39, 39, 39)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
-                .addComponent(B_next_1)
-                .addGap(42, 42, 42))
+                .addGap(9, 9, 9)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(B_carga_JSON, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void B_next_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_next_1ActionPerformed
+    private void B_carga_JSONActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_carga_JSONActionPerformed
         
-        W2_T ventana = new W2_T(); //cargar json caracas
-        ventana.setVisible(true);
-        this.setVisible(false);
+        L.abrirArchivo();
+        jTextArea1.setText(L.getText());
         
-    }//GEN-LAST:event_B_next_1ActionPerformed
+        
+//        W2_T ventana = new W2_T(); //cargar json caracas
+//        ventana.setVisible(true);
+//        this.setVisible(false);
+        
+    }//GEN-LAST:event_B_carga_JSONActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,8 +140,10 @@ public class W1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton B_next_1;
+    private javax.swing.JButton B_carga_JSON;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
