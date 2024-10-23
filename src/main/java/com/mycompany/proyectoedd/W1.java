@@ -8,12 +8,12 @@ package com.mycompany.proyectoedd;
  *
  * @author Nathaly
  */
-public class Ventana4 extends javax.swing.JFrame {
+public class W1 extends javax.swing.JFrame {
 
     /**
-     * Creates new form Ventana4
+     * Creates new form Ventana1
      */
-    public Ventana4() {
+    public W1() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -29,29 +29,19 @@ public class Ventana4 extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        Blinea = new javax.swing.JButton();
-        Bparada = new javax.swing.JButton();
-        Bsucursal = new javax.swing.JButton();
+        B_next_1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Que quieres ver");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setText("JSON");
 
-        Blinea.setText("Líneas");
-        Blinea.addActionListener(new java.awt.event.ActionListener() {
+        B_next_1.setText("Siguiente");
+        B_next_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BlineaActionPerformed(evt);
-            }
-        });
-
-        Bparada.setText("Paradas");
-
-        Bsucursal.setText("Sucursales");
-        Bsucursal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BsucursalActionPerformed(evt);
+                B_next_1ActionPerformed(evt);
             }
         });
 
@@ -63,42 +53,35 @@ public class Ventana4 extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(Blinea)
                 .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Bparada)
-                    .addComponent(jLabel1))
-                .addGap(36, 36, 36)
-                .addComponent(Bsucursal)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(267, Short.MAX_VALUE)
+                .addComponent(B_next_1)
+                .addGap(54, 54, 54))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
+                .addGap(115, 115, 115)
                 .addComponent(jLabel1)
-                .addGap(82, 82, 82)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Blinea)
-                    .addComponent(Bparada)
-                    .addComponent(Bsucursal))
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addComponent(B_next_1)
+                .addGap(42, 42, 42))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BsucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BsucursalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BsucursalActionPerformed
-
-    private void BlineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlineaActionPerformed
-        Linea1 ventana = new Linea1();
+    private void B_next_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_next_1ActionPerformed
+        
+        W2_T ventana = new W2_T(); //cargar json caracas
         ventana.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_BlineaActionPerformed
+        
+    }//GEN-LAST:event_B_next_1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,28 +100,27 @@ public class Ventana4 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Ventana4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(W1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Ventana4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(W1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Ventana4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(W1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ventana4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(W1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Ventana4().setVisible(true);
+                new W1().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Blinea;
-    private javax.swing.JButton Bparada;
-    private javax.swing.JButton Bsucursal;
+    private javax.swing.JButton B_next_1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

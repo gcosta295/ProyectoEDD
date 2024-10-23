@@ -3,19 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.proyectoedd;
-import org.graphstream.graph.*; //importe de la libreria de graphstream
-
 
 /**
  *
  * @author Nathaly
  */
-public class Linea1 extends javax.swing.JFrame {
+public class W3 extends javax.swing.JFrame {
 
     /**
-     * Creates new form Linea1
+     * Creates new form Ventana4
      */
-    public Linea1() {
+    public W3() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -31,30 +29,32 @@ public class Linea1 extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        BagregarL = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        Batras1 = new javax.swing.JButton();
+        B_show_graph = new javax.swing.JButton();
+        B_add_line = new javax.swing.JButton();
+        B_change_T = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Líneas");
-
-        BagregarL.setText("Agregar");
-        BagregarL.addActionListener(new java.awt.event.ActionListener() {
+        B_show_graph.setText("Mostrar Grafo");
+        B_show_graph.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BagregarLActionPerformed(evt);
+                B_show_graphActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Mostrar");
-
-        Batras1.setText("Atrás");
-        Batras1.addActionListener(new java.awt.event.ActionListener() {
+        B_add_line.setText("Añadir Línea");
+        B_add_line.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Batras1ActionPerformed(evt);
+                B_add_lineActionPerformed(evt);
+            }
+        });
+
+        B_change_T.setText("Cambiar T");
+        B_change_T.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_change_TActionPerformed(evt);
             }
         });
 
@@ -63,53 +63,55 @@ public class Linea1 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(236, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addComponent(BagregarL))
-                .addGap(91, 91, 91))
+                .addGap(179, 179, 179)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(Batras1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(23, 23, 23)
+                        .addComponent(B_show_graph)
+                        .addGap(18, 18, 18)
+                        .addComponent(B_add_line)
+                        .addGap(18, 18, 18)
+                        .addComponent(B_change_T)))
+                .addGap(0, 60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addGap(67, 67, 67)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(BagregarL)
-                .addGap(38, 38, 38)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
-                .addComponent(Batras1)
-                .addGap(19, 19, 19))
+                .addGap(82, 82, 82)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(B_show_graph)
+                    .addComponent(B_add_line)
+                    .addComponent(B_change_T))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Batras1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Batras1ActionPerformed
-        Ventana4 ventana = new Ventana4();
+    private void B_change_TActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_change_TActionPerformed
+        W2_T ventana = new W2_T();
         ventana.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_Batras1ActionPerformed
+    }//GEN-LAST:event_B_change_TActionPerformed
 
-    private void BagregarLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BagregarLActionPerformed
-        Linea2 ventana = new Linea2();
+    private void B_show_graphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_show_graphActionPerformed
+        WGrafo ventana = new WGrafo();
         ventana.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_BagregarLActionPerformed
+    }//GEN-LAST:event_B_show_graphActionPerformed
+
+    private void B_add_lineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_add_lineActionPerformed
+        WLine ventana = new WLine();
+        ventana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_B_add_lineActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,28 +130,29 @@ public class Linea1 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Linea1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(W3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Linea1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(W3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Linea1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(W3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Linea1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(W3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Linea1().setVisible(true);
+                new W3().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BagregarL;
-    private javax.swing.JButton Batras1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton B_add_line;
+    private javax.swing.JButton B_change_T;
+    private javax.swing.JButton B_show_graph;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
