@@ -34,19 +34,28 @@ public class Grafo {
         this.gName = gName;
     }
      */
-    public void Grafo() {
+    public void Grafo(List stations) {
 		System.setProperty("org.graphstream.ui", "swing");
-		
-		Graph graph = new SingleGraph("Tutorial 1");
-
-		graph.addNode("A");
-		graph.addNode("B");
-		graph.addNode("C");
-		graph.addEdge("AB", "A", "B");
-		graph.addEdge("BC", "B", "C");
-		graph.addEdge("CA", "C", "A");
-
+                Graph graph = new SingleGraph("Tutorial 1");
+		for (int i = 1; i <= stations.getlen(); i++) {
+                    Station x = stations.getStation(stations, i);
+                    Station x1 = stations.getStation(stations, i).getNext();
+                    if (i < stations.getlen()){  
+                        if (i==1){
+                            graph.addNode(x.getsData());
+                            graph.addNode(x1.getsData());
+                        }
+                        else{
+                            graph.addNode(x1.getsData());
+                        }
+                        if (x.getlData() == x1.getlData()){
+                            graph.addEdge(x.getsData()+x1.getsData(), x.getsData(), x1.getsData());
+                        }
+                    }
+                }
 		graph.display();
+
+				
 	}
    
 

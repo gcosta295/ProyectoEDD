@@ -71,16 +71,14 @@ public class List {
         int j = 1;
         Station sAux = l.sFirst;
         while (j<=i){
-            if (j!=i){
-                j+=1;
+            if (j<i){
                 sAux=sAux.getNext();
             }
-            else{
-                return sAux;
-            }
+            j+=1;
         }
         return sAux;
     }
+        
     
     /*Serch in the list that you give to the funtion the line that have 
     the index that you give too*/
