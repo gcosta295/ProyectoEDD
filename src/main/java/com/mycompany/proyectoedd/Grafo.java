@@ -45,8 +45,7 @@ public class Grafo {
     }
      */
     public void Grafo(List stations) {
-		System.setProperty("org.graphstream.ui", "swing");
-                SingleGraph graph = new SingleGraph("Tutorial 1");
+		
 		for (int i = 1; i <= stations.getlen(); i++) {
                     Station x = stations.getStation(stations, i);
                     Station x1 = stations.getStation(stations, i).getNext();

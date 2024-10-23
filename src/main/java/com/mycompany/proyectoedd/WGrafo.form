@@ -40,6 +40,14 @@
               </Group>
               <EmptySpace pref="259" max="32767" attributes="0"/>
           </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="B_add_sucursal" min="-2" max="-2" attributes="0"/>
+                  <Component id="B_show_graph" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -48,7 +56,11 @@
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="191" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <Component id="B_show_graph" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+              <Component id="B_add_sucursal" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="54" max="32767" attributes="0"/>
               <Component id="B_back_3" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
           </Group>
@@ -77,6 +89,16 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_back_3ActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="B_show_graph">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="grafo"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="B_add_sucursal">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="a&#xf1;adir sucursal"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
