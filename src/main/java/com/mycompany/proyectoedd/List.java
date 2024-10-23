@@ -11,11 +11,15 @@ package com.mycompany.proyectoedd;
 public class List {
     private Station sFirst;
     private Station sLast;
+    private Line lFirst;
+    private Line lLast;
     private int len;
 
     public List() {
         this.sFirst = null;
         this.sLast = null;
+        this.lFirst = null;
+        this.lLast = null;
         this.len = 0;
     }
     
@@ -23,10 +27,10 @@ public class List {
         return this.len;
     }
     
-    /*Add an element that you give to the method in the last position 
-        and make the conection in the list with the others items*/
+    /*Add a station that you give to the method in the last position 
+        and make the conection in the list with the others*/
     
-    public void AddStation (Station s){ //adds an station to the list.
+    public void AddStation (Station s){ 
         if (this.len!=0){
             Station sAux = this.sLast;
             sAux.setnext(s);
@@ -35,6 +39,22 @@ public class List {
         else{
             this.sFirst = s;
             this.sLast = s;
+        }
+        this.len += 1;
+    }
+    
+    /*Add an line that you give to the method in the last position 
+        and make the conection in the list with the others*/
+    
+    public void AddLine (Line l){
+        if (this.len!=0){
+            Line lAux = this.lLast;
+            lAux.setlNext(l);
+            this.lLast = l;
+        }
+        else{
+            this.lFirst = l;
+            this.lLast = l;
         }
         this.len += 1;
     }

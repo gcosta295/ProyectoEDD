@@ -10,7 +10,7 @@ package com.mycompany.proyectoedd;
  */
 public class ProyectoEDD {
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         Station station = new Station("hola");
         Line linea = new Line("line 1");
         linea.getStations().AddStation(station);
@@ -20,5 +20,5 @@ public class ProyectoEDD {
         station.conect(station1);
         station1.conect(station);
         System.out.println(linea.getStations().inList(station));
-    }
+    }*/
 } 
