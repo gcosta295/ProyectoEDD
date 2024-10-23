@@ -28,7 +28,8 @@ public class List {
     }
     
     /*Add a station that you give to the method in the last position 
-        and make the conection in the list with the others*/
+        and make the conection in the list with the others,
+        also you can use it to conect randoms stations*/
     
     public void AddStation (Station s){ 
         if (this.len!=0){
@@ -59,7 +60,7 @@ public class List {
         this.len += 1;
     }
     
-    /*Serch in the list that you give to the funtion the item that have 
+    /*Serch in the list that you give to the funtion the station that have 
     the index that you give too*/
     
     public Station getStation(List l, int i){
@@ -77,16 +78,48 @@ public class List {
         return sAux;
     }
     
-    /*confir if in the list that you give exist 
-    an element that you give too*/
+    /*Serch in the list that you give to the funtion the line that have 
+    the index that you give too*/
     
-    public boolean inList(Station s){
+    public Line getLine (List l, int i){
+        int j = 1;
+        Line lAux = l.lFirst;
+        while (j<=i){
+            if (j!=i){
+                j+=1;
+                lAux = lAux.getlNext();
+            }
+            else{
+                return lAux;
+            }
+        }
+        return lAux;
+    }
+    
+    /*Confir if in the list that you give exist 
+    a station that you give too*/
+    
+    public boolean sInList(Station s){
         Station sAux = sFirst;
         while (sAux != null){
             if(sAux.equals(s)){
                 return true;
             }
             sAux = sAux.getNext();
+        }
+        return false;
+    }
+    
+    /*Confir if in the list that you give exist 
+    a line that you give too*/
+    
+    public boolean lInList (Line l){
+        Line lAux = lFirst;
+        while (lAux != null){
+            if(lAux.equals(l)){
+                return true;
+            }
+            lAux = lAux.getlNext();
         }
         return false;
     }

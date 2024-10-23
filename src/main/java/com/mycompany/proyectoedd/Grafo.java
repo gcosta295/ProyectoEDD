@@ -4,7 +4,7 @@
  */
 package com.mycompany.proyectoedd;
 import org.graphstream.graph.*;
-import org.graphstream.graph.implementations.AbstractEdge.*;
+import org.graphstream.graph.implementations.*;
 import org.graphstream.graph.implementations.SingleGraph;
 /**
  *
@@ -31,29 +31,21 @@ public class Grafo {
 
     public void setgName(String gName) {
         this.gName = gName;
-    }*/
-    
-    public static void main(String args[]) {
-        System.setProperty("org.graphstream.ui", "org.graphstream.ui.swing");
-	Graph graph = new SingleGraph ("Tutorial 1");
-        
-        System.out.println("uish1");
-        graph.addNode("A" );
-        System.out.println("uish2");
-        graph.addNode("B" );
-        System.out.println("uish3");
-        graph.addNode("C" );
-        System.out.println("uish4");
-        graph.addEdge("AB", "A", "B");
-        System.out.println("uish5");
-        graph.addEdge("BC", "B", "C");
-        System.out.println("uish6");
-        graph.addEdge("CA", "C", "A");
-        System.out.println("uish7");
-        
-        System.out.println("uish8");
-        graph.display();
-
     }
     
+    public void Grafo() {
+		System.setProperty("org.graphstream.ui", "swing");
+		
+		Graph graph = new SingleGraph("Tutorial 1");
+
+		graph.addNode("A");
+		graph.addNode("B");
+		graph.addNode("C");
+		graph.addEdge("AB", "A", "B");
+		graph.addEdge("BC", "B", "C");
+		graph.addEdge("CA", "C", "A");
+
+		graph.display();
+	}
+    */
 }

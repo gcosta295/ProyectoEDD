@@ -12,7 +12,7 @@ public class Station {
     private String sData;                   //Name of the station
     private Station next;                   //Next station of the line
     private List conections;                //Conections of the stations
-    private boolean Sucursal;               //State of sucursal-
+    private boolean Sucursal;               //State of sucursal
 
     public Station(String sData) {
         this.sData = sData;
