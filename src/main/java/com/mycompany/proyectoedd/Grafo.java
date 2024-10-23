@@ -44,7 +44,7 @@ public class Grafo {
         this.gName = gName;
     }
      */
-    public void Grafo(List stations) {
+    public void Graph(List stations) {
 		
 		for (int i = 1; i <= stations.getlen(); i++) {
                     Station x = stations.getStation(stations, i);

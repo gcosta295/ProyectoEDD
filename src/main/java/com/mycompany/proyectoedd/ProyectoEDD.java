@@ -32,7 +32,7 @@ public class ProyectoEDD {
         System.out.println(stations.getLine(stations, 1).getLname());*/
         
         Grafo graf = new Grafo();
-        graf.Grafo(stations);
+        graf.Graph(stations);
     }
         
     
