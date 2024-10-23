@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
  * @author Nathaly
  */
 public class WLine extends javax.swing.JFrame {
+
     static Line newline;
 
     /**
@@ -36,8 +37,6 @@ public class WLine extends javax.swing.JFrame {
         B_back_3 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         input_numberStation = new javax.swing.JTextField();
-        B_nameLine = new javax.swing.JButton();
-        B_numberStations = new javax.swing.JButton();
         B_addNewLine = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -58,20 +57,6 @@ public class WLine extends javax.swing.JFrame {
         input_numberStation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 input_numberStationActionPerformed(evt);
-            }
-        });
-
-        B_nameLine.setText("Guardar");
-        B_nameLine.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_nameLineActionPerformed(evt);
-            }
-        });
-
-        B_numberStations.setText("Guardar");
-        B_numberStations.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_numberStationsActionPerformed(evt);
             }
         });
 
@@ -99,13 +84,11 @@ public class WLine extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(input_numberStation, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(B_nameLine)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
                         .addGap(227, 227, 227))
-                    .addComponent(B_numberStations)
                     .addComponent(input_nameLine, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
@@ -117,15 +100,11 @@ public class WLine extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(input_nameLine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(B_nameLine)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(input_numberStation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(B_numberStations)
-                .addGap(48, 48, 48)
+                .addGap(83, 83, 83)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(B_back_3)
                     .addComponent(B_addNewLine))
@@ -142,32 +121,27 @@ public class WLine extends javax.swing.JFrame {
     }//GEN-LAST:event_B_back_3ActionPerformed
 
     private void input_numberStationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input_numberStationActionPerformed
-                
+
     }//GEN-LAST:event_input_numberStationActionPerformed
 
-    private void B_numberStationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_numberStationsActionPerformed
-        
+    private void B_addNewLineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_addNewLineActionPerformed
+
+        String lineName = input_nameLine.getText();
+
         String Snumber = input_numberStation.getText();
-        int num = Integer.parseInt(Snumber);        
-        
-        for (int i = 0; i < num; i++){
-            //JOptionPane.showInputDialog(this, "Escribe el nombre de las Stations: "); //agregar que cada nombre es una station (volver objects)
+        int num = Integer.parseInt(Snumber);
+
+        for (int i = 0; i < num; i++) {
+            
             String stationName = JOptionPane.showInputDialog(this, "Escribe el nombre de las Stations: "); //agregar que cada nombre es una station (volver objects)
             Station newstation = new Station(stationName);
+            System.out.println(newstation.getsData());
+            Line newline = new Line(lineName); 
+            newline.getStations().AddStation(newstation); //se esta añadiendo una sola vez en la lista
+            System.out.println(newline.getStations().getlen());
         }
         
-    }//GEN-LAST:event_B_numberStationsActionPerformed
-
-    private void B_nameLineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_nameLineActionPerformed
-        
-        String lineName = input_nameLine.getText();
-        
-    }//GEN-LAST:event_B_nameLineActionPerformed
-
-    private void B_addNewLineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_addNewLineActionPerformed
-        
-        Line newline = new Line(lineName); //preguntar a gaby
-        newline.getStations().AddStation(newstation);
+        JOptionPane.showMessageDialog(this, "Se ha añadido una linea nueva");
     }//GEN-LAST:event_B_addNewLineActionPerformed
 
     /**
@@ -209,8 +183,6 @@ public class WLine extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton B_addNewLine;
     private javax.swing.JButton B_back_3;
-    private javax.swing.JButton B_nameLine;
-    private javax.swing.JButton B_numberStations;
     private javax.swing.JTextField input_nameLine;
     private javax.swing.JTextField input_numberStation;
     private javax.swing.JLabel jLabel1;
