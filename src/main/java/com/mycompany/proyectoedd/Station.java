@@ -43,6 +43,7 @@ public class Station {
     
     public void conect(Station s){
         this.conections.AddStation(s);
+        s.conections.AddStation(this);
     }
     
 }

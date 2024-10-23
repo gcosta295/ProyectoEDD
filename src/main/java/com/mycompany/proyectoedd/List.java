@@ -26,6 +26,10 @@ public class List {
     public int getlen(){
         return this.len;
     }
+
+    public Line getlFirst() {
+        return lFirst;
+    }
     
     /*Add a station that you give to the method in the last position 
         and make the conection in the list with the others,
