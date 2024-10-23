@@ -11,10 +11,12 @@ package com.mycompany.proyectoedd;
 class Line {
     private String lName;               //Name of the Line
     private List stations;              //Station list of the line.
+    private Line lNext;
 
     public Line(String lName) {     
         this.lName = lName;
         this.stations = new List();
+        this.lNext = null;
     }
 
     public String getLname() {       
@@ -23,6 +25,14 @@ class Line {
     
     public List getStations() {
         return stations;
+    }
+
+    public Line getlNext() {
+        return lNext;
+    }
+
+    public void setlNext(Line lNext) {
+        this.lNext = lNext;
     }
 
 }
