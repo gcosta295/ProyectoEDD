@@ -12,6 +12,7 @@ import org.graphstream.graph.implementations.SingleGraph;
  */
         
 public class Grafo {
+
     
     /*private List listLines; //ignoramos esto
     private String gName;
@@ -32,7 +33,7 @@ public class Grafo {
     public void setgName(String gName) {
         this.gName = gName;
     }
-    
+     */
     public void Grafo() {
 		System.setProperty("org.graphstream.ui", "swing");
 		
@@ -47,5 +48,6 @@ public class Grafo {
 
 		graph.display();
 	}
-    */
+   
+
 }
