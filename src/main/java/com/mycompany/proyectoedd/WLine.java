@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 public class WLine extends javax.swing.JFrame {
 
     static Line newline;
+    static List lista;
 
     /**
      * Creates new form Linea2
@@ -133,12 +134,16 @@ public class WLine extends javax.swing.JFrame {
 
         for (int i = 0; i < num; i++) {
             
-            String stationName = JOptionPane.showInputDialog(this, "Escribe el nombre de las Stations: "); //agregar que cada nombre es una station (volver objects)
-            Station newstation = new Station(stationName);
-            System.out.println(newstation.getsData());
+            String stationName = JOptionPane.showInputDialog(this, "Escribe el nombre de la station: "); //agregar que cada nombre es una station (volver objects)
+            Station newstation = new Station(stationName,lineName);
+             System.out.println(newstation.getsData());
+            List newlstations = new List();
+            newlstations.AddStation(newstation);
+             System.out.println(newlstations.getlen());
             Line newline = new Line(lineName); 
             newline.getStations().AddStation(newstation); //se esta añadiendo una sola vez en la lista
-            System.out.println(newline.getStations().getlen());
+             System.out.println(newline.getStations().getlen()); //l1.listastations.nodo
+        
         }
         
         JOptionPane.showMessageDialog(this, "Se ha añadido una linea nueva");
