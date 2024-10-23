@@ -19,6 +19,7 @@ import org.json.simple.parser.ParseException;
  *
  * @author gabri
  */
+
 public class ReadJSON {
 
     private String text;
@@ -26,8 +27,6 @@ public class ReadJSON {
 
     public ReadJSON() {
     }
-
-    
 
     public void abrirArchivo() {
         String aux = "";
@@ -38,21 +37,20 @@ public class ReadJSON {
             file.showOpenDialog(file);
             File abre = file.getSelectedFile();
             String fileType = file.getTypeDescription(abre); //tells us what type of file the chosen one is 
-            
-            
+
             if (fileType.equals("JSON Source File")) { //Validates the JSON file
                 if (abre != null) {
                     FileReader archivos = new FileReader(abre);
                     BufferedReader lee = new BufferedReader(archivos);
                     while ((aux = lee.readLine()) != null) {
-                        setText(getText() + aux+ "\n");
+                        setText(getText() + aux + "\n");
                     }
                     lee.close();
                 }
-            } else{
+            } else {
                 JOptionPane.showMessageDialog(null,
-                     "\nEl archivo no es JSON, por favor volver a intentar",
-                    "ADVERTENCIA!!!", JOptionPane.ERROR_MESSAGE);
+                        "\nEl archivo no es JSON, por favor volver a intentar",
+                        "ADVERTENCIA!!!", JOptionPane.ERROR_MESSAGE);
             }
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, ex + ""
@@ -68,8 +66,10 @@ public class ReadJSON {
         try {
             JSONParser parser = new JSONParser(); //creates a json parsser, to parse the json string
             JSONObject metroJson = (JSONObject) parser.parse(jsonString);
-            String nombreMetro = (String) metroJson.keySet().iterator().next(); //gets the name of the metro system
-            JSONArray lineasMetro = (JSONArray) metroJson.get(nombreMetro); //allows me to enter the metro system list of lines
+            String nombreMetro = (String) metroJson.keySet().iterator().next();
+            JSONArray lineasMetro = (JSONArray) metroJson.get(nombreMetro);
+            List listaStations = new List(); // Creates a list of metroline, where the list of stations will be stored
+            // Create graph / here the metroline should be added
 
             for (Object lineObject : lineasMetro) { //iterates through each metroline in the array
                 JSONObject lineJson = (JSONObject) lineObject;
@@ -79,25 +79,56 @@ public class ReadJSON {
 
                     Line metroLine = new Line(lineName); //creates a new metroline, with the name of the line in the JSON
 
-                    List listaStations = new List(); // Creates a list of metroline, where the list of stations will be stored
-                    // Create graph / here the metroline should be added
-
                     JSONArray stationsArray = (JSONArray) lineJson.get(lineName); //creates an array of the metroline we are currently parsing
 
                     for (Object stationObject : stationsArray) { //creates an object of each station in the array, iterating over them
                         if (stationObject instanceof JSONObject) { //esto es lo de las estaciones con llaves, me falta arreglarlo
+
                             JSONObject connection = (JSONObject) stationObject;
                             for (Object stationNameObject : connection.keySet()) {
                                 String stationName = (String) stationNameObject;
                                 String connectionName = connection.get(stationNameObject).toString();
-//                                System.out.println("  " + stationName + " (Connection: " + connectionName + ")");
+                                //System.out.println(stationName);
+                                if (listaStations.nameInList(stationName)) {
+                                    if (listaStations.getSLast() != null) {
+                                        Station sAux = listaStations.getSLast();
+                                        sAux.conect(listaStations.getNamedStation(stationName));
+                                        listaStations.AddStation(listaStations.getNamedStation(stationName));
+                                    } else {
+
+                                        listaStations.AddStation(listaStations.getNamedStation(stationName));
+                                    }
+                                } else {
+
+                                    if (listaStations.getSLast() != null) {
+                                        Station newStation = new Station(stationName + ":" + connectionName);
+                                        Station sAux = listaStations.getSLast();
+                                        sAux.conect(newStation);
+                                        listaStations.AddStation(newStation);
+
+                                    } else {
+
+                                        Station newStation = new Station(stationName + ":" + connectionName);
+                                        listaStations.AddStation(newStation);
+                                    }
+                                }
                             }
                         } else {
-                            String stationName = (String) stationObject; //gets the name of the station
-                            Station newStation = new Station(stationName);
-                            listaStations.AddStation(newStation); //adds the iterated station into our own list class
 
-                            System.out.println("  " + newStation.getsData());
+                            if (listaStations.getSLast() != null) {
+
+                                String stationName = (String) stationObject; //gets the name of the station
+                                Station newStation = new Station(stationName);
+                                Station sAux = listaStations.getSLast();
+                                sAux.conect(newStation);
+                                listaStations.AddStation(newStation); //adds the iterated station into our own list class
+
+                                //.out.println("  " + newStation.getsData());
+                            } else {
+                                String stationName = (String) stationObject; //gets the name of the station
+                                Station newStation = new Station(stationName);
+                                listaStations.AddStation(newStation);
+                            }
                         }
                     }
                 }
@@ -105,7 +136,9 @@ public class ReadJSON {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
     }
+    
 
     /**
      * @return the text
