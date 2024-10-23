@@ -32,8 +32,8 @@ public class Grafo {
     public void setgName(String gName) {
         this.gName = gName;
     }
-    
-    public void Grafo() {
+    */
+    public static void Graf() {
 		System.setProperty("org.graphstream.ui", "swing");
 		
 		Graph graph = new SingleGraph("Tutorial 1");
@@ -47,5 +47,5 @@ public class Grafo {
 
 		graph.display();
 	}
-    */
+    
 }

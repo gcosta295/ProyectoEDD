@@ -11,9 +11,10 @@ package com.mycompany.proyectoedd;
 public class ProyectoEDD {
 
     public static void main(String[] args) {
-        /*Grafo graf = new Grafo();
-        graf.Grafo();
-    }*/
+        Grafo graf = new Grafo();
+        graf.Graf();
+        
+    }/*
         Station station = new Station("station0");
         Line linea = new Line("line 1");
         linea.getStations().AddStation(station);
@@ -25,5 +26,5 @@ public class ProyectoEDD {
         System.out.println(station.getconections().getStation(station.getconections(), 1).getsData());
         System.out.print(station1.getsData() + " esta conectada con ");
         System.out.println(station1.getconections().getStation(station1.getconections(), 1).getsData());
-    }
+    }*/
 } 
