@@ -85,17 +85,17 @@ public class ReadJSON {
                         if (stationObject instanceof JSONObject) { //esto es lo de las estaciones con llaves, me falta arreglarlo
 
                             JSONObject connection = (JSONObject) stationObject;
-                            for (Object stationNameObject : connection.keySet()) {
+                            for (Object stationNameObject : connection.keySet()) { //takes the {station1:station2} as an object and allows to access each
                                 String stationName = (String) stationNameObject;
                                 String connectionName = connection.get(stationNameObject).toString();
                                 //System.out.println(stationName);
-                                if (listaStations.nameInList(stationName)) {
-                                    if (listaStations.getSLast() != null) {
+                                if (listaStations.nameInList(stationName)) { //checks if the stationa already exists
+                                    if (listaStations.getSLast() != null) { //if it exists adds it after the last and connects it to the one before
                                         Station sAux = listaStations.getSLast();
                                         sAux.conect(listaStations.getNamedStation(stationName));
                                         listaStations.AddStation(listaStations.getNamedStation(stationName));
                                     } else {
-
+                                        //if it already exists but is the first one in a list
                                         listaStations.AddStation(listaStations.getNamedStation(stationName));
                                     }
                                 } else {

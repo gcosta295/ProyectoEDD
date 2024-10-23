@@ -12,12 +12,7 @@
         <exec.mainClass>com.mycompany.proyectoedd.ProyectoEDD</exec.mainClass>
     </properties>
     <dependencies>
-<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
-<dependency>
-    <groupId>com.fasterxml.jackson.core</groupId>
-    <artifactId>jackson-databind</artifactId>
-    <version>2.18.0</version>
-</dependency>
+
 <!-- https://mvnrepository.com/artifact/org.json/json -->
 <dependency>
     <groupId>org.json</groupId>
@@ -33,8 +28,8 @@
 <!-- https://mvnrepository.com/artifact/org.graphstream/gs-core -->
 <dependency>
     <groupId>org.graphstream</groupId>
-    <artifactId>gs-core</artifactId>
-    <version>2.0</version>
+    <artifactId>gs-ui</artifactId>
+    <version>1.3</version>
 </dependency>
 
     </dependencies>
