@@ -33,14 +33,14 @@
                   <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                      <Component id="B_show_graph" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="B_graph" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="B_add_line" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="B_change_T" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="0" pref="60" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="44" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -52,7 +52,7 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="B_show_graph" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="B_graph" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="B_add_line" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="B_change_T" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -70,12 +70,12 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel1">
     </Component>
-    <Component class="javax.swing.JButton" name="B_show_graph">
+    <Component class="javax.swing.JButton" name="B_graph">
       <Properties>
         <Property name="text" type="java.lang.String" value="Mostrar Grafo"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_show_graphActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_graphActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="B_add_line">
