@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.proyectoedd;
-import com.sun.tools.jdeps.Graph;
+
 import javax.swing.JOptionPane;
 import org.graphstream.graph.*;
 import org.graphstream.graph.implementations.*;
@@ -20,7 +20,7 @@ public class Grafo {
     public Grafo() {     
         System.setProperty("org.graphstream.ui", "swing");
         
-    
+    }
     SingleGraph graph = new SingleGraph("Tutorial 1");
     
     /*private List listLines; //ignoramos esto
