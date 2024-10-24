@@ -33,8 +33,8 @@ public class ProyectoEDD {
 //        System.out.println(station1.getconections().getStation(station1.getconections(), 1).getsData());
 //        System.out.println(stations.getLine(stations, 1).getLname());*/
 //        
-//        Grafo graf = new Grafo();
-//        graf.Graph(stations);
+        Grafo graf = new Grafo();
+        graf.Graph(listaLines); //parametro lista de lineas
     }
         
     

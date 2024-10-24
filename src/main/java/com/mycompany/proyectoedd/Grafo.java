@@ -44,22 +44,37 @@ public class Grafo {
         this.gName = gName;
     }
      */
-    public void Graph(List stations) {
-		
-		for (int i = 1; i <= stations.getlen(); i++) {
-                    Station x = stations.getStation(stations, i);
-                    Station x1 = stations.getStation(stations, i).getNext();
-                    if (i < stations.getlen()){  
-                        if (i==1){
+    public void Graph(List line) {
+	
+        for (int i = 1; i<= line.getlen(); i++) {
+//            System.out.println(i);
+            Line tline = line.getLine(line, i);
+            for (int j = 1; j < tline.getStations().getlen(); j++) {
+                List stations = tline.getStations();
+//                System.out.println(j);
+                for (int l = 1; l <= stations.getlen(); l++) {
+                    Station x = stations.getStation(stations, l);
+                    Station x1 = stations.getStation(stations, l).getNext();
+                    System.out.println();
+                    if (l < stations.getlen()){  
+                        if (l==1){
                             Node nx = graph.addNode(x.getsData());
                             nx.setAttribute("ui.style", "fill-color: blue;");
                             nx.setAttribute("ui.label", "nodo1"); //ponerle nombre a los nodos
-                            Node nx1 = graph.addNode(x1.getsData());
-                            nx1.setAttribute("ui.style", "fill-color: blue;");
+                            if (x1 == null) {
+                                Node nx1 = graph.addNode(x1.getsData());
+                                nx1.setAttribute("ui.style", "fill-color: blue;");
+                            }
+//                            Node nx1 = graph.addNode(x1.getsData());
+//                            nx1.setAttribute("ui.style", "fill-color: blue;");
                         }
                         else{
-                            Node nx1 = graph.addNode(x1.getsData());
-                            nx1.setAttribute("ui.style", "fill-color: blue;");
+                            if (x1==null) {
+                                Node nx1 = graph.addNode(x1.getsData());
+                                nx1.setAttribute("ui.style", "fill-color: blue;");
+                            }
+//                            Node nx1 = graph.addNode(x1.getsData());
+//                            nx1.setAttribute("ui.style", "fill-color: blue;");
                         }
                         if (x.getlData() == x1.getlData()){
                             graph.addEdge(x.getsData()+x1.getsData(), x.getsData(), x1.getsData());
@@ -67,9 +82,15 @@ public class Grafo {
                     }
                 }
 		graph.display();
+//
+              }
 
-				
-	}
+                
+            }
+        }
+        
+        		
+
     
     public void changeColorNodo(Station station){ //station es el nodo que se quiere cambiar de color
         
