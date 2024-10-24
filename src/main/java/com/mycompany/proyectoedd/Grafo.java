@@ -54,6 +54,7 @@ public class Grafo {
                         if (i==1){
                             Node nx = graph.addNode(x.getsData());
                             nx.setAttribute("ui.style", "fill-color: blue;");
+                            nx.setAttribute("ui.label", "nodo1"); //ponerle nombre a los nodos
                             Node nx1 = graph.addNode(x1.getsData());
                             nx1.setAttribute("ui.style", "fill-color: blue;");
                         }

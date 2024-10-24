@@ -12,7 +12,6 @@ import org.graphstream.graph.*; //importe de la libreria de graphstream
  */
 public class WGrafo extends javax.swing.JFrame {
     
-    
 
     /**
      * Creates new form Linea1
