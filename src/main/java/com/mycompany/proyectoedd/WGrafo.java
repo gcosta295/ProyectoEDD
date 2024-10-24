@@ -11,6 +11,8 @@ import org.graphstream.graph.*; //importe de la libreria de graphstream
  * @author Nathaly
  */
 public class WGrafo extends javax.swing.JFrame {
+    
+    
 
     /**
      * Creates new form Linea1
@@ -50,6 +52,11 @@ public class WGrafo extends javax.swing.JFrame {
         });
 
         B_show_graph.setText("grafo");
+        B_show_graph.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_show_graphActionPerformed(evt);
+            }
+        });
 
         B_add_sucursal.setText("añadir sucursal");
 
@@ -99,6 +106,10 @@ public class WGrafo extends javax.swing.JFrame {
         ventana.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_B_back_3ActionPerformed
+
+    private void B_show_graphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_show_graphActionPerformed
+        
+    }//GEN-LAST:event_B_show_graphActionPerformed
 
     /**
      * @param args the command line arguments

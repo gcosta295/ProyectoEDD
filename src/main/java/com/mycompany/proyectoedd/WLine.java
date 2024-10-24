@@ -132,17 +132,18 @@ public class WLine extends javax.swing.JFrame {
         String Snumber = input_numberStation.getText();
         int num = Integer.parseInt(Snumber);
 
+        List newlstations = new List();
+        Line newline = new Line(lineName);
+        
         for (int i = 0; i < num; i++) {
             
             String stationName = JOptionPane.showInputDialog(this, "Escribe el nombre de la station: "); //agregar que cada nombre es una station (volver objects)
             Station newstation = new Station(stationName,lineName);
-             System.out.println(newstation.getsData());
-            List newlstations = new List();
+            // System.out.println(newstation.getsData());
             newlstations.AddStation(newstation);
-             System.out.println(newlstations.getlen());
-            Line newline = new Line(lineName); 
+            // System.out.println(newlstations.getlen()); 
             newline.getStations().AddStation(newstation); //se esta añadiendo una sola vez en la lista
-             System.out.println(newline.getStations().getlen()); //l1.listastations.nodo
+            // System.out.println(newline.getStations().getlen()); //l1.listastations.nodo
         
         }
         
