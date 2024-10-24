@@ -94,7 +94,7 @@ public class ReadJSON {
 
                                 if (listaAllStations.nameInList(connectionName)) { //la lista no es vacia
 
-//                                    System.out.println(stationName);
+                                    System.out.println(stationName);
                                     Station sAux = listaAllStations.getNamedStation(stationName);
                                     System.out.println(sAux.getsData());
 
@@ -114,7 +114,7 @@ public class ReadJSON {
                         } else {
                             String stationName = (String) stationObject;
                             
-                            System.out.println("llego aqui");
+//                            System.out.println("llego aqui");
                             if (listaAllStations.nameInList(stationName)) {
                                 Station sAux = listaAllStations.getNamedStation(stationName);
                                 System.out.println(sAux);

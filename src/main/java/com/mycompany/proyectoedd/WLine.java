@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 public class WLine extends javax.swing.JFrame {
 
     static Line newline;
-    static List lista;
+    static List listaLines;
 
     /**
      * Creates new form Linea2
@@ -132,6 +132,8 @@ public class WLine extends javax.swing.JFrame {
         String Snumber = input_numberStation.getText();
         int num = Integer.parseInt(Snumber);
 
+        
+        
         for (int i = 0; i < num; i++) {
             
             String stationName = JOptionPane.showInputDialog(this, "Escribe el nombre de la station: "); //agregar que cada nombre es una station (volver objects)
@@ -142,7 +144,9 @@ public class WLine extends javax.swing.JFrame {
              System.out.println(newlstations.getlen());
             Line newline = new Line(lineName); 
             newline.getStations().AddStation(newstation); //se esta añadiendo una sola vez en la lista
-             System.out.println(newline.getStations().getlen()); //l1.listastations.nodo
+             System.out.println(newline.getStations().getlen()); 
+//            listaLines.AddLine(newline);
+//             System.out.println(listaLines.getlen());
         
         }
         

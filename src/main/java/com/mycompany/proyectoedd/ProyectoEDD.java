@@ -9,11 +9,13 @@ package com.mycompany.proyectoedd;
  * @author gabri
  */
 public class ProyectoEDD {
-
+    
     public static void main(String[] args) {
-        
+        ReadJSON L = new ReadJSON();
+        L.abrirArchivo();
+        List listaLines = L.Parse();
 //        List stations = new List();
-//        Line linea = new Line("line 1");
+//        Line linea = new Line("line 1'
 //        Line linea1 = new Line("line 2");
 //        Station station = new Station("station0", linea.getLname());
 //        Station station1 = new Station("station1", linea.getLname());
