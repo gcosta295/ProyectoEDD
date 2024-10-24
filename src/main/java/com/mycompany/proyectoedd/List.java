@@ -30,20 +30,28 @@ public class List {
     public Line getlFirst() {
         return lFirst;
     }
+
+    public Station getsLast() {
+        return sLast;
+    }
     
     /*Add a station that you give to the method in the last position 
         and make the conection in the list with the others,
         also you can use it to conect randoms stations*/
     
     public void AddStation (Station s){ 
+        Station stat = new Station(s.getsData(),s.getlData());
+        stat.setCover(s.isCover());
+        stat.setSucursal(s.isSucursal());
+        stat.setConections(s.getconections());
         if (this.len!=0){
             Station sAux = this.sLast;
-            sAux.setnext(s);
-            this.sLast = s;
+            sAux.setnext(stat);
+            this.sLast = stat;
         }
         else{
-            this.sFirst = s;
-            this.sLast = s;
+            this.sFirst = stat;
+            this.sLast = stat;
         }
         this.len += 1;
     }
@@ -67,9 +75,10 @@ public class List {
     /*Serch in the list that you give to the funtion the station that have 
     the index that you give too*/
     
-    public Station getStation(List l, int i){
+    public Station getStation(int i){
+        if (i<=this.len){
         int j = 1;
-        Station sAux = l.sFirst;
+        Station sAux = this.sFirst;
         while (j<=i){
             if (j<i){
                 sAux=sAux.getNext();
@@ -77,6 +86,10 @@ public class List {
             j+=1;
         }
         return sAux;
+        }
+        else{
+            return null;
+        }
     }
         
     
@@ -126,4 +139,21 @@ public class List {
         return false;
     }
     
+    /*public void serchConections (int n, List l){
+        int cont2 = 1;
+        int num = l.len;
+        while (cont2 <= num){
+            System.out.print("largo de la lista evaluando");
+            System.out.println(this.len);
+            if (n==1){
+                this.AddStation(l.getStation(l, cont2));
+            }
+            else{
+                List lAux = l.getStation(l, cont2).getconections();
+                l.serchConections(n-1, lAux);
+            }
+            cont2 +=1;
+        }
+        
+    }*/
 }

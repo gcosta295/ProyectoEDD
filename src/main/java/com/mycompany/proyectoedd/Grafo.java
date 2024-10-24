@@ -17,6 +17,11 @@ import org.graphstream.graph.implementations.SingleGraph;
         
 public class Grafo {
 
+    public Grafo(){
+        System.setProperty("org.graphstream.ui", "swing");
+    }
+    
+    SingleGraph graph = new SingleGraph("Tutorial 1");
     
     /*private List listLines; //ignoramos esto
     private String gName;
@@ -61,16 +66,10 @@ public class Grafo {
     public void Graph(List stations) {
 
 		for (int i = 1; i <= stations.getlen(); i++) {
-                    Station x = stations.getStation(stations, i);
-                    Station x1 = stations.getStation(stations, i).getNext();
+                    Station x = stations.getStation(i);
+                    Station x1 = stations.getStation(i).getNext();
                     if (i < stations.getlen()){  
                         if (i==1){
-
-                            graph.addNode(x.getsData());
-                            graph.addNode(x1.getsData());
-                        }
-                        else{
-                            graph.addNode(x1.getsData());
 
                             Node nx = graph.addNode(x.getsData());
                             nx.setAttribute("ui.style", "fill-color: blue;");
@@ -104,4 +103,6 @@ public class Grafo {
         }
     }
 
+    
+    
 }
