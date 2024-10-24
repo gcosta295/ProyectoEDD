@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import org.graphstream.graph.*;
 import org.graphstream.graph.implementations.*;
 import org.graphstream.graph.implementations.SingleGraph;
+import org.graphstream.ui.view.Viewer;
 /**
  *
  * @author astv06
@@ -80,4 +81,11 @@ public class Grafo {
             JOptionPane.showMessageDialog(null, "La estación" +station.getsData()+ "no existe en el grafo.");
         }
     }
+    
+    public void mostrarGrafo(){
+        
+        Viewer viewer = graph.display();
+        viewer.addDefaultView(true); 
+    }
+    
 }
