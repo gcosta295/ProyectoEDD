@@ -62,8 +62,8 @@ public class ReadJSON {
 
     public List Parse() { // en teoria deberia recibir como parametro el grafo, pero falta crearlo
         String jsonString = text;
-        List listaStations = new List();
-
+        List listaLines = new List();
+        List listaAllStations = new List();
         try {
 
             JSONParser parser = new JSONParser(); //creates a json parsser, to parse the json string
@@ -73,105 +73,101 @@ public class ReadJSON {
 
             for (Object lineObject : lineasMetro) { //iterates through each metroline of the json
                 JSONObject lineJson = (JSONObject) lineObject;
-                
+
                 for (Object lineNameObject : lineJson.keySet()) { //object each medtroline station
                     String lineName = (String) lineNameObject; //transform the metroline name into a string
-                    Line lineametro = new Line(lineName);
 //                    System.out.println(lineName);
+                    Line lineametro = new Line(lineName);
+                    listaLines.AddLine(lineametro);
+                    List listaStations = lineametro.getStations();
+                    System.out.println(lineName);
                     //                   Line metroLine = new Line(lineName); //creates a new metroline, with the name of the line in the JSON
                     JSONArray stationsArray = (JSONArray) lineJson.get(lineName); //creates an array of the metroline we are currently parsing
                     for (Object stationObject : stationsArray) { ///makes each station o the array into an object
                         if (stationObject instanceof JSONObject) { //esto es lo de las estaciones con llaves, me falta arreglarlo
-                           
+
                             JSONObject connection = (JSONObject) stationObject;
+
                             for (Object stationNameObject : connection.keySet()) {
                                 String stationName = (String) stationNameObject;
                                 String connectionName = connection.get(stationNameObject).toString();
 
-                                if (listaStations.nameInList(stationName)) { //esto es que la {:} estacion ya existe 
+                                if (listaAllStations.nameInList(connectionName)) { //la lista no es vacia
+
+//                                    System.out.println(stationName);
+                                    Station sAux = listaAllStations.getNamedStation(stationName);
+                                    System.out.println(sAux.getsData());
 
                                     if (listaStations.getSLast() != null) {
-                                        Station sAux = listaStations.getSLast();
-                                        Station oldStation = listaStations.getNamedStation(stationName);
-                                        listaStations.AddStation(oldStation);
-                                        sAux.getconections().AddStation(oldStation);
-                                        oldStation.getconections().AddStation(sAux);
-
-                                    } else {//que la lista es vacia 
-                                        Station oldStation = listaStations.getNamedStation(stationName);
-                                        listaStations.AddStation(oldStation);
-
+                                        Station last = listaStations.getSLast();
+                                        last.conect(sAux);
+                                        listaStations.AddStation(sAux);
+                                        sAux.setnext(null);
                                     }
                                 } else {
-                                    //que no este la estacion compuesta en la lista
-                                    if (listaStations.getSLast() != null) {
-                                        Station newStation = new Station(stationName + ":" + connectionName, lineName);
-                                        Station sAux = listaStations.getSLast();
-                                        newStation.getconections().AddStation(sAux);
-                                        sAux.getconections().AddStation(newStation);
-                                        listaStations.AddStation(newStation);
-
-                                    }
+                                    Station newStation = new Station(stationName + ":" + connectionName, lineName);
+                                    listaStations.AddStation(newStation);
+                                    listaAllStations.AddStation(newStation);
                                 }
-
-                            }//fin de for
+                            }
 
                         } else {
-                            //que no esta entre las llaves
-                            if (listaStations.getSFirst() != null) {
-                                //que la lista no esta vacia
-
-                                String stationName = (String) stationObject; //gets the name of the station
-//                                System.out.println(stationName);
-                                Station newStation = new Station(stationName, lineName); //e; gpocho ladilla quiere que ponga la linea ok
-
-                                Station sAux = listaStations.getSLast();
-
-                                listaStations.AddStation(newStation);
-//                                System.out.println(sAux.getNext().getsData());
-                                newStation.getconections().AddStation(sAux);
-
-                                sAux.getconections().AddStation(newStation);
-
-
+                            String stationName = (String) stationObject;
+                            
+                            System.out.println("llego aqui");
+                            if (listaAllStations.nameInList(stationName)) {
+                                Station sAux = listaAllStations.getNamedStation(stationName);
+                                System.out.println(sAux);
+                                listaStations.AddStation(sAux);
+                                sAux.setnext(null);
                             } else {
-                                String stationName = (String) stationObject; //gets the name of the station
-                                Station new2Station = new Station(stationName, lineName);
-                                listaStations.AddStation(new2Station);
+                                
+                                Station newStation = new Station(stationName, lineName);
+                                System.out.println(stationName);
+                                listaAllStations.AddStation(newStation);
+                                if (listaStations.getSLast() != null) {
+                                  
+                                    Station last = listaStations.getSLast();
+                                    last.conect(newStation);
+                                    listaStations.AddStation(newStation);
+                                }else{
+                                    listaStations.AddStation(newStation);
+                                }
 
                             }
                         }
-                       
                     }
                 }
-
             }
 
-        } catch (ParseException e) {
+        } // Print all stations and their connections
+        catch (ParseException e) {
+
             e.printStackTrace();
         }
-        
-////        System.out.println(listaStations.getSFirst().getsData());
-//        Station test = listaStations.getSFirst();
-////        System.out.println(test.getsData());
-//        System.out.println(test.getsData());
-//        int c = 1;
-//        while (c <= test.getconections().getlen()) {
-//            System.out.println(test.getconections().getStation(test.getconections(), c).getsData());
-//            c += 1;
+//
+//        Line currentL = listaLines.getlFirst();
+//
+//        
+//        while (currentL != null) {
+//            System.out.println(currentL.getLname());
+//            Station current = currentL.getStations().getSFirst();
+//            while (current != null) {
+//                System.out.println("Station: " + current.getsData());
+//
+//                int c = 1;
+//                while (c <= current.getconections().getlen()) {
+//                    System.out.println("coneccion: " + current.getconections().getStation(current.getconections(), c).getsData());
+//                    c += 1;
+//                }
+//                current = current.getNext();
+//            }
+//            currentL = currentL.getlNext();
 //        }
+////     
+    
 
-//        while (c <= listaStations.getlen()) {
-//            System.out.println(test.getsData());
-//            test=test.getNext();
-//            c += 1;
-//        }
-
-//    
-//    System.out.println(test.getconections().getSFirst().getsData());
-//    
-//    System.out.println(test.getconections().getSFirst().getNext().getsData());
-    return listaStations;
+    return listaLines;
     }
     
     
