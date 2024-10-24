@@ -51,9 +51,9 @@ public class Station {
         this.next = next;
     }
     
-    public void conect(Station s){
+    /*public void conect(Station s){
         this.conections.AddStation(s);
         s.conections.AddStation(this);
-    }
+    }*/
     
 }
