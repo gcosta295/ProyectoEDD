@@ -70,6 +70,7 @@ public class List {
     public boolean nameInList(String s) {
         Station sAux = sFirst;
 
+
         while (sAux != null) {
             if (sAux.getsData().contains(s)) {
 
