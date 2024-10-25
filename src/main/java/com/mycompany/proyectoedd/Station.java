@@ -83,14 +83,18 @@ public class Station {
         List x = this.conections;
         while (cont <= x.getlen()){
             if (t == 1){
-                l.AddStation(this.conections.getStation(cont));
+                if (l.sInList(x.getStation(cont))==false){
+                    l.AddStation(x.getStation(cont));
+                }
             }
             else{
+                if (l.sInList(x.getStation(cont))==false){
+                    l.AddStation(x.getStation(cont));
+                }
                 List lAux = x.getStation(cont).BFS(l, t-1);
             }
         cont += 1;
         }
         return l;
-        
     }
 }
