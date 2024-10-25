@@ -33,7 +33,7 @@ public class ProyectoEDD {
         station2.conect(station3);
         station2.conect(station4);
         station4.conect(station5);
-        covers = station1.BFS(covers, 3);
+        covers = station4.BFS(covers, 2);
         int contadorX = 1;
         System.out.println(covers.getlen());
         while (contadorX <= covers.getlen()){

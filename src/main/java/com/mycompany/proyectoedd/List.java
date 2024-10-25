@@ -117,7 +117,7 @@ public class List {
     public boolean sInList(Station s){
         Station sAux = sFirst;
         while (sAux != null){
-            if(sAux.equals(s)){
+            if(sAux.getsData().equals(s.getsData())){
                 return true;
             }
             sAux = sAux.getNext();
