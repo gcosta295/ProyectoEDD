@@ -1,13 +1,8 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-
 package com.mycompany.proyectoedd;
 
-import org.graphstream.graph.*;
-import org.graphstream.graph.implementations.*;
-import org.graphstream.graph.implementations.SingleGraph;
-import org.graphstream.graph.implementations.MultiGraph;
 import org.graphstream.ui.view.Viewer;
 
 /**
@@ -15,7 +10,7 @@ import org.graphstream.ui.view.Viewer;
  * @author gabri
  */
 public class ProyectoEDD {
-    
+
     public static void main(String[] args) {
         ReadJSON L = new ReadJSON();
         L.abrirArchivo();
@@ -53,12 +48,15 @@ public class ProyectoEDD {
 //        }
 //            contadorx+=1;
 //        }
+        System.setProperty("org.graphstream.ui", "swing");
         Grafo graf = new Grafo();
         graf.Graph(listaLines);
-        graf.mostrarGrafo();
-        
-        
-        
+        Viewer viewer = graf.getGraph().display();
+// Let the layout work ...
+        viewer.disableAutoLayout();
+// Do some work ...
+        viewer.enableAutoLayout();
+
 //        System.setProperty("org.graphstream.ui", "swing");
 //		
 //		Graph graph = new SingleGraph("Tutorial 1");
@@ -74,8 +72,6 @@ public class ProyectoEDD {
 //        
         //graf.Graph(listaLines); //parametro lista de lineas
 //        
-        
-        
         Line currentL = listaLines.getlFirst();
 
 //            while (currentL != null) {
@@ -93,8 +89,5 @@ public class ProyectoEDD {
 //            }
 //            currentL = currentL.getlNext();
 //        }
-        
-    
     }
- }
-
+}

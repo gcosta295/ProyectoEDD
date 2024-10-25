@@ -22,9 +22,15 @@ public class Grafo {
     public Grafo() {
 
         this.graph = new MultiGraph("Grafo Metro");
-        System.setProperty("org.graphstream.ui", "swing");
+//        System.setProperty("org.graphstream.ui", "swing");
 
     }
+
+    public MultiGraph getGraph() {
+        return graph;
+    }
+    
+    
     //MultiGraph graph = new MultiGraph("Tutorial 1");
 
     /*private List listLines; //ignoramos esto
@@ -48,7 +54,11 @@ public class Grafo {
     }
      */
     public void Graph(List line) {
-
+        graph.setAttribute("ui.stylesheet", "node{\n"
+                + "    size: 5px, 5px;\n"
+                + "    fill-color: #f7f7f0;\n"
+                + "    text-mode: normal; \n"
+                + "}");
         for (int i = 1; i <= line.getlen(); i++) {
 //            System.out.println(i);
             Line tline = line.getLine(line, i);
@@ -71,41 +81,58 @@ public class Grafo {
                 Station x = stations.getStation(l);
                 Station x1 = stations.getStation(l + 1);
 //                    System.out.println();
-                System.out.println("LOOP LINES");
-                System.out.println(x.getsData());
-                System.out.println(x1.getsData());
+
+//                System.out.println(x.getsData());
+//                System.out.println(x1.getsData());
                 if (l < stations.getlen()) {
                     if (l == 1) {
-                        System.out.println("nodo creado");
-                        
-                        Node nx = this.graph.addNode(x.getsData());
-                        
-                        Node nx1 = this.graph.addNode(x1.getsData());
+//                        System.out.println("nodo creado");
+                        Node nx;
+                        Node nx1;
+                        if (this.graph.getNode(x.getsData()) == null) {
+                            nx = this.graph.addNode(x.getsData());
+                        } else {
+                            nx = this.graph.getNode(x.getsData());
+                        }
+
+                        if (this.graph.getNode(x1.getsData()) == null) {
+                            nx1 = this.graph.addNode(x1.getsData());
+                        } else {
+                            nx1 = this.graph.getNode(x1.getsData());
+                        }
+//                        Node nx1 = this.graph.addNode(x1.getsData());
                         System.out.println("nodo creado");
 
                         nx.setAttribute("ui.style", "fill-color: blue;");
-                        nx.setAttribute("ui.label", "nodo1"); //ponerle nombre a los nodos
+                        nx.setAttribute("ui.label", x.getsData()); //ponerle nombre a los nodos
+                        nx1.setAttribute("ui.label", x1.getsData());
 //                            Node nx1 = graph.addNode(x1.getsData());
-//                            nx1.setAttribute("ui.style", "fill-color: blue;");
+                        nx1.setAttribute("ui.style", "fill-color: blue;");
                     } else {
 
                         if (x1 != null) {
-                            Node nx1 = this.graph.addNode(x1.getsData());
+                            Node nx1;
+                            if (this.graph.getNode(x1.getsData()) == null) {
+                                nx1 = this.graph.addNode(x1.getsData());
+                            } else {
+                                nx1 = this.graph.getNode(x1.getsData());
+                            }
                             System.out.println("nodo creado");
                             nx1.setAttribute("ui.style", "fill-color: blue;");
+                            nx1.setAttribute("ui.label", x1.getsData());
                         }
 //                            Node nx1 = graph.addNode(x1.getsData());
 //                            nx1.setAttribute("ui.style", "fill-color: blue;");
                     }
-                    if (x.getlData() == x1.getlData()) {
 
 //                            Node nx1 = graph.addNode(x1.getsData());
-                        String y = x.getsData() + x1.getsData();
+                    String y = x.getsData() + x1.getsData();
 //                            System.out.println(y);
 //                            System.out.println(stations.getLen());
 //                            System.out.println(l);
-                        this.graph.addEdge(y, x.getsData(), x1.getsData());
-                    }
+                    Edge edd = this.graph.addEdge(y, x.getsData(), x1.getsData());
+                    edd.setAttribute("shape", "line");
+
                 }
             }
             //graph.display(); //no se muestra
@@ -153,16 +180,18 @@ public class Grafo {
         }
     }
 
-    public void mostrarGrafo() {
-
-//        this.graph.addNode("A");
-//        this.graph.addNode("B");
-//        this.graph.addNode("C");
-//        this.graph.addEdge("AB","A","B");
-//        this.graph.addEdge("BC","B","C");
-//        this.graph.addEdge("CA","C","A");
-        graph.display();
-
-    }
+//    public void mostrarGrafo() {
+//
+////        this.graph.addNode("A");
+////        this.graph.addNode("B");
+////        this.graph.addNode("C");
+////        this.graph.addEdge("AB","A","B");
+////        this.graph.addEdge("BC","B","C");
+////        this.graph.addEdge("CA","C","A");
+//        graph.setAttribute("ui.quality");
+//        graph.setAttribute("ui.antialias");
+//        graph.display();
+//
+//    }
 
 }
