@@ -4,6 +4,12 @@
 
 package com.mycompany.proyectoedd;
 
+import org.graphstream.graph.*;
+import org.graphstream.graph.implementations.*;
+import org.graphstream.graph.implementations.SingleGraph;
+import org.graphstream.graph.implementations.MultiGraph;
+import org.graphstream.ui.view.Viewer;
+
 /**
  *
  * @author gabri
@@ -48,8 +54,25 @@ public class ProyectoEDD {
 //            contadorx+=1;
 //        }
         Grafo graf = new Grafo();
-
-        graf.Graph(listaLines); //parametro lista de lineas
+        graf.Graph(listaLines);
+        graf.mostrarGrafo();
+        
+        
+        
+//        System.setProperty("org.graphstream.ui", "swing");
+//		
+//		Graph graph = new SingleGraph("Tutorial 1");
+//
+//                 graph.addNode("A");
+//                 graph.addNode("B");
+//                 graph.addNode("C");
+//                 graph.addEdge("AB","A","B");
+//                 graph.addEdge("BC","B","C");
+//                 graph.addEdge("CA","C","A");
+//                 
+//            graph.display();
+//        
+        //graf.Graph(listaLines); //parametro lista de lineas
 //        
         
         
