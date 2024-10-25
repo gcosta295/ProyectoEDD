@@ -13,7 +13,7 @@ public class W2_T extends javax.swing.JFrame {
     /**
      * Creates new form Ventana3
      */
-    public W2_T() {
+    public W2_T(List l) {
         initComponents();
         this.setLocationRelativeTo(null);
     }

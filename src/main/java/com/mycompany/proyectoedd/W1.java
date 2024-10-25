@@ -83,11 +83,12 @@ public class W1 extends javax.swing.JFrame {
         
         L.abrirArchivo();
         List listaLines = L.Parse();
+        
         Grafo graf = new Grafo();
         graf.Graph(listaLines);
         
         
-        W2_T ventana = new W2_T(); //cargar json caracas
+        W2_T ventana = new W2_T(listaLines); //cargar json caracas
         ventana.setVisible(true);
         this.setVisible(false);
         

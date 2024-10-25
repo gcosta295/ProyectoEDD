@@ -10,8 +10,9 @@ import org.graphstream.graph.*; //importe de la libreria de graphstream
  * @author Nathaly
  */
 public class WGrafo extends javax.swing.JFrame {
-    
        //preguntar como pasar un dato de un JFrame a otro
+
+    
 
     /**
      * Creates new form Linea1
@@ -109,13 +110,14 @@ public class WGrafo extends javax.swing.JFrame {
 
     private void B_show_graphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_show_graphActionPerformed
         
-        graf.mostrarGrafo(); //pasar grafo de la primera ventana
+        //graf.Graph(listaLines); //pasar grafo de la primera ventana
     }//GEN-LAST:event_B_show_graphActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(List l) {
+        List lista = l;
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
