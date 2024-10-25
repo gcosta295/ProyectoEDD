@@ -18,9 +18,11 @@ import org.graphstream.ui.view.Viewer;
  * @author gabri
  */
 public class Prueba extends javax.swing.JFrame {
-        ReadJSON R;
-        List listaLines;
-        Grafo G;
+
+    ReadJSON R;
+    List listaLines;
+    Grafo G;
+
     /**
      * Creates new form Prueba
      */
@@ -28,21 +30,9 @@ public class Prueba extends javax.swing.JFrame {
         this.R = new ReadJSON();
         R.abrirArchivo();
         this.listaLines = R.Parse();
-        this.G= new Grafo();
+        this.G = new Grafo();
         initComponents();
-        
-        
-        System.setProperty("org.graphstream.ui", "swing");
- 
-        G.Graph(listaLines);
-        Viewer viewer = new Viewer(G.getGraph(), Viewer.ThreadingModel.GRAPH_IN_GUI_THREAD);
-        viewer.enableAutoLayout();
-        View view = viewer.addDefaultView(false);
-        setLayout(new GridLayout());
-        add((Component) view, GridLayout.class);
-        viewer.enableAutoLayout();
-        
-        
+
     }
 
     /**
@@ -130,8 +120,17 @@ public class Prueba extends javax.swing.JFrame {
 
     private void GRAFOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GRAFOActionPerformed
         // TODO add your handling code here:
-        
-        
+        System.setProperty("org.graphstream.ui", "swing");
+
+        G.Graph(listaLines);
+        Viewer viewer = new Viewer(G.getGraph(), Viewer.ThreadingModel.GRAPH_IN_GUI_THREAD);
+        viewer.enableAutoLayout();
+        View view = viewer.addDefaultView(false);
+        setLayout(new GridLayout());
+        add((Component) view, GridLayout.class);
+        viewer.enableAutoLayout();
+
+
     }//GEN-LAST:event_GRAFOActionPerformed
 
     /**
