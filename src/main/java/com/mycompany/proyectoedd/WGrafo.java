@@ -39,11 +39,14 @@ public class WGrafo extends javax.swing.JFrame {
         B_add_sucursal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Grafo Stations");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 42, -1, -1));
 
         B_back_3.setText("Atrás");
         B_back_3.addActionListener(new java.awt.event.ActionListener() {
@@ -51,6 +54,7 @@ public class WGrafo extends javax.swing.JFrame {
                 B_back_3ActionPerformed(evt);
             }
         });
+        getContentPane().add(B_back_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 258, -1, -1));
 
         B_show_graph.setText("grafo");
         B_show_graph.addActionListener(new java.awt.event.ActionListener() {
@@ -58,46 +62,10 @@ public class WGrafo extends javax.swing.JFrame {
                 B_show_graphActionPerformed(evt);
             }
         });
+        getContentPane().add(B_show_graph, new org.netbeans.lib.awtextra.AbsoluteConstraints(191, 105, -1, -1));
 
         B_add_sucursal.setText("añadir sucursal");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(B_back_3)))
-                .addContainerGap(259, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(B_add_sucursal)
-                    .addComponent(B_show_graph))
-                .addGap(101, 101, 101))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addComponent(jLabel1)
-                .addGap(38, 38, 38)
-                .addComponent(B_show_graph)
-                .addGap(53, 53, 53)
-                .addComponent(B_add_sucursal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addComponent(B_back_3)
-                .addGap(19, 19, 19))
-        );
+        getContentPane().add(B_add_sucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(191, 181, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -109,7 +77,7 @@ public class WGrafo extends javax.swing.JFrame {
     }//GEN-LAST:event_B_back_3ActionPerformed
 
     private void B_show_graphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_show_graphActionPerformed
-        
+        WGrafo graf = new WGrafo();
         //graf.Graph(listaLines); //pasar grafo de la primera ventana
     }//GEN-LAST:event_B_show_graphActionPerformed
 

@@ -13,7 +13,7 @@ public class W2_T extends javax.swing.JFrame {
     /**
      * Creates new form Ventana3
      */
-    public W2_T(List l) {
+    public W2_T() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -116,7 +116,7 @@ public class W2_T extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new W2_T().setVisible(true);
+               new W2_T().setVisible(true);
             }
         });
     }
