@@ -70,8 +70,11 @@ public class List {
     public boolean nameInList(String s) {
         Station sAux = sFirst;
 
-        while (sAux != null) {
-            if (sAux.getsData().contains(s)) {
+
+        
+
+        while (sAux != null){
+            if(sAux.getsData().contains(s)){
 
                 return true;
             }
@@ -79,6 +82,8 @@ public class List {
         }
         return false;
     }
+        
+    
 
     /*Add an line that you give to the method in the last position 
         and make the conection in the list with the others*/

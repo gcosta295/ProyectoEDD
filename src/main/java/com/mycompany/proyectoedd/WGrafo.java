@@ -5,17 +5,18 @@
 package com.mycompany.proyectoedd;
 import org.graphstream.graph.*; //importe de la libreria de graphstream
 
-
 /**
  *
  * @author Nathaly
  */
 public class WGrafo extends javax.swing.JFrame {
     
+       //preguntar como pasar un dato de un JFrame a otro
 
     /**
      * Creates new form Linea1
      */
+    
     public WGrafo() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -108,6 +109,7 @@ public class WGrafo extends javax.swing.JFrame {
 
     private void B_show_graphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_show_graphActionPerformed
         
+        graf.mostrarGrafo(); //pasar grafo de la primera ventana
     }//GEN-LAST:event_B_show_graphActionPerformed
 
     /**

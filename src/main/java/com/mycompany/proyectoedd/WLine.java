@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 public class WLine extends javax.swing.JFrame {
 
     static Line newline;
-    static List listaLines;
+    static List listaLines; //pasar la misma linea de listaLines de 
 
     /**
      * Creates new form Linea2
