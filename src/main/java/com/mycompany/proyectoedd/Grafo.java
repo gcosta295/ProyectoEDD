@@ -29,8 +29,7 @@ public class Grafo {
     public MultiGraph getGraph() {
         return graph;
     }
-    
-    
+
     //MultiGraph graph = new MultiGraph("Tutorial 1");
 
     /*private List listLines; //ignoramos esto
@@ -101,7 +100,7 @@ public class Grafo {
                             nx1 = this.graph.getNode(x1.getsData());
                         }
 //                        Node nx1 = this.graph.addNode(x1.getsData());
-                        System.out.println("nodo creado");
+//                        System.out.println("nodo creado");
 
                         nx.setAttribute("ui.style", "fill-color: blue;");
                         nx.setAttribute("ui.label", x.getsData()); //ponerle nombre a los nodos
@@ -114,12 +113,14 @@ public class Grafo {
                             Node nx1;
                             if (this.graph.getNode(x1.getsData()) == null) {
                                 nx1 = this.graph.addNode(x1.getsData());
+                                nx1.setAttribute("weight", 4.0);
                             } else {
                                 nx1 = this.graph.getNode(x1.getsData());
                             }
-                            System.out.println("nodo creado");
+//                            System.out.println("nodo creado");
                             nx1.setAttribute("ui.style", "fill-color: blue;");
                             nx1.setAttribute("ui.label", x1.getsData());
+
                         }
 //                            Node nx1 = graph.addNode(x1.getsData());
 //                            nx1.setAttribute("ui.style", "fill-color: blue;");
@@ -132,6 +133,7 @@ public class Grafo {
 //                            System.out.println(l);
                     Edge edd = this.graph.addEdge(y, x.getsData(), x1.getsData());
                     edd.setAttribute("shape", "line");
+//                     edd.setAttribute("weight", 20.0);
 
                 }
             }
@@ -180,6 +182,13 @@ public class Grafo {
         }
     }
 
+    public void color(String sname) {
+        Node nx1;
+        nx1 = this.graph.getNode(sname);
+        nx1.setAttribute("ui.style", "fill-color: red;");
+        nx1.setAttribute("ui.style", "size: 20px, 20px;");
+    }
+
 //    public void mostrarGrafo() {
 //
 ////        this.graph.addNode("A");
@@ -193,5 +202,4 @@ public class Grafo {
 //        graph.display();
 //
 //    }
-
 }

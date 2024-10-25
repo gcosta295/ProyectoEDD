@@ -3,6 +3,7 @@
  */
 package com.mycompany.proyectoedd;
 
+import org.graphstream.ui.swingViewer.ViewPanel;
 import org.graphstream.ui.view.Viewer;
 
 /**
@@ -43,19 +44,17 @@ public class ProyectoEDD {
 //        while (contadory<=lista.getLen()){
 //            System.out.println("");
 //            System.out.println(lista.getStation(contadory).getsData());
-//            
+//            s
 //            contadory+=1;
 //        }
 //            contadorx+=1;
 //        }
-        System.setProperty("org.graphstream.ui", "swing");
-        Grafo graf = new Grafo();
-        graf.Graph(listaLines);
-        Viewer viewer = graf.getGraph().display();
-// Let the layout work ...
-        viewer.disableAutoLayout();
-// Do some work ...
-        viewer.enableAutoLayout();
+//        System.setProperty("org.graphstream.ui", "swing");
+        System.setProperty("gs.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
+//        Grafo graf = new Grafo();
+//        graf.Graph(listaLines);
+//        graf.getGraph().display();
+//        graf.color("Plaza Venezuela:Zona Rental");
 
 //        System.setProperty("org.graphstream.ui", "swing");
 //		
