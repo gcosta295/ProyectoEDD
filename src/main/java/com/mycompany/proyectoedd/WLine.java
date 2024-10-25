@@ -146,8 +146,8 @@ public class WLine extends javax.swing.JFrame {
              System.out.println(newline.getStations().getlen()); //l1.listastations.nodo
             
         }
-//        listaLines.AddLine(newline); //ayuda
-//             System.out.println(listaLines.getlen());
+        listaLines.AddLine(newline); //ayuda dice que la lista es null
+             System.out.println(listaLines.getlen());
         
         JOptionPane.showMessageDialog(this, "Se ha añadido una linea nueva");
         

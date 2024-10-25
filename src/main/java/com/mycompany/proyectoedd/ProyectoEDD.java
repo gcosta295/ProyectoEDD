@@ -33,8 +33,33 @@ public class ProyectoEDD {
 //        System.out.println(station1.getconections().getStation(station1.getconections(), 1).getsData());
 //        System.out.println(stations.getLine(stations, 1).getLname());*/
 //        
-        Grafo graf = new Grafo();
-        graf.Graph(listaLines); //parametro lista de lineas
+//        int contadorx = 1;
+//        while (contadorx<=listaLines.getlen()){
+//            System.out.println("");
+//            System.out.println(listaLines.getStation(listaLines, contadorx).getsData());
+//        }
+//        Grafo graf = new Grafo();
+//        //graf.Graph(listaLines); //parametro lista de lineas
+//        
+        
+        
+        Line currentL = listaLines.getlFirst();
+
+        while (currentL != null) {
+            System.out.println(currentL.getLname());
+            Station current = currentL.getStations().getSFirst();
+            while (current != null) {
+                System.out.println("Station: " + current.getsData());
+
+                int c = 1;
+                while (c <= current.getconections().getlen()) {
+                    System.out.println("coneccion: " + current.getconections().getStation(current.getconections(), c).getsData());
+                    c += 1;
+                }
+                current = current.getNext();
+            }
+            currentL = currentL.getlNext();
+        }
     }
         
     

@@ -52,11 +52,21 @@ public class Grafo {
             for (int j = 1; j < tline.getStations().getlen(); j++) {
                 List stations = tline.getStations();
 //                System.out.println(j);
+                    int contador = 1;
+                    System.out.println("");
+                    while (contador<=stations.getlen()){
+                        System.out.println(stations.getStation(stations, contador).getsData());
+                        System.out.println(".............");
+                        contador+=1;
+                    }
+                    System.out.println("");
                 for (int l = 1; l <= stations.getlen(); l++) {
                     Station x = stations.getStation(stations, l);
-                    Station x1 = stations.getStation(stations, l).getNext();
-                    System.out.println();
-                    if (l < stations.getlen()){  
+                    Station x1 = stations.getStation(stations, l+1);
+//                    System.out.println();
+                        System.out.println(x.getsData());
+                        System.out.println(x1.getsData());
+                    if (l < stations.getlen()){
                         if (l==1){
                             Node nx = graph.addNode(x.getsData());
                             nx.setAttribute("ui.style", "fill-color: blue;");
@@ -76,7 +86,10 @@ public class Grafo {
 //                            Node nx1 = graph.addNode(x1.getsData());
 //                            nx1.setAttribute("ui.style", "fill-color: blue;");
                         }
+                        System.out.println(x.getlData());
+                        System.out.println(x1.getlData());
                         if (x.getlData() == x1.getlData()){
+                            System.out.println("funciona");
                             graph.addEdge(x.getsData()+x1.getsData(), x.getsData(), x1.getsData());
                         }
                     }

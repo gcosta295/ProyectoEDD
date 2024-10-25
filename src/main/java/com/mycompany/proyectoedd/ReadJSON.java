@@ -19,7 +19,6 @@ import org.json.simple.parser.ParseException;
  *
  * @author gabri
  */
-
 public class ReadJSON {
 
     private String text;
@@ -80,7 +79,7 @@ public class ReadJSON {
                     Line lineametro = new Line(lineName);
                     listaLines.AddLine(lineametro);
                     List listaStations = lineametro.getStations();
-                    System.out.println(lineName);
+//                    System.out.println(lineName);
                     //                   Line metroLine = new Line(lineName); //creates a new metroline, with the name of the line in the JSON
                     JSONArray stationsArray = (JSONArray) lineJson.get(lineName); //creates an array of the metroline we are currently parsing
                     for (Object stationObject : stationsArray) { ///makes each station o the array into an object
@@ -94,9 +93,9 @@ public class ReadJSON {
 
                                 if (listaAllStations.nameInList(connectionName)) { //la lista no es vacia
 
-                                    System.out.println(stationName);
+//                                    System.out.println(stationName);
                                     Station sAux = listaAllStations.getNamedStation(stationName);
-                                    System.out.println(sAux.getsData());
+//                                    System.out.println(sAux.getsData());
 
                                     if (listaStations.getSLast() != null) {
                                         Station last = listaStations.getSLast();
@@ -113,24 +112,24 @@ public class ReadJSON {
 
                         } else {
                             String stationName = (String) stationObject;
-                            
+
 //                            System.out.println("llego aqui");
                             if (listaAllStations.nameInList(stationName)) {
                                 Station sAux = listaAllStations.getNamedStation(stationName);
-                                System.out.println(sAux);
+//                                System.out.println(sAux);
                                 listaStations.AddStation(sAux);
                                 sAux.setnext(null);
                             } else {
-                                
+
                                 Station newStation = new Station(stationName, lineName);
-                                System.out.println(stationName);
+//                                System.out.println(stationName);
                                 listaAllStations.AddStation(newStation);
                                 if (listaStations.getSLast() != null) {
-                                  
+
                                     Station last = listaStations.getSLast();
                                     last.conect(newStation);
                                     listaStations.AddStation(newStation);
-                                }else{
+                                } else {
                                     listaStations.AddStation(newStation);
                                 }
 
@@ -148,7 +147,6 @@ public class ReadJSON {
 //
 //        Line currentL = listaLines.getlFirst();
 //
-//        
 //        while (currentL != null) {
 //            System.out.println(currentL.getLname());
 //            Station current = currentL.getStations().getSFirst();
@@ -164,18 +162,16 @@ public class ReadJSON {
 //            }
 //            currentL = currentL.getlNext();
 //        }
-////     
     
+//     
 
-    return listaLines;
-    }
-    
-    
+    return listaLines ;
+}
 
-    /**
-     * @return the text
-     */
-    public String getText() {
+/**
+ * @return the text
+ */
+public String getText() {
         return text;
     }
 
