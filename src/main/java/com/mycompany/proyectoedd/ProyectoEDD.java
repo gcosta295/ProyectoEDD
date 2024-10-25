@@ -35,50 +35,43 @@ public class ProyectoEDD {
 //        
 //        int contadorx = 1;
 //        while (contadorx<=listaLines.getlen()){
+//            System.out.println(".");
+//            System.out.println(listaLines.getLine(listaLines, contadorx).getLname());
+//            List lista = listaLines.getLine(listaLines, contadorx).getStations();
+//            int contadory = 1;
+//        while (contadory<=lista.getLen()){
 //            System.out.println("");
-//            System.out.println(listaLines.getStation(listaLines, contadorx).getsData());
+//            System.out.println(lista.getStation(contadory).getsData());
+//            
+//            contadory+=1;
 //        }
-//        Grafo graf = new Grafo();
-<<<<<<< HEAD
-//        //graf.Graph(listaLines); //parametro lista de lineas
+//            contadorx+=1;
+//        }
+        Grafo graf = new Grafo();
+
+        graf.Graph(listaLines); //parametro lista de lineas
 //        
         
         
         Line currentL = listaLines.getlFirst();
 
-        while (currentL != null) {
-            System.out.println(currentL.getLname());
-            Station current = currentL.getStations().getSFirst();
-=======
-//        graf.Graph(stations);
-
-        Line currentL = listaLines.getlFirst();
-        while (currentL != null) {
-            System.out.println(currentL.getLname());
-            Station current = currentL.getStations().getsFirst();
->>>>>>> master
-            while (current != null) {
-                System.out.println("Station: " + current.getsData());
-
-                int c = 1;
-                while (c <= current.getconections().getlen()) {
-<<<<<<< HEAD
-                    System.out.println("coneccion: " + current.getconections().getStation(current.getconections(), c).getsData());
-=======
-                    System.out.println("coneccion: " + current.getconections().getStation(c).getsData());
->>>>>>> master
-                    c += 1;
-                }
-                current = current.getNext();
-            }
-            currentL = currentL.getlNext();
-<<<<<<< HEAD
-        }
-=======
->>>>>>> master
-    }
+//            while (currentL != null) {
+//            System.out.println(currentL.getLname());
+//            Station current = currentL.getStations().getsFirst();
+//            while (current != null) {
+//                System.out.println("Station: " + current.getsData());
+//
+//                int c = 1;
+//                while (c <= current.getconections().getlen()) {
+//                    System.out.println("coneccion: " + current.getconections().getStation(c).getsData());
+//                    c += 1;
+//                }
+//                current = current.getNext();
+//            }
+//            currentL = currentL.getlNext();
+//        }
         
     
     }
-}
+ }
 

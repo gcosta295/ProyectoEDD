@@ -9,6 +9,7 @@ import org.graphstream.graph.*;
 import org.graphstream.graph.implementations.*;
 import org.graphstream.graph.implementations.SingleGraph;
 import org.graphstream.ui.view.Viewer;
+
 /**
  *
  * @author astv06
@@ -52,49 +53,62 @@ public class Grafo {
             for (int j = 1; j < tline.getStations().getlen(); j++) {
                 List stations = tline.getStations();
 //                System.out.println(j);
-                    int contador = 1;
+//                    int contador = 1;
+//                    System.out.println("");
+//                    while (contador<=stations.getlen()){
+////                        System.out.println(stations.getStation(stations, contador).getsData());
+////                        System.out.println(".............");
+//                        contador+=1;
+//                    }
                     System.out.println("");
-                    while (contador<=stations.getlen()){
-                        System.out.println(stations.getStation(stations, contador).getsData());
-                        System.out.println(".............");
-                        contador+=1;
-                    }
-                    System.out.println("");
-                for (int l = 1; l <= stations.getlen(); l++) {
-                    Station x = stations.getStation(stations, l);
-                    Station x1 = stations.getStation(stations, l+1);
+                for (int l = 1; l < stations.getlen(); l++) {
+                    Station x = stations.getStation(l);
+                    Station x1 = stations.getStation(l+1);
 //                    System.out.println();
                         System.out.println(x.getsData());
                         System.out.println(x1.getsData());
                     if (l < stations.getlen()){
                         if (l==1){
+                           
                             Node nx = graph.addNode(x.getsData());
+                            Node nx1 = graph.addNode(x1.getsData());
                             nx.setAttribute("ui.style", "fill-color: blue;");
                             nx.setAttribute("ui.label", "nodo1"); //ponerle nombre a los nodos
-                            if (x1 == null) {
-                                Node nx1 = graph.addNode(x1.getsData());
-                                nx1.setAttribute("ui.style", "fill-color: blue;");
-                            }
 //                            Node nx1 = graph.addNode(x1.getsData());
 //                            nx1.setAttribute("ui.style", "fill-color: blue;");
                         }
                         else{
-                            if (x1==null) {
+                            
+                            if (x1!=null) {
                                 Node nx1 = graph.addNode(x1.getsData());
                                 nx1.setAttribute("ui.style", "fill-color: blue;");
                             }
 //                            Node nx1 = graph.addNode(x1.getsData());
 //                            nx1.setAttribute("ui.style", "fill-color: blue;");
                         }
-                        System.out.println(x.getlData());
-                        System.out.println(x1.getlData());
                         if (x.getlData() == x1.getlData()){
-                            System.out.println("funciona");
-                            graph.addEdge(x.getsData()+x1.getsData(), x.getsData(), x1.getsData());
+                            
+//                            Node nx1 = graph.addNode(x1.getsData());
+                            String y = x.getsData() + x1.getsData();
+//                            System.out.println(y);
+//                            System.out.println(stations.getLen());
+//                            System.out.println(l);
+                            graph.addEdge(y, x.getsData(), x1.getsData());
                         }
                     }
                 }
-		graph.display();
+		graph.display(); //no se muestra
+                //Viewer viewer = graph.display();
+                
+//                Viewer viewer = new Viewer(graph, Viewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
+//                viewer.enableAutoLayout();
+
+                
+                
+
+                
+                
+                
 //
               }
 
@@ -103,6 +117,37 @@ public class Grafo {
         }
         
         		
+
+//    public void Graph(List stations) {
+		
+//		for (int i = 1; i <= stations.getlen(); i++) {
+//                    Station x = stations.getStation(stations, i);
+//                    Station x1 = stations.getStation(stations, i).getNext();
+//                    if (i < stations.getlen()){  
+//                        if (i==1){
+//                            Node nx = graph.addNode(x.getsData());
+//                            nx.setAttribute("ui.style", "fill-color: blue;");
+//                            Node nx1 = graph.addNode(x1.getsData());
+//                            nx1.setAttribute("ui.style", "fill-color: blue;");
+//                        }
+//                        else{
+//                            Node nx1 = graph.addNode(x1.getsData());
+//                            nx1.setAttribute("ui.style", "fill-color: blue;");
+//                        }
+//                        if (x.getlData() == x1.getlData()){
+//                            graph.addEdge(x.getsData()+x1.getsData(), x.getsData(), x1.getsData());
+//                        }
+//                    }
+//                }
+//		graph.display();
+//
+
+
+
+
+//				
+
+//    }
 
     
     public void changeColorNodo(Station station){ //station es el nodo que se quiere cambiar de color
