@@ -39,6 +39,7 @@ public class ProyectoEDD {
 //            System.out.println(listaLines.getStation(listaLines, contadorx).getsData());
 //        }
 //        Grafo graf = new Grafo();
+<<<<<<< HEAD
 //        //graf.Graph(listaLines); //parametro lista de lineas
 //        
         
@@ -48,19 +49,36 @@ public class ProyectoEDD {
         while (currentL != null) {
             System.out.println(currentL.getLname());
             Station current = currentL.getStations().getSFirst();
+=======
+//        graf.Graph(stations);
+
+        Line currentL = listaLines.getlFirst();
+        while (currentL != null) {
+            System.out.println(currentL.getLname());
+            Station current = currentL.getStations().getsFirst();
+>>>>>>> master
             while (current != null) {
                 System.out.println("Station: " + current.getsData());
 
                 int c = 1;
                 while (c <= current.getconections().getlen()) {
+<<<<<<< HEAD
                     System.out.println("coneccion: " + current.getconections().getStation(current.getconections(), c).getsData());
+=======
+                    System.out.println("coneccion: " + current.getconections().getStation(c).getsData());
+>>>>>>> master
                     c += 1;
                 }
                 current = current.getNext();
             }
             currentL = currentL.getlNext();
+<<<<<<< HEAD
         }
+=======
+>>>>>>> master
     }
         
     
-} 
+    }
+}
+
