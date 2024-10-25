@@ -18,14 +18,15 @@ import org.graphstream.ui.view.Viewer;
 public class Grafo {
 
     public MultiGraph graph;
-
+    
+    /*Contructor del objeto grafo*/
     public Grafo() {
 
         this.graph = new MultiGraph("Grafo Metro");
 //        System.setProperty("org.graphstream.ui", "swing");
 
     }
-
+    /*Metodo para poder acceder al grafo*/
     public MultiGraph getGraph() {
         return graph;
     }
@@ -53,17 +54,18 @@ public class Grafo {
         this.gName = gName;
     }
      */
+    /*Generador del grafo*/    
     public void Graph(List line) {
-        graph.setAttribute("ui.stylesheet", "node{\n"
+        graph.setAttribute("ui.stylesheet", "node{\n"                           //Parametros para el diseño del grafo
                 + "    size: 5px, 5px;\n"
                 + "    fill-color: #f7f7f0;\n"
                 + "    text-mode: normal; \n"
                 + "}");
-        for (int i = 1; i <= line.getlen(); i++) {
-//            System.out.println(i);
-            Line tline = line.getLine(line, i);
-            System.out.println("lineas");
-            System.out.println(line.getLine(line, i));
+        for (int i = 1; i <= line.getlen(); i++) {                              //Asignar a stations la lista de estaciones 
+//            System.out.println(i);                                            //de cada una de las lineas pertenecientes
+            //Line tline = line.getLine(line, i);                               //a la lista de lineas
+            //System.out.println("lineas");
+            //System.out.println(line.getLine(line, i));
             List stations = line.getLine(line, i).getStations();
 //            for (int j = 1; j < tline.getStations().getlen(); j++) {
 //                List stations = tline.getStations();
@@ -76,49 +78,48 @@ public class Grafo {
 //                        contador+=1;
 //                    }
             System.out.println("");
-            for (int l = 1; l < stations.getlen(); l++) {
-
-                Station x = stations.getStation(l);
-                Station x1 = stations.getStation(l + 1);
+            for (int l = 1; l < stations.getlen(); l++) {                       //Para cada una de las estaciones de la lista
+                Station x = stations.getStation(l);                             //asignar a x la estacion correspondiente al
+                Station x1 = stations.getStation(l + 1);                        //indice y x1 la estacion siguiente
 //                    System.out.println();
 
 //                System.out.println(x.getsData());
 //                System.out.println(x1.getsData());
-                if (l < stations.getlen()) {
-                    if (l == 1) {
+                if (l < stations.getlen()) {                                    //hacer si el iterable (indice) es menor que 
+                    if (l == 1) {                                               //la cantidad de estaciones
 //                        System.out.println("nodo creado");
-                        Node nx;
+                        Node nx;                                                //De ser l igual a 1 declarar nx y nx1
                         Node nx1;
-                        if (this.graph.getNode(x.getsData()) == null) {
-                            nx = this.graph.addNode(x.getsData());
+                        if (this.graph.getNode(x.getsData()) == null) {         //En caso de no existir el nodo nx crearlo
+                            nx = this.graph.addNode(x.getsData());              //sino devolver el valor del nodo nx
                         } else {
                             nx = this.graph.getNode(x.getsData());
                         }
 
-                        if (this.graph.getNode(x1.getsData()) == null) {
-                            nx1 = this.graph.addNode(x1.getsData());
+                        if (this.graph.getNode(x1.getsData()) == null) {        //En caso de no existir el nodo nx1 crearlo
+                            nx1 = this.graph.addNode(x1.getsData());            //sino devolver el valor del nodo nx
                         } else {
                             nx1 = this.graph.getNode(x1.getsData());
                         }
 //                        Node nx1 = this.graph.addNode(x1.getsData());
-                        System.out.println("nodo creado");
+                        //System.out.println("nodo creado");                      
 
-                        nx.setAttribute("ui.style", "fill-color: blue;");
-                        nx.setAttribute("ui.label", x.getsData()); //ponerle nombre a los nodos
+                        nx.setAttribute("ui.style", "fill-color: blue;");       //Parametros para el diseño de los nodos
+                        nx.setAttribute("ui.label", x.getsData());
                         nx1.setAttribute("ui.label", x1.getsData());
 //                            Node nx1 = graph.addNode(x1.getsData());
                         nx1.setAttribute("ui.style", "fill-color: blue;");
-                    } else {
+                    } else {                                                    //De ser l diferente de 1
 
-                        if (x1 != null) {
-                            Node nx1;
-                            if (this.graph.getNode(x1.getsData()) == null) {
-                                nx1 = this.graph.addNode(x1.getsData());
+                        if (x1 != null) {                                       //Comprobar que no es el final de la linea
+                            Node nx1;                                           //Declarar nx1
+                            if (this.graph.getNode(x1.getsData()) == null) {    //En caso de no existir el nodo nx1 crearlo
+                                nx1 = this.graph.addNode(x1.getsData());        //sino devolver el valor del nodo nx
                             } else {
                                 nx1 = this.graph.getNode(x1.getsData());
                             }
-                            System.out.println("nodo creado");
-                            nx1.setAttribute("ui.style", "fill-color: blue;");
+                            //System.out.println("nodo creado");
+                            nx1.setAttribute("ui.style", "fill-color: blue;");  //Parametros para el diseño de nx1
                             nx1.setAttribute("ui.label", x1.getsData());
                         }
 //                            Node nx1 = graph.addNode(x1.getsData());
@@ -126,7 +127,7 @@ public class Grafo {
                     }
 
 //                            Node nx1 = graph.addNode(x1.getsData());
-                    String y = x.getsData() + x1.getsData();
+                    String y = x.getsData() + x1.getsData();                    //Generacion de un vertice entre x y x1
 //                            System.out.println(y);
 //                            System.out.println(stations.getLen());
 //                            System.out.println(l);
@@ -169,13 +170,13 @@ public class Grafo {
 //
 //				
 //    }
-    public void changeColorNodo(Station station) { //station es el nodo que se quiere cambiar de color
+    public void changeColorNodo(Station station) {                              //station es el nodo que se quiere cambiar de color
 
-        if (graph.getNode(station.getsData()) != null) {
-
+        if (graph.getNode(station.getsData()) != null) {                        //comprobar si la estacion esta en el grafo
+                                                                                //de existir cambiar el color a rojo
             graph.getNode(station.getsData()).setAttribute("ui.style", "fill-color: red;");
 
-        } else {
+        } else {                                                                //indicar que la estacion no pertenece al grafo
             JOptionPane.showMessageDialog(null, "La estación" + station.getsData() + "no existe en el grafo.");
         }
     }

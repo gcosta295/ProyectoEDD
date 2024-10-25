@@ -81,17 +81,18 @@ public class Station {
     public List BFS (List l, int t){
         int cont = 1;
         List x = this.conections;
-        while (cont <= x.getlen()){
-            if (t == 1){
-                if (l.sInList(x.getStation(cont))==false){
-                    l.AddStation(x.getStation(cont));
+        while (cont <= t){
+            if (cont == 1){
+                for (int i = 1; i <= x.getlen(); i++) {
+                    if (l.sInList(x.getStation(i))==false){
+                        l.AddStation(x.getStation(i));
+                    }
                 }
             }
             else{
-                if (l.sInList(x.getStation(cont))==false){
-                    l.AddStation(x.getStation(cont));
+                for (int i = 1; i <= x.getlen(); i++) {
+                    List lAux = x.getStation(i).BFS(l, t-1);
                 }
-                List lAux = x.getStation(cont).BFS(l, t-1);
             }
         cont += 1;
         }
