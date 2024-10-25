@@ -309,12 +309,15 @@ public class InterfazUnica extends javax.swing.JFrame {
     private void B_addNewLineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_addNewLineActionPerformed
         
         String lineName = input_nameLine.getText();
-
+        
         String Snumber = input_numberStation.getText();
         int num = Integer.parseInt(Snumber);
 
         List newlstations = new List();
         Line newline = new Line(lineName);
+        
+        
+        
         System.out.println(this.listaLines.getlen());
         for (int i = 0; i < num; i++) {
             
