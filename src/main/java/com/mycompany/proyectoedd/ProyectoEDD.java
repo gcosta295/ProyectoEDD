@@ -12,22 +12,33 @@ import org.graphstream.ui.view.Viewer;
 public class ProyectoEDD {
 
     public static void main(String[] args) {
-        ReadJSON L = new ReadJSON();
-        L.abrirArchivo();
-        List listaLines = L.Parse();
-//        List stations = new List();
-//        Line linea = new Line("line 1'
-//        Line linea1 = new Line("line 2");
-//        Station station = new Station("station0", linea.getLname());
-//        Station station1 = new Station("station1", linea.getLname());
-//        Station station2 = new Station("station2", linea.getLname());
-//        Station station3 = new Station("station3", linea1.getLname());
-//        Station station4 = new Station("station4", linea1.getLname());
-//        stations.AddStation(station);
-//        stations.AddStation(station1);
-//        stations.AddStation(station2);
-//        stations.AddStation(station3);
-//        stations.AddStation(station4);
+//        ReadJSON L = new ReadJSON();
+//        L.abrirArchivo();
+//        List listaLines = L.Parse();
+        List stations = new List();
+        Line linea = new Line("line 1");
+        Line linea1 = new Line("line 2");
+        Station station = new Station("station0", linea.getLname());
+        Station station1 = new Station("station1", linea.getLname());
+        Station station2 = new Station("station2", linea.getLname());
+        Station station3 = new Station("station3", linea.getLname());
+        Station station4 = new Station("station4", linea.getLname());
+        stations.AddStation(station);
+        stations.AddStation(station1);
+        stations.AddStation(station2);
+        stations.AddStation(station3);
+        stations.AddStation(station4);
+        station.conect(station1);
+        station.conect(station2);
+        station2.conect(station3);
+        station2.conect(station4);
+        List cover = new List();
+        List l = station1.BFS(cover, 3);
+        int contador = 1;
+        while (contador <= l.getlen()){
+            System.out.println(l.getStation(contador).getsData());
+            contador+=1;
+        }
 //        /*System.out.print(station.getsData() + " esta conectada con ");
 //        System.out.println(station.getconections().getStation(station.getconections(), 1).getsData());
 //        System.out.print(station1.getsData() + " esta conectada con ");
@@ -48,31 +59,31 @@ public class ProyectoEDD {
 //        }
 //            contadorx+=1;
 //        }
-        System.setProperty("org.graphstream.ui", "swing");
-        Grafo graf = new Grafo();
-        graf.Graph(listaLines);
-        Viewer viewer = graf.getGraph().display();
-// Let the layout work ...
-        viewer.disableAutoLayout();
-// Do some work ...
-        viewer.enableAutoLayout();
-
 //        System.setProperty("org.graphstream.ui", "swing");
-//		
-//		Graph graph = new SingleGraph("Tutorial 1");
+//        Grafo graf = new Grafo();
+//        graf.Graph(listaLines);
+//        Viewer viewer = graf.getGraph().display();
+//// Let the layout work ...
+//        viewer.disableAutoLayout();
+//// Do some work ...
+//        viewer.enableAutoLayout();
 //
-//                 graph.addNode("A");
-//                 graph.addNode("B");
-//                 graph.addNode("C");
-//                 graph.addEdge("AB","A","B");
-//                 graph.addEdge("BC","B","C");
-//                 graph.addEdge("CA","C","A");
-//                 
-//            graph.display();
-//        
-        //graf.Graph(listaLines); //parametro lista de lineas
-//        
-        Line currentL = listaLines.getlFirst();
+////        System.setProperty("org.graphstream.ui", "swing");
+////		
+////		Graph graph = new SingleGraph("Tutorial 1");
+////
+////                 graph.addNode("A");
+////                 graph.addNode("B");
+////                 graph.addNode("C");
+////                 graph.addEdge("AB","A","B");
+////                 graph.addEdge("BC","B","C");
+////                 graph.addEdge("CA","C","A");
+////                 
+////            graph.display();
+////        
+//        //graf.Graph(listaLines); //parametro lista de lineas
+////        
+//        Line currentL = listaLines.getlFirst();
 
 //            while (currentL != null) {
 //            System.out.println(currentL.getLname());

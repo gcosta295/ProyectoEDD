@@ -112,7 +112,7 @@ public class List {
         if (sFirst != null) {                                                   //De ser la primera estacion diferente de null
             Station sAux = sFirst;
             while (sAux != null) {                                              //Tomar su valor e iterar la lista
-                if (sAux.equals(s)) {                                           //Comparar cada estacion con la estacion de entrada
+                if (sAux.getsData().equals(s.getsData())) {                     //Comparar cada estacion con la estacion de entrada
                     return true;                                                //de ser iguales retornar verdadero,sino falso
                 }
                 sAux = sAux.getNext();
