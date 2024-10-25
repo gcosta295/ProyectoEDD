@@ -91,22 +91,33 @@ public class ReadJSON {
                                 String stationName = (String) stationNameObject;
                                 String connectionName = connection.get(stationNameObject).toString();
 
-                                if (listaAllStations.nameInList(connectionName)) { //la lista no es vacia
+                                if (listaAllStations.nameInList(connectionName)) { //la estacion compuesta existe
 
 //                                    System.out.println(stationName);
                                     Station sAux = listaAllStations.getNamedStation(stationName);
 //                                    System.out.println(sAux.getsData());
 
-                                    if (listaStations.getSLast() != null) {
-                                        Station last = listaStations.getSLast();
+                                    if (listaStations.getsLast() != null) {
+                                        Station last = listaStations.getsLast();
                                         last.conect(sAux);
                                         listaStations.AddStation(sAux);
 
+                                    } else {
+                                        listaStations.AddStation(sAux);
                                     }
-                                } else {
+                                } else { //la estacion compuesta no existe
                                     Station newStation = new Station(stationName + ":" + connectionName, lineName);
-                                    listaStations.AddStation(newStation);
-                                    listaAllStations.AddStation(newStation);
+                                   
+                                    if (listaStations.getsLast() != null) { //estacion compuesta no existe y la lista no esta vacia
+                                        Station sAux = listaStations.getsLast();
+                                        newStation.conect(sAux);
+                                        listaStations.AddStation(newStation);
+                                        listaAllStations.AddStation(newStation);
+                                    } else {
+                                        
+                                        listaStations.AddStation(newStation);
+                                        listaAllStations.AddStation(newStation);
+                                    }
                                 }
                             }
 
@@ -123,9 +134,9 @@ public class ReadJSON {
                                 Station newStation = new Station(stationName, lineName);
 //                                System.out.println(stationName);
                                 listaAllStations.AddStation(newStation);
-                                if (listaStations.getSLast() != null) {
+                                if (listaStations.getsLast() != null) {
 
-                                    Station last = listaStations.getSLast();
+                                    Station last = listaStations.getsLast();
                                     last.conect(newStation);
                                     listaStations.AddStation(newStation);
                                 } else {

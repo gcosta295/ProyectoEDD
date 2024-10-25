@@ -35,7 +35,25 @@ public class ProyectoEDD {
 //        
 //        Grafo graf = new Grafo();
 //        graf.Graph(stations);
+
+        Line currentL = listaLines.getlFirst();
+        while (currentL != null) {
+            System.out.println(currentL.getLname());
+            Station current = currentL.getStations().getsFirst();
+            while (current != null) {
+                System.out.println("Station: " + current.getsData());
+
+                int c = 1;
+                while (c <= current.getconections().getlen()) {
+                    System.out.println("coneccion: " + current.getconections().getStation(c).getsData());
+                    c += 1;
+                }
+                current = current.getNext();
+            }
+            currentL = currentL.getlNext();
     }
         
     
-} 
+    }
+}
+
