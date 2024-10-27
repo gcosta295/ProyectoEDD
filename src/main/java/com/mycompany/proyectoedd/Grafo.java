@@ -189,17 +189,48 @@ public class Grafo {
         nx1.setAttribute("ui.style", "size: 20px, 20px;");
     }
 
-//    public void mostrarGrafo() {
-//
-////        this.graph.addNode("A");
-////        this.graph.addNode("B");
-////        this.graph.addNode("C");
-////        this.graph.addEdge("AB","A","B");
-////        this.graph.addEdge("BC","B","C");
-////        this.graph.addEdge("CA","C","A");
-//        graph.setAttribute("ui.quality");
-//        graph.setAttribute("ui.antialias");
-//        graph.display();
-//
-//    }
+
+      public void DFS(Station u, int t) {
+        while (t > 0) {
+            if (t == 1) {
+                int c = 1;
+                while (c <= u.getconections().getlen()) {
+                    System.out.println(u.getsData());
+                    System.out.println(u.getconections().getStation(u.getconections(), c).getsData());
+                    Station sAux = u.getconections().getStation(u.getconections(), c);
+//                    System.out.println("");
+                    //System.out.println(sAux);
+                    if (visitedNodes.sInListdfs(sAux)) {
+                        c += 1;
+//                        System.out.println("KLLLE");
+                    } else {
+                        visitedNodes.AddStation(sAux);
+                        c+=1;
+//                        System.out.println(sAux.getsData());
+                    }
+                }
+                t-=1;
+            } else {
+                int k = 1;
+                while (k <= u.getconections().getlen()) {
+                    Station sAux = u.getconections().getStation(u.getconections(), k);
+                    if (visitedNodes.sInListdfs(sAux)==false) {
+                        visitedNodes.AddStation(sAux);
+//                        System.out.println("llamado");
+                        DFS(sAux, t-1);
+                    }
+                    k+=1;
+
+                    
+
+                }t-=1;
+                
+            }
+
+        }
+
+ 
+
+
+  
 }
