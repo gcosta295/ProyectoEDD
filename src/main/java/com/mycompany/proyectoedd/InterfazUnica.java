@@ -28,6 +28,14 @@ public class InterfazUnica extends javax.swing.JFrame {
     /**
      * Creates new form InterfazUnica
      */
+    
+    /**
+     * Constructor de la clase InterfazUnica. Crea una interfaz gráfica con 5 tabs y la visualización de un gráfo.
+     * 
+     * @author Nathaly 
+     * 
+     */
+    
     public InterfazUnica() {
         this.L = new ReadJSON();
         this.G = new Grafo();
@@ -63,15 +71,15 @@ public class InterfazUnica extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         B_addNewLine = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        B_AñadirSucursal = new javax.swing.JButton();
         Eliminar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        B_CoberturaStation = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        B_CoberturaTotal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -217,11 +225,11 @@ public class InterfazUnica extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(204, 229, 255));
 
-        jButton1.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
-        jButton1.setText("Añadir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        B_AñadirSucursal.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        B_AñadirSucursal.setText("Añadir");
+        B_AñadirSucursal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                B_AñadirSucursalActionPerformed(evt);
             }
         });
 
@@ -252,7 +260,7 @@ public class InterfazUnica extends javax.swing.JFrame {
                             .addComponent(jLabel4)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(95, 95, 95)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(B_AñadirSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(95, 95, 95)
                         .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -264,7 +272,7 @@ public class InterfazUnica extends javax.swing.JFrame {
                 .addGap(60, 60, 60)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(B_AñadirSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 237, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -276,11 +284,11 @@ public class InterfazUnica extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 235, 213));
 
-        jButton2.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
-        jButton2.setText("Buscar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        B_CoberturaStation.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        B_CoberturaStation.setText("Buscar");
+        B_CoberturaStation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                B_CoberturaStationActionPerformed(evt);
             }
         });
 
@@ -290,11 +298,11 @@ public class InterfazUnica extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         jLabel7.setText("Cobertura Total");
 
-        jButton3.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
-        jButton3.setText("Buscar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        B_CoberturaTotal.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        B_CoberturaTotal.setText("Buscar");
+        B_CoberturaTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                B_CoberturaTotalActionPerformed(evt);
             }
         });
 
@@ -306,13 +314,13 @@ public class InterfazUnica extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(97, 97, 97)
-                        .addComponent(jButton2))
+                        .addComponent(B_CoberturaStation))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(69, 69, 69)
                         .addComponent(jLabel7))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(94, 94, 94)
-                        .addComponent(jButton3))
+                        .addComponent(B_CoberturaTotal))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(jLabel6)))
@@ -324,11 +332,11 @@ public class InterfazUnica extends javax.swing.JFrame {
                 .addGap(104, 104, 104)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(B_CoberturaStation)
                 .addGap(91, 91, 91)
                 .addComponent(jLabel7)
                 .addGap(53, 53, 53)
-                .addComponent(jButton3)
+                .addComponent(B_CoberturaTotal)
                 .addContainerGap(174, Short.MAX_VALUE))
         );
 
@@ -353,13 +361,22 @@ public class InterfazUnica extends javax.swing.JFrame {
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
 
         String stationName = JOptionPane.showInputDialog(this, "Escribe el nombre de la station donde deseas eliminar una sucursal: ");
-
+        
     }//GEN-LAST:event_EliminarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    /**
+     * descripcion
+     * 
+     * @author Gabriela
+     * 
+     * @param evt 
+     */
+    
+    private void B_AñadirSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_AñadirSucursalActionPerformed
 
         String stationName = JOptionPane.showInputDialog(this, "Escribe el nombre de la station donde deseas colocar una sucursal: ");
-        if ((G.setSucursal(stationName, listaLines))) {
+        
+        if ((G.setSucursal(stationName, listaLines))) { //añadir esa estacion a la lista de sucursales
             JOptionPane.showMessageDialog(this, "Se ha agregado la sucursal");
 
         } else {
@@ -367,21 +384,31 @@ public class InterfazUnica extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_B_AñadirSucursalActionPerformed
 
+    /**
+     * Añadir una nueva línea. Se crea una nueva línea de metro agregando todas las nuevas estaciones con sus respectivas conexiones.
+     * 
+     * @author Nathaly
+     * 
+     * @param evt 
+     */
+    
     private void B_addNewLineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_addNewLineActionPerformed
-        
         
         String lineName = input_nameLine.getText();
         String Snumber = input_numberStation.getText();
         int num = Integer.parseInt(Snumber);
+        
         List newlstations = new List();
         Line newline = new Line(lineName);
         String id = "";
+        
         for (int i = 0; i < num; i++) {
             String stationName = JOptionPane.showInputDialog(this, "Escribe el nombre de la nueva estation: "); //agregar que cada nombre es una station (volver objects)
             Station newstation = new Station(stationName, lineName);
             G.CreateNode(stationName);
+            
             if (newlstations.getsFirst()!=null){
                 G.CreateEdfe(id, stationName);
                 id = stationName;
@@ -389,10 +416,13 @@ public class InterfazUnica extends javax.swing.JFrame {
                 id = stationName;
             }
             int cStation = JOptionPane.showConfirmDialog(this, "Desea añadir una conección a esta estación: ");
+            
             if (cStation == 0) {
                 String cs = JOptionPane.showInputDialog(this, "Escribe el nombre de la estation: ");
+                
                 for (int j = 1; j < listaLines.getlen(); j++) {
                     List estaciones = listaLines.getLine(listaLines, j).getStations();
+                    
                     if (estaciones.nameInList(cs)) {
                         Station sExists = estaciones.getNamedStation(cs);
                         newstation.conect(sExists);
@@ -409,7 +439,16 @@ public class InterfazUnica extends javax.swing.JFrame {
            
     }//GEN-LAST:event_B_addNewLineActionPerformed
 
+    /**
+     * descripcion
+     * 
+     * @author Gabriela
+     * 
+     * @param evt 
+     */
+    
     private void B_carga_JSONActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_carga_JSONActionPerformed
+        
         G.graph.clear();
 
         L.abrirArchivo();
@@ -428,7 +467,15 @@ public class InterfazUnica extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_B_carga_JSONActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    /**
+     * descripcion
+     * 
+     * @author Gabriela
+     * 
+     * @param evt 
+     */
+    
+    private void B_CoberturaStationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_CoberturaStationActionPerformed
 
         String stationName = JOptionPane.showInputDialog(this, "Escribe el nombre de la sucursal que desea ver cobertura");
         System.out.println(t);
@@ -458,12 +505,20 @@ public class InterfazUnica extends javax.swing.JFrame {
                 }
             }
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_B_CoberturaStationActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void B_CoberturaTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_CoberturaTotalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_B_CoberturaTotalActionPerformed
 
+    /**
+     * descripcion
+     * 
+     * @author Gabriela
+     * 
+     * @param evt 
+     */
+    
     private void B_changeTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_changeTActionPerformed
         String st = JOptionPane.showInputDialog(this, "Escribe el valor de la T ");
         try {
@@ -518,15 +573,15 @@ public class InterfazUnica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton B_AñadirSucursal;
+    private javax.swing.JButton B_CoberturaStation;
+    private javax.swing.JButton B_CoberturaTotal;
     private javax.swing.JButton B_addNewLine;
     private javax.swing.JButton B_carga_JSON;
     private javax.swing.JButton B_changeT;
     private javax.swing.JButton Eliminar;
     private javax.swing.JTextField input_nameLine;
     private javax.swing.JTextField input_numberStation;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

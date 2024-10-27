@@ -33,6 +33,14 @@ public class Grafo {
         return graph;
     }
 
+    /**
+     * método para la creación del grafo. Se vuelve cada estación un nodo con color y tamaño. 
+     * 
+     * @author Nathaly 
+     * 
+     * @param line El parámetro line indica que recibe una Lista de lineas.
+     */
+    
     public void Graph(List line) {
         this.listaLines = new List();
         this.lSucursals = new List();
@@ -113,7 +121,7 @@ public class Grafo {
         }
     }
 
-    public void color(String sname) {
+    public void color(String sname) { //esta función se esta usando¿?
         Node nx1;
         nx1 = this.graph.getNode(sname);
         nx1.setAttribute("ui.style", "fill-color: red;");
