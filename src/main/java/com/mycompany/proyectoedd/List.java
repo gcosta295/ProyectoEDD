@@ -185,4 +185,18 @@ public class List {
         }
         return null;
     }
+    
+    public void deleteStation(Station s){
+        List lAux = new List();
+        int cont = 1;
+        for (int i = 1; i <= this.getlen(); i++) {
+            Station sAux = this.getStation(i);
+            if (sAux.getsData()!=s.getsData()){
+                cont+=1;
+            }
+            else{
+                this.getStation(cont-1).setnext(this.getStation(cont+1));
+            }
+        }
+    }
 }
