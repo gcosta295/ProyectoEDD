@@ -23,11 +23,18 @@ public class ReadJSON {
 
     private String text;
     private String test;
+    private boolean valid;
 
     public ReadJSON() {
     }
 
+    public boolean isValid() {
+        return valid;
+    }
+    
+    
     public void abrirArchivo() {
+        valid = false;
         String aux = "";
         setText("");
         try {
@@ -39,6 +46,7 @@ public class ReadJSON {
 
             if (fileType.equals("JSON Source File")) { //Validates the JSON file
                 if (abre != null) {
+                    valid=true;
                     FileReader archivos = new FileReader(abre);
                     BufferedReader lee = new BufferedReader(archivos);
                     while ((aux = lee.readLine()) != null) {

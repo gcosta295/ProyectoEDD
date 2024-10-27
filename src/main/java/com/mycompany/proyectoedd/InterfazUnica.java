@@ -300,13 +300,13 @@ public class InterfazUnica extends javax.swing.JFrame {
             if (cStation == 0) {
                 String cs = JOptionPane.showInputDialog(this, "Escribe el nombre de la estation: ");
                 for (int j = 1; j < listaLines.getlen(); j++) {
-                    System.out.println(listaLines.getLine(listaLines, j).getLname());
+//                    System.out.println(listaLines.getLine(listaLines, j).getLname());
                     List estaciones = listaLines.getLine(listaLines, j).getStations();
                      
                     if (estaciones.nameInList(cs)){
-                        System.out.println("funciona");
+//                        System.out.println("funciona");
                         Station sExists = estaciones.getNamedStation(cs);
-                        System.out.println(sExists.getsData());
+//                        System.out.println(sExists.getsData());
                         newstation.conect(sExists);
                     }
                     
@@ -325,27 +325,30 @@ public class InterfazUnica extends javax.swing.JFrame {
         }
         System.out.println(this.listaLines.getlen());
         this.listaLines.AddLine(newline); //ayuda dice que la lista es null //no esta tomando la lista vieja
-        System.out.println(this.listaLines.getlen());
+//        System.out.println(this.listaLines.getlen());
 
         JOptionPane.showMessageDialog(this, "Se ha añadido una linea nueva");
     }//GEN-LAST:event_B_addNewLineActionPerformed
 
     private void B_carga_JSONActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_carga_JSONActionPerformed
-
+        G.graph.clear();
+        
         L.abrirArchivo();
-        listaLines = L.Parse();
+        if (L.isValid()){
+            listaLines = L.Parse();
 
-        //        System.out.println(this.listaLines.getLen());
-        System.setProperty("org.graphstream.ui", "swing");
-        G.Graph(listaLines);
-        Viewer viewer = new Viewer(G.getGraph(), Viewer.ThreadingModel.GRAPH_IN_GUI_THREAD);
-        viewer.enableAutoLayout();
-        View view = viewer.addDefaultView(false);
-        setLayout(new GridLayout());
-        add((Component) view, GridLayout.class);
-        viewer.enableAutoLayout();
+            //        System.out.println(this.listaLines.getLen());
+            System.setProperty("org.graphstream.ui", "swing");
+            G.Graph(listaLines);
+            Viewer viewer = new Viewer(G.getGraph(), Viewer.ThreadingModel.GRAPH_IN_GUI_THREAD);
+            viewer.enableAutoLayout();
+            View view = viewer.addDefaultView(false);
+            setLayout(new GridLayout());
+            add((Component) view, GridLayout.class);
+            viewer.enableAutoLayout();
 
-        JOptionPane.showMessageDialog(this, "Se ha cargado el JSON");
+            JOptionPane.showMessageDialog(this, "Se ha cargado el JSON");
+        }
     }//GEN-LAST:event_B_carga_JSONActionPerformed
 
     /**
