@@ -25,6 +25,8 @@ public class Grafo {
 
     public Grafo(List listaLines) {
         this.listaLines = listaLines;
+        this.lSucursals= new List();
+        
     }
 
     public MultiGraph getGraph() {
@@ -119,7 +121,7 @@ public class Grafo {
             }
 
         }
-        System.out.println("llegue");
+        
         return false;
     }
 
