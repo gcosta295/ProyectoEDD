@@ -31,8 +31,7 @@ public class ReadJSON {
     public boolean isValid() {
         return valid;
     }
-    
-    
+
     public void abrirArchivo() {
         valid = false;
         String aux = "";
@@ -46,7 +45,7 @@ public class ReadJSON {
 
             if (fileType.equals("JSON Source File")) { //Validates the JSON file
                 if (abre != null) {
-                    valid=true;
+                    valid = true;
                     FileReader archivos = new FileReader(abre);
                     BufferedReader lee = new BufferedReader(archivos);
                     while ((aux = lee.readLine()) != null) {
@@ -102,17 +101,22 @@ public class ReadJSON {
                                 if (listaAllStations.nameInList(connectionName)) { //la estacion compuesta existe
 
 //                                    System.out.println(stationName);
-                                    Station sAux = listaAllStations.getNamedStation(stationName);
+                                    for (int j = 1; j < listaLines.getlen(); j++) {
+                                        List estaciones = listaLines.getLine(listaLines, j).getStations();
+                                        if (estaciones.nameInList(connectionName)) {
+                                            Station old = estaciones.getNamedStation(connectionName);
+                                            if (listaStations.getsLast() != null) {
+                                                Station last = listaStations.getsLast();
+                                                last.conect(old);
+                                                listaStations.AddStation(old);
+
+                                            } else {
+                                                listaStations.AddStation(old);
+                                            }
+                                        }
+                                    }
 //                                    System.out.println(sAux.getsData());
 
-                                    if (listaStations.getsLast() != null) {
-                                        Station last = listaStations.getsLast();
-                                        last.conect(sAux);
-                                        listaStations.AddStation(sAux);
-
-                                    } else {
-                                        listaStations.AddStation(sAux);
-                                    }
                                 } else { //la estacion compuesta no existe
                                     Station newStation = new Station(stationName + ":" + connectionName, lineName);
 
@@ -133,9 +137,17 @@ public class ReadJSON {
                             String stationName = (String) stationObject;
 
                             if (listaAllStations.nameInList(stationName)) {
-                                Station sAux = listaAllStations.getNamedStation(stationName);
+
 //                                System.out.println(sAux);
-                                listaStations.AddStation(sAux);
+                                for (int j = 1; j < listaLines.getlen(); j++) {
+                                    List estaciones = listaLines.getLine(listaLines, j).getStations();
+                                    if (estaciones.nameInList(stationName)) {
+                                        Station old = estaciones.getNamedStation(stationName);
+                                        Station sAux = listaStations.getsLast();
+                                        sAux.conect(old);
+                                        listaStations.AddStation(old);
+                                    }
+                                }
 
                             } else {
 

@@ -398,6 +398,9 @@ public class InterfazUnica extends javax.swing.JFrame {
             add((Component) view, GridLayout.class);
             viewer.enableAutoLayout();
             JOptionPane.showMessageDialog(this, "Se ha cargado el JSON");
+            
+            
+            
         }
     }//GEN-LAST:event_B_carga_JSONActionPerformed
 
@@ -409,9 +412,27 @@ public class InterfazUnica extends javax.swing.JFrame {
         JPanel panel = new JPanel();
         int opciones = JOptionPane.showOptionDialog(null, panel, "Que método quieres usar: DFS o BFS ", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
         if (opciones == JOptionPane.YES_OPTION) {
-            System.out.println("DFS");
+            
+
+            for (int j = 1; j < listaLines.getlen(); j++) {
+                List estaciones = listaLines.getLine(listaLines, j).getStations();
+                if (estaciones.nameInList(stationName)) {
+                    Station sExists = estaciones.getNamedStation(stationName);
+                    List temporal = new List();
+                    G.coveredSucursals(G.DFS(temporal, 3, sExists));
+             
+                }
+            }
+
         } else {
-            System.out.println("BFS");
+            for (int j = 1; j < listaLines.getlen(); j++) {
+                List estaciones = listaLines.getLine(listaLines, j).getStations();
+                if (estaciones.nameInList(stationName)) {
+                    Station sExists = estaciones.getNamedStation(stationName);
+                    List temporal = new List();
+                    
+                    G.coveredSucursals(G.DFS(temporal, 3, sExists));                }
+            }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

@@ -17,6 +17,7 @@ public class Grafo {
     public MultiGraph graph;
     private List lSucursals;
     private List listaLines;
+    private List listaStations;
 
     public Grafo() {
 
@@ -33,7 +34,9 @@ public class Grafo {
     }
 
     public void Graph(List line) {
+        this.listaLines = new List();
         this.lSucursals = new List();
+        this.listaStations = new List();
         graph.setAttribute("ui.stylesheet", "node{\n"
                 + "    size: 5px, 5px;\n"
                 + "    fill-color: #2de327;\n"
@@ -43,8 +46,12 @@ public class Grafo {
             Line tline = line.getLine(line, i);
             List stations = line.getLine(line, i).getStations();
             for (int l = 1; l < stations.getlen(); l++) {
+                
                 Station x = stations.getStation(l);
                 Station x1 = stations.getStation(l + 1);
+              
+                listaStations.AddStation(x);
+                listaStations.AddStation(x1);
                 if (l < stations.getlen()) {
                     if (l == 1) {
                         Node nx;
@@ -63,6 +70,7 @@ public class Grafo {
                         nx.setAttribute("ui.label", x.getsData());
                         nx1.setAttribute("ui.label", x1.getsData());
                         nx1.setAttribute("ui.style", "fill-color: #42a4ff;");
+                        
                     } else {
                         if (x1 != null) {
                             Node nx1;
@@ -72,8 +80,10 @@ public class Grafo {
                             } else {
                                 nx1 = this.graph.getNode(x1.getsData());
                             }
+                            
                             nx1.setAttribute("ui.style", "fill-color: #42a4ff;");
                             nx1.setAttribute("ui.label", x1.getsData());
+                            
                         }
                     }
                     String y = x.getsData() + x1.getsData();
@@ -81,7 +91,18 @@ public class Grafo {
                     edd.setAttribute("shape", "line");
                 }
             }
+            
         }
+        for (int i = 1; i <= line.getlen(); i++) {
+            
+            List stations = line.getLine(line, i).getStations();
+//            System.out.println(line.getLine(line, i).getLname());
+            for (int l = 1; l < stations.getlen(); l++) {
+//                System.out.println(stations.getStation(l).getsData());
+            }
+        }
+        
+
     }
 
     public void changeColorNodo(Station station) { //station es el nodo que se quiere cambiar de color
@@ -100,12 +121,20 @@ public class Grafo {
         nx1.setAttribute("ui.style", "size: 20px, 20px;");
     }
 
-    public boolean setSucursal(String sname, List listaLines) {
+    public List getListaLines() {
+        return listaLines;
+    }
 
-        for (int j = 1; j < listaLines.getlen(); j++) {
-            List estaciones = listaLines.getLine(listaLines, j).getStations();
-            if (estaciones.nameInList(sname)) {
-                Station sAux = estaciones.getNamedStation(sname);
+    
+    public boolean setSucursal(String sname, List listaLines) {
+        
+      
+        
+
+//        for (int j = 1; j < listaLines.getlen(); j++) {
+//            List estaciones = listaLines.getLine(listaLines, j).getStations();
+            if (listaStations.nameInList(sname)) {
+                Station sAux = listaStations.getNamedStation(sname);
                 sAux.setSucursal(true);
                 Node nx1;
                 nx1 = this.graph.getNode(sname);
@@ -113,15 +142,13 @@ public class Grafo {
                 if (nx1 != null) {
                     nx1.setAttribute("ui.style", "fill-color: #ff42e3;");
                     nx1.setAttribute("ui.style", "size: 10px, 10px;");
-                    System.out.println("Llego hasta aca");
                     lSucursals.AddStation(sAux);
                     return true;
                 }
 
             }
 
-        }
-
+//        }
         return false;
     }
 
@@ -196,5 +223,20 @@ public class Grafo {
             }
         }
         return l;
+    }
+
+    public void coveredSucursals(List l) {
+
+        //De ser la primera estacion diferente de null
+        Station sAux = l.getsFirst();
+        while (sAux != null) {
+
+            sAux.setCover(true);
+            Node nx1;
+            nx1 = this.graph.getNode(sAux.getsData());
+            nx1.setAttribute("ui.style", "fill-color: #1a9136;");
+            sAux = sAux.getNext();
+        }
+
     }
 }
