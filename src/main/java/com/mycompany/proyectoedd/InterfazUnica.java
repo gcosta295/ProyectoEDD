@@ -72,7 +72,7 @@ public class InterfazUnica extends javax.swing.JFrame {
         B_addNewLine = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         B_AñadirSucursal = new javax.swing.JButton();
-        Eliminar = new javax.swing.JButton();
+        B_ELiminarSucursal = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -233,11 +233,11 @@ public class InterfazUnica extends javax.swing.JFrame {
             }
         });
 
-        Eliminar.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
-        Eliminar.setText("Eliminar");
-        Eliminar.addActionListener(new java.awt.event.ActionListener() {
+        B_ELiminarSucursal.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        B_ELiminarSucursal.setText("Eliminar");
+        B_ELiminarSucursal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EliminarActionPerformed(evt);
+                B_ELiminarSucursalActionPerformed(evt);
             }
         });
 
@@ -263,7 +263,7 @@ public class InterfazUnica extends javax.swing.JFrame {
                         .addComponent(B_AñadirSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(95, 95, 95)
-                        .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(B_ELiminarSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -276,7 +276,7 @@ public class InterfazUnica extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 237, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(B_ELiminarSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(71, 71, 71))
         );
 
@@ -358,11 +358,26 @@ public class InterfazUnica extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
+    /**
+     * Eliminar Sucursal. Muestra en el grafo el nodo de la estación del color original, demostrando que ya no hay una sucursal ene sa estación.
+     * 
+     * @author Nathaly
+     * 
+     * @param evt 
+     */
+    
+    private void B_ELiminarSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_ELiminarSucursalActionPerformed
 
         String stationName = JOptionPane.showInputDialog(this, "Escribe el nombre de la station donde deseas eliminar una sucursal: ");
         
-    }//GEN-LAST:event_EliminarActionPerformed
+        if ((G.deleteSucursal(stationName, listaLines))) { //eliminar esa estacion a la lista de sucursales
+            JOptionPane.showMessageDialog(this, "Se ha eliminado la sucursal");
+
+        } else {
+            JOptionPane.showMessageDialog(this, "No se ha encontrado la sucursal");
+        }
+        
+    }//GEN-LAST:event_B_ELiminarSucursalActionPerformed
 
     /**
      * descripcion
@@ -398,11 +413,14 @@ public class InterfazUnica extends javax.swing.JFrame {
         
         String lineName = input_nameLine.getText();
         String Snumber = input_numberStation.getText();
-        int num = Integer.parseInt(Snumber);
         
-        List newlstations = new List();
-        Line newline = new Line(lineName);
-        String id = "";
+        try {
+            
+            int num = Integer.parseInt(Snumber);
+            
+            List newlstations = new List();
+            Line newline = new Line(lineName);
+            String id = "";
         
         for (int i = 0; i < num; i++) {
             String stationName = JOptionPane.showInputDialog(this, "Escribe el nombre de la nueva estation: "); //agregar que cada nombre es una station (volver objects)
@@ -435,7 +453,13 @@ public class InterfazUnica extends javax.swing.JFrame {
         }
         this.listaLines.AddLine(newline);
         JOptionPane.showMessageDialog(this, "Se ha añadido una linea nueva");
-        
+            
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un numero");
+
+        }
+       
            
     }//GEN-LAST:event_B_addNewLineActionPerformed
 
@@ -576,10 +600,10 @@ public class InterfazUnica extends javax.swing.JFrame {
     private javax.swing.JButton B_AñadirSucursal;
     private javax.swing.JButton B_CoberturaStation;
     private javax.swing.JButton B_CoberturaTotal;
+    private javax.swing.JButton B_ELiminarSucursal;
     private javax.swing.JButton B_addNewLine;
     private javax.swing.JButton B_carga_JSON;
     private javax.swing.JButton B_changeT;
-    private javax.swing.JButton Eliminar;
     private javax.swing.JTextField input_nameLine;
     private javax.swing.JTextField input_numberStation;
     private javax.swing.JLabel jLabel1;

@@ -154,6 +154,38 @@ public class Grafo {
 //        }
         return false;
     }
+    
+    /**
+     * método para eliminar una sucursal. Se vuelve a poner el nodo del color original y se elimina de la lista de sucursales
+     * 
+     * @author Nathaly
+     * 
+     * @param sname
+     * @param listaLines
+     * 
+     * @return 
+     */
+    
+    public boolean deleteSucursal(String sname, List listaLines) {
+
+        if (listaStations.nameInList(sname)) {
+            Station sAux = listaStations.getNamedStation(sname);
+            sAux.setSucursal(false);
+            Node nx1;
+            nx1 = this.graph.getNode(sname);
+
+            if (nx1 != null) {
+                nx1.setAttribute("ui.style", "fill-color: #42a4ff;");
+                nx1.setAttribute("ui.style", "size: 10px, 10px;");
+                lSucursals.deleteStation(sAux);
+                return false;
+            }
+
+        }
+
+//        }
+        return true;
+    }
 
     public List BFS(List l, int t, Station s) {
         s.setCover(true);
