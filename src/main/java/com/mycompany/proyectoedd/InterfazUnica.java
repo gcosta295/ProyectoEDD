@@ -290,35 +290,21 @@ public class InterfazUnica extends javax.swing.JFrame {
 
         List newlstations = new List();
         Line newline = new Line(lineName);
-
-        System.out.println(this.listaLines.getlen());
         for (int i = 0; i < num; i++) {
-
             String stationName = JOptionPane.showInputDialog(this, "Escribe el nombre de la nueva estation: "); //agregar que cada nombre es una station (volver objects)
             Station newstation = new Station(stationName, lineName);
             int cStation = JOptionPane.showConfirmDialog(this, "Desea añadir una conección a esta estación: ");
             if (cStation == 0) {
                 String cs = JOptionPane.showInputDialog(this, "Escribe el nombre de la estation: ");
                 for (int j = 1; j < listaLines.getlen(); j++) {
-//                    System.out.println(listaLines.getLine(listaLines, j).getLname());
                     List estaciones = listaLines.getLine(listaLines, j).getStations();
-                     
                     if (estaciones.nameInList(cs)){
-//                        System.out.println("funciona");
                         Station sExists = estaciones.getNamedStation(cs);
-//                        System.out.println(sExists.getsData());
                         newstation.conect(sExists);
                     }
-                    
-                    
                 }
-                //newstation.getconections().AddStation();
             }
-      
-            System.out.println(newstation.getsData());
-            System.out.println(newstation.getconections().getlen());
             newlstations.AddStation(newstation);
-            System.out.println(newlstations.getlen());
             newline.getStations().AddStation(newstation); //se esta añadiendo una sola vez en la lista
             System.out.println(newline.getStations().getlen()); //l1.listastations.nodo
 

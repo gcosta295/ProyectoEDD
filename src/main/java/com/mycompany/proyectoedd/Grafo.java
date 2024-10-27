@@ -188,18 +188,25 @@ public class Grafo {
         nx1.setAttribute("ui.style", "fill-color: red;");
         nx1.setAttribute("ui.style", "size: 20px, 20px;");
     }
-
-//    public void mostrarGrafo() {
-//
-////        this.graph.addNode("A");
-////        this.graph.addNode("B");
-////        this.graph.addNode("C");
-////        this.graph.addEdge("AB","A","B");
-////        this.graph.addEdge("BC","B","C");
-////        this.graph.addEdge("CA","C","A");
-//        graph.setAttribute("ui.quality");
-//        graph.setAttribute("ui.antialias");
-//        graph.display();
-//
-//    }
+    
+     public List BFS (List l, int t, Station s){
+        int cont = 1;
+        List x = s.getconections();
+        while (cont <= t){
+            if (cont == 1){
+                for (int i = 1; i <= x.getlen(); i++) {
+                    if (l.sInList(x.getStation(i))==false){
+                        l.AddStation(x.getStation(i));
+                    }
+                }
+            }
+            else{
+                for (int i = 1; i <= x.getlen(); i++) {
+                    List lAux = this.BFS(l, t-1, s);
+                }
+            }
+        cont += 1;
+        }
+        return l;
+    }
 }

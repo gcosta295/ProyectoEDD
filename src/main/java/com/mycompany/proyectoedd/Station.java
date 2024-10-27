@@ -77,25 +77,4 @@ public class Station {
         this.conections.AddStation(s);
         s.conections.AddStation(this);
     }
-    
-    public List BFS (List l, int t){
-        int cont = 1;
-        List x = this.conections;
-        while (cont <= t){
-            if (cont == 1){
-                for (int i = 1; i <= x.getlen(); i++) {
-                    if (l.sInList(x.getStation(i))==false){
-                        l.AddStation(x.getStation(i));
-                    }
-                }
-            }
-            else{
-                for (int i = 1; i <= x.getlen(); i++) {
-                    List lAux = x.getStation(i).BFS(l, t-1);
-                }
-            }
-        cont += 1;
-        }
-        return l;
-    }
 }
