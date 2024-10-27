@@ -33,6 +33,11 @@ public class Grafo {
         return graph;
     }
 
+    public List getlSucursals() {
+        return lSucursals;
+    }
+
+    
     /**
      * método para la creación del grafo. Se vuelve cada estación un nodo con color y tamaño. 
      * 
@@ -167,8 +172,9 @@ public class Grafo {
      */
     
     public boolean deleteSucursal(String sname, List listaLines) {
-
-        if (listaStations.nameInList(sname)) {
+        
+        
+        if (lSucursals.nameInList(sname)) {
             Station sAux = listaStations.getNamedStation(sname);
             sAux.setSucursal(false);
             Node nx1;
@@ -288,5 +294,14 @@ public class Grafo {
         String y = s + station;
         Edge edd = this.graph.addEdge(y, s, station);
         edd.setAttribute("shape", "line");
+    }
+    
+    public void TotalCover(int t){
+        
+        for (int i = 1; i <= lSucursals.getlen(); i++) {
+            List coveredS= new List();
+            Station s = lSucursals.getStation(i);
+            coveredSucursals(DFS(coveredS, t, s));
+        }
     }
 }

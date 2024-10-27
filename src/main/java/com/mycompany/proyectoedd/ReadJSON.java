@@ -122,6 +122,7 @@ public class ReadJSON {
 
                                     if (listaStations.getsLast() != null) { //estacion compuesta no existe y la lista no esta vacia
                                         Station sAux = listaStations.getsLast();
+
                                         newStation.conect(sAux);
                                         listaStations.AddStation(newStation);
                                         listaAllStations.AddStation(newStation);
@@ -143,9 +144,16 @@ public class ReadJSON {
                                     List estaciones = listaLines.getLine(listaLines, j).getStations();
                                     if (estaciones.nameInList(stationName)) {
                                         Station old = estaciones.getNamedStation(stationName);
+
                                         Station sAux = listaStations.getsLast();
-                                        sAux.conect(old);
-                                        listaStations.AddStation(old);
+                                        if (sAux != null) {
+//                                            System.out.println("AAA");
+                                            sAux.conect(old);
+                                            listaStations.AddStation(old);
+                                            
+                                        }else{
+                                            listaStations.AddStation(old);
+                                        }
                                     }
                                 }
 
