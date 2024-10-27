@@ -25,8 +25,7 @@ public class Grafo {
 
     public Grafo(List listaLines) {
         this.listaLines = listaLines;
-        this.lSucursals= new List();
-        
+
     }
 
     public MultiGraph getGraph() {
@@ -34,7 +33,7 @@ public class Grafo {
     }
 
     public void Graph(List line) {
-
+        this.lSucursals = new List();
         graph.setAttribute("ui.stylesheet", "node{\n"
                 + "    size: 5px, 5px;\n"
                 + "    fill-color: #2de327;\n"
@@ -99,7 +98,7 @@ public class Grafo {
         nx1 = this.graph.getNode(sname);
         nx1.setAttribute("ui.style", "fill-color: red;");
         nx1.setAttribute("ui.style", "size: 20px, 20px;");
-    }    
+    }
 
     public boolean setSucursal(String sname, List listaLines) {
 
@@ -110,10 +109,11 @@ public class Grafo {
                 sAux.setSucursal(true);
                 Node nx1;
                 nx1 = this.graph.getNode(sname);
-                
+
                 if (nx1 != null) {
                     nx1.setAttribute("ui.style", "fill-color: #ff42e3;");
                     nx1.setAttribute("ui.style", "size: 10px, 10px;");
+                    System.out.println("Llego hasta aca");
                     lSucursals.AddStation(sAux);
                     return true;
                 }
@@ -121,7 +121,7 @@ public class Grafo {
             }
 
         }
-        
+
         return false;
     }
 
@@ -176,21 +176,21 @@ public class Grafo {
         }
         return visitedNodes;
     }
-    
-    public void changeCover (List l){
+
+    public void changeCover(List l) {
         for (int i = 1; i <= l.getlen(); i++) {
             Station s = l.getStation(i);
             //buscar el nodo y asignarle un valor de cover
         }
     }
-    
-    public List recomendSucursal (int t){
+
+    public List recomendSucursal(int t) {
         List l = new List();
         for (int i = 1; i <= lSucursals.getlen(); i++) {
             Station s = lSucursals.getStation(i);
-            List l2 = this.DFS(lSucursals, t+1, s);
+            List l2 = this.DFS(lSucursals, t + 1, s);
             for (int j = 1; j <= l2.getlen(); j++) {
-                if (l2.getStation(j).isCover()==false){
+                if (l2.getStation(j).isCover() == false) {
                     l.AddStation(l2.getStation(j));
                 }
             }
