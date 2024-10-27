@@ -16,6 +16,12 @@ public class Station {
     private boolean Sucursal;               //State of sucursal
     private boolean cover;
 
+/**
+ * @Description constructor de estaciones 
+ * @author astv06
+ * @param sData
+ * @param lData
+*/
     public Station(String sData, String lData) {
         this.sData = sData;
         this.lData = lData;
@@ -25,10 +31,20 @@ public class Station {
         this.cover = true;
     }
 
+/**
+ * Description regresa la siguiente estacion
+ * @author astv06
+ * @return next
+*/
     public Station getNext() {
         return next;
     }
 
+/**
+ * @Description regresa el nombre de la estacion
+ * @author astv06
+ * @return sData
+*/    
     public String getsData() {
         return sData;
     }
