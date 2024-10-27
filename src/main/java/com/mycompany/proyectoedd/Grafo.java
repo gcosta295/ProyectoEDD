@@ -37,10 +37,7 @@ public class Grafo {
                 + "}");
         for (int i = 1; i <= line.getlen(); i++) {
             Line tline = line.getLine(line, i);
-            System.out.println("lineas");
-            System.out.println(line.getLine(line, i));
             List stations = line.getLine(line, i).getStations();
-            System.out.println("");
             for (int l = 1; l < stations.getlen(); l++) {
                 Station x = stations.getStation(l);
                 Station x1 = stations.getStation(l + 1);
@@ -100,6 +97,7 @@ public class Grafo {
     }    
     
      public List BFS (List l, int t, Station s){
+        s.setCover(true);
         int cont = 1;
         List x = s.getconections();
         while (cont <= t){
@@ -121,6 +119,7 @@ public class Grafo {
     }
    
     public List DFS(List visitedNodes, int t, Station u) {
+        u.setCover(true);
         while (t > 0) {
             if (t == 1) {
                 int c = 1;
@@ -148,5 +147,25 @@ public class Grafo {
         }
         return visitedNodes;
     }
-
+    
+    public void changeCover (List l){
+        for (int i = 1; i <= l.getlen(); i++) {
+            Station s = l.getStation(i);
+            //buscar el nodo y asignarle un valor de cover
+        }
+    }
+    
+    public List recomendSucursal (int t){
+        List l = new List();
+        for (int i = 1; i <= lSucursals.getlen(); i++) {
+            Station s = lSucursals.getStation(i);
+            List l2 = this.DFS(lSucursals, t+1, s);
+            for (int j = 1; j <= l2.getlen(); j++) {
+                if (l2.getStation(j).isCover()==false){
+                    l.AddStation(l2.getStation(j));
+                }
+            }
+        }
+        return l;
+    }
 }

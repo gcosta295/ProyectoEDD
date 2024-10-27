@@ -351,10 +351,8 @@ public class InterfazUnica extends javax.swing.JFrame {
     private void B_addNewLineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_addNewLineActionPerformed
 
         String lineName = input_nameLine.getText();
-
         String Snumber = input_numberStation.getText();
         int num = Integer.parseInt(Snumber);
-
         List newlstations = new List();
         Line newline = new Line(lineName);
         for (int i = 0; i < num; i++) {
@@ -372,14 +370,9 @@ public class InterfazUnica extends javax.swing.JFrame {
                 }
             }
             newlstations.AddStation(newstation);
-            newline.getStations().AddStation(newstation); //se esta añadiendo una sola vez en la lista
-            System.out.println(newline.getStations().getlen()); //l1.listastations.nodo
-
+            newline.getStations().AddStation(newstation);
         }
-        System.out.println(this.listaLines.getlen());
-        this.listaLines.AddLine(newline); //ayuda dice que la lista es null //no esta tomando la lista vieja
-//        System.out.println(this.listaLines.getlen());
-
+        this.listaLines.AddLine(newline);
         JOptionPane.showMessageDialog(this, "Se ha añadido una linea nueva");
     }//GEN-LAST:event_B_addNewLineActionPerformed
 
@@ -389,8 +382,6 @@ public class InterfazUnica extends javax.swing.JFrame {
         L.abrirArchivo();
         if (L.isValid()){
             listaLines = L.Parse();
-
-            //        System.out.println(this.listaLines.getLen());
             System.setProperty("org.graphstream.ui", "swing");
             G.Graph(listaLines);
             Viewer viewer = new Viewer(G.getGraph(), Viewer.ThreadingModel.GRAPH_IN_GUI_THREAD);
@@ -399,13 +390,12 @@ public class InterfazUnica extends javax.swing.JFrame {
             setLayout(new GridLayout());
             add((Component) view, GridLayout.class);
             viewer.enableAutoLayout();
-
             JOptionPane.showMessageDialog(this, "Se ha cargado el JSON");
         }
     }//GEN-LAST:event_B_carga_JSONActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+
         String stationName = JOptionPane.showInputDialog(this, "Escribe el nombre de la sucursal que desea ver cobertura");
         
         Object[] options= {"DFS", "BFS"};
