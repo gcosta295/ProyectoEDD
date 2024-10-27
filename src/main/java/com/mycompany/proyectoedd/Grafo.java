@@ -200,7 +200,7 @@ public class Grafo {
         while (cont <= t) {
             if (cont == 1) {
                 for (int i = 1; i <= x.getlen(); i++) {
-                    if (l.sInList(x.getStation(i).get) == false) {
+                    if (l.sInList(x.getStation(i)) == false) {
                         l.AddStation(x.getStation(i));
                     }
                 }
