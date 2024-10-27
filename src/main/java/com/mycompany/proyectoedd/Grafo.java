@@ -6,10 +6,7 @@ package com.mycompany.proyectoedd;
 
 import javax.swing.JOptionPane;
 import org.graphstream.graph.*;
-import org.graphstream.graph.implementations.*;
-import org.graphstream.graph.implementations.SingleGraph;
 import org.graphstream.graph.implementations.MultiGraph;
-import org.graphstream.ui.view.Viewer;
 
 /**
  *
@@ -19,10 +16,15 @@ public class Grafo {
 
     public MultiGraph graph;
     private List lSucursals;
+    private List listaLines;
 
     public Grafo() {
 
         this.graph = new MultiGraph("Grafo Metro");
+    }
+
+    public Grafo(List listaLines) {
+        this.listaLines = listaLines;
     }
 
     public MultiGraph getGraph() {
@@ -30,9 +32,10 @@ public class Grafo {
     }
 
     public void Graph(List line) {
+
         graph.setAttribute("ui.stylesheet", "node{\n"
                 + "    size: 5px, 5px;\n"
-                + "    fill-color: #f7f7f0;\n"
+                + "    fill-color: #2de327;\n"
                 + "    text-mode: normal; \n"
                 + "}");
         for (int i = 1; i <= line.getlen(); i++) {
@@ -58,10 +61,10 @@ public class Grafo {
                         } else {
                             nx1 = this.graph.getNode(x1.getsData());
                         }
-                        nx.setAttribute("ui.style", "fill-color: blue;");
+                        nx.setAttribute("ui.style", "fill-color: #42a4ff;");
                         nx.setAttribute("ui.label", x.getsData());
                         nx1.setAttribute("ui.label", x1.getsData());
-                        nx1.setAttribute("ui.style", "fill-color: blue;");
+                        nx1.setAttribute("ui.style", "fill-color: #42a4ff;");
                     } else {
                         if (x1 != null) {
                             Node nx1;
@@ -71,7 +74,7 @@ public class Grafo {
                             } else {
                                 nx1 = this.graph.getNode(x1.getsData());
                             }
-                            nx1.setAttribute("ui.style", "fill-color: blue;");
+                            nx1.setAttribute("ui.style", "fill-color: #42a4ff;");
                             nx1.setAttribute("ui.label", x1.getsData());
                         }
                     }
@@ -92,34 +95,50 @@ public class Grafo {
         }
     }
 
-    public void color(String sname) {
-        Node nx1;
-        nx1 = this.graph.getNode(sname);
-        nx1.setAttribute("ui.style", "fill-color: red;");
-        nx1.setAttribute("ui.style", "size: 20px, 20px;");
-    }    
-    
-     public List BFS (List l, int t, Station s){
+    public boolean setSucursal(String sname, List listaLines) {
+
+        for (int j = 1; j < listaLines.getlen(); j++) {
+            List estaciones = listaLines.getLine(listaLines, j).getStations();
+            if (estaciones.nameInList(sname)) {
+                Station sAux = estaciones.getNamedStation(sname);
+                sAux.setSucursal(true);
+                Node nx1;
+                nx1 = this.graph.getNode(sname);
+                
+                if (nx1 != null) {
+                    nx1.setAttribute("ui.style", "fill-color: #ff42e3;");
+                    nx1.setAttribute("ui.style", "size: 10px, 10px;");
+                    lSucursals.AddStation(sAux);
+                    return true;
+                }
+
+            }
+
+        }
+        System.out.println("llegue");
+        return false;
+    }
+
+    public List BFS(List l, int t, Station s) {
         int cont = 1;
         List x = s.getconections();
-        while (cont <= t){
-            if (cont == 1){
+        while (cont <= t) {
+            if (cont == 1) {
                 for (int i = 1; i <= x.getlen(); i++) {
-                    if (l.sInList(x.getStation(i))==false){
+                    if (l.sInList(x.getStation(i)) == false) {
                         l.AddStation(x.getStation(i));
                     }
                 }
-            }
-            else{
+            } else {
                 for (int i = 1; i <= x.getlen(); i++) {
-                    List lAux = this.BFS(l, t-1, s);
+                    List lAux = this.BFS(l, t - 1, s);
                 }
             }
-        cont += 1;
+            cont += 1;
         }
         return l;
     }
-   
+
     public List DFS(List visitedNodes, int t, Station u) {
         while (t > 0) {
             if (t == 1) {
@@ -130,20 +149,21 @@ public class Grafo {
                         c += 1;
                     } else {
                         visitedNodes.AddStation(sAux);
-                        c+=1;
+                        c += 1;
                     }
                 }
-                t-=1;
+                t -= 1;
             } else {
                 int k = 1;
                 while (k <= u.getconections().getlen()) {
                     Station sAux = u.getconections().getStation(k);
-                    if (visitedNodes.sInListdfs(sAux)==false) {
+                    if (visitedNodes.sInListdfs(sAux) == false) {
                         visitedNodes.AddStation(sAux);
-                        DFS(visitedNodes, t-1, sAux);
+                        DFS(visitedNodes, t - 1, sAux);
                     }
-                    k+=1;
-                }t-=1;
+                    k += 1;
+                }
+                t -= 1;
             }
         }
         return visitedNodes;

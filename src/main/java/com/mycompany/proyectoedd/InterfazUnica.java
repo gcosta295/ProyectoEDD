@@ -339,13 +339,18 @@ public class InterfazUnica extends javax.swing.JFrame {
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
 
         String stationName = JOptionPane.showInputDialog(this, "Escribe el nombre de la station donde deseas eliminar una sucursal: ");
-        
+
     }//GEN-LAST:event_EliminarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         String stationName = JOptionPane.showInputDialog(this, "Escribe el nombre de la station donde deseas colocar una sucursal: ");
-        String tbusqueda = JOptionPane.showInputDialog(this, "Que método quieres usar: DFS o BFS ");
+        if ((G.setSucursal(stationName, listaLines))) {
+            JOptionPane.showMessageDialog(this, "Se ha agregado la sucursal");
+
+        } else {
+            JOptionPane.showMessageDialog(this, "No se ha encontrado la sucursal");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void B_addNewLineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_addNewLineActionPerformed
@@ -365,7 +370,7 @@ public class InterfazUnica extends javax.swing.JFrame {
                 String cs = JOptionPane.showInputDialog(this, "Escribe el nombre de la estation: ");
                 for (int j = 1; j < listaLines.getlen(); j++) {
                     List estaciones = listaLines.getLine(listaLines, j).getStations();
-                    if (estaciones.nameInList(cs)){
+                    if (estaciones.nameInList(cs)) {
                         Station sExists = estaciones.getNamedStation(cs);
                         newstation.conect(sExists);
                     }
@@ -385,14 +390,13 @@ public class InterfazUnica extends javax.swing.JFrame {
 
     private void B_carga_JSONActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_carga_JSONActionPerformed
         G.graph.clear();
-        
-        L.abrirArchivo();
-        if (L.isValid()){
-            listaLines = L.Parse();
 
-            //        System.out.println(this.listaLines.getLen());
+        L.abrirArchivo();
+        if (L.isValid()) {
+            listaLines = L.Parse();
             System.setProperty("org.graphstream.ui", "swing");
             G.Graph(listaLines);
+
             Viewer viewer = new Viewer(G.getGraph(), Viewer.ThreadingModel.GRAPH_IN_GUI_THREAD);
             viewer.enableAutoLayout();
             View view = viewer.addDefaultView(false);
@@ -407,13 +411,13 @@ public class InterfazUnica extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         String stationName = JOptionPane.showInputDialog(this, "Escribe el nombre de la sucursal que desea ver cobertura");
-        
-        Object[] options= {"DFS", "BFS"};
+
+        Object[] options = {"DFS", "BFS"};
         JPanel panel = new JPanel();
-        int opciones = JOptionPane.showOptionDialog(null, panel,"Que método quieres usar: DFS o BFS ", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
-        if (opciones==JOptionPane.YES_OPTION){
-        System.out.println("DFS");
-        }else{
+        int opciones = JOptionPane.showOptionDialog(null, panel, "Que método quieres usar: DFS o BFS ", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
+        if (opciones == JOptionPane.YES_OPTION) {
+            System.out.println("DFS");
+        } else {
             System.out.println("BFS");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
