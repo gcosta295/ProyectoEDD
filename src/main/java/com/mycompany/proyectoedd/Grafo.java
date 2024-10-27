@@ -46,10 +46,10 @@ public class Grafo {
             Line tline = line.getLine(line, i);
             List stations = line.getLine(line, i).getStations();
             for (int l = 1; l < stations.getlen(); l++) {
-                
+
                 Station x = stations.getStation(l);
                 Station x1 = stations.getStation(l + 1);
-              
+
                 listaStations.AddStation(x);
                 listaStations.AddStation(x1);
                 if (l < stations.getlen()) {
@@ -70,7 +70,7 @@ public class Grafo {
                         nx.setAttribute("ui.label", x.getsData());
                         nx1.setAttribute("ui.label", x1.getsData());
                         nx1.setAttribute("ui.style", "fill-color: #42a4ff;");
-                        
+
                     } else {
                         if (x1 != null) {
                             Node nx1;
@@ -80,10 +80,10 @@ public class Grafo {
                             } else {
                                 nx1 = this.graph.getNode(x1.getsData());
                             }
-                            
+
                             nx1.setAttribute("ui.style", "fill-color: #42a4ff;");
                             nx1.setAttribute("ui.label", x1.getsData());
-                            
+
                         }
                     }
                     String y = x.getsData() + x1.getsData();
@@ -91,17 +91,16 @@ public class Grafo {
                     edd.setAttribute("shape", "line");
                 }
             }
-            
+
         }
         for (int i = 1; i <= line.getlen(); i++) {
-            
+
             List stations = line.getLine(line, i).getStations();
 //            System.out.println(line.getLine(line, i).getLname());
             for (int l = 1; l < stations.getlen(); l++) {
 //                System.out.println(stations.getStation(l).getsData());
             }
         }
-        
 
     }
 
@@ -125,28 +124,24 @@ public class Grafo {
         return listaLines;
     }
 
-    
     public boolean setSucursal(String sname, List listaLines) {
-        
-      
-        
 
 //        for (int j = 1; j < listaLines.getlen(); j++) {
 //            List estaciones = listaLines.getLine(listaLines, j).getStations();
-            if (listaStations.nameInList(sname)) {
-                Station sAux = listaStations.getNamedStation(sname);
-                sAux.setSucursal(true);
-                Node nx1;
-                nx1 = this.graph.getNode(sname);
+        if (listaStations.nameInList(sname)) {
+            Station sAux = listaStations.getNamedStation(sname);
+            sAux.setSucursal(true);
+            Node nx1;
+            nx1 = this.graph.getNode(sname);
 
-                if (nx1 != null) {
-                    nx1.setAttribute("ui.style", "fill-color: #ff42e3;");
-                    nx1.setAttribute("ui.style", "size: 10px, 10px;");
-                    lSucursals.AddStation(sAux);
-                    return true;
-                }
-
+            if (nx1 != null) {
+                nx1.setAttribute("ui.style", "fill-color: #ff42e3;");
+                nx1.setAttribute("ui.style", "size: 10px, 10px;");
+                lSucursals.AddStation(sAux);
+                return true;
             }
+
+        }
 
 //        }
         return false;
@@ -238,5 +233,20 @@ public class Grafo {
             sAux = sAux.getNext();
         }
 
+    }
+
+    public void CreateNode(String s) {
+        Node nx1 = this.graph.addNode(s);
+        nx1.setAttribute("ui.style", "fill-color: #42a4ff;");
+        nx1.setAttribute("ui.label", s);
+    }
+
+    public void CreateEdfe(String s, String station) {
+        Node nx = this.graph.getNode(station);
+        Node nx1 = this.graph.getNode(s);
+
+        String y = s + station;
+        Edge edd = this.graph.addEdge(y, s, station);
+        edd.setAttribute("shape", "line");
     }
 }
