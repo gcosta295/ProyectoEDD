@@ -17,7 +17,7 @@ public class Station {
     private boolean cover;
 
 /**
- * @Description constructor de estaciones 
+ * constructor de estaciones 
  * @author astv06
  * @param sData
  * @param lData
@@ -32,7 +32,7 @@ public class Station {
     }
 
 /**
- * Description regresa la siguiente estacion
+ * regresa la siguiente estacion
  * @author astv06
  * @return next
 */
@@ -41,7 +41,7 @@ public class Station {
     }
 
 /**
- * @Description regresa el nombre de la estacion
+ * regresa el nombre de la estacion
  * @author astv06
  * @return sData
 */    
@@ -49,46 +49,103 @@ public class Station {
         return sData;
     }
 
+/**
+ * regresa el nombre de la linea
+ * @author astv06
+ * @return lData
+*/    
     public String getlData() {
         return lData;
     }
 
+/**
+ * confirma si la estacion es una sucursal
+ * @author astv06
+ * @return Sucursal
+*/  
     public boolean isSucursal() {
         return Sucursal;
     }
 
+/**
+ * confirma si la estacion esta cubierta
+ * @author astv06
+ * @return cover
+*/ 
     public boolean isCover() {
         return cover;
     }
-
+    
+/**
+ * asigna un nuevo nombre a la linea a la que
+ * pertenece la estacion
+ * @author astv06
+ * @param lData
+*/
     public void setlData(String lData) {
         this.lData = lData;
     }
     
+/**
+ * devuelve la lista de conecciones de la estacion
+ * @author astv06
+ * @return conections
+*/
     public List getconections(){
         return conections;
     }
 
+/**
+ * asigna una nueva lista de coneciones 
+ * a la estacion
+ * @author astv06
+ * @param conections
+*/    
     public void setConections(List conections) {
         this.conections = conections;
     }
-    
+ 
+/**
+ * asigna un nuevo nombre a la estacion
+ * @author astv06
+ * @param data
+*/       
     public void setsData(String data) {
         this.sData = data;
     }
-    
+   
+/**
+ * asigna una estacion siguiente a la estacion
+ * @author astv06
+ * @param next
+*/     
     public void setnext(Station next){
         this.next = next;
     }
 
+/**
+ * asigna una sucursal a una estacion
+ * @author astv06
+ * @param Sucursal
+*/        
     public void setSucursal(boolean Sucursal) {
         this.Sucursal = Sucursal;
     }
 
+/**
+ * asigna la covertura de una estacion
+ * @author astv06
+ * @param cover
+*/      
     public void setCover(boolean cover) {
         this.cover = cover;
     }
     
+/**
+ * conecta dos estaciones entre si
+ * @author astv06
+ * @param s
+*/    
     public void conect(Station s){
         this.conections.AddStation(s);
         s.conections.AddStation(this);

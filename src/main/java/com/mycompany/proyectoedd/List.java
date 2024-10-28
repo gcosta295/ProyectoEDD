@@ -9,14 +9,18 @@ package com.mycompany.proyectoedd;
  * @author astv06
  */
 public class List {
-                                                                                //Lista valida tanto para lineas como para estaciones
-    private Station sFirst;                                                     //Primera estacion de la lista
-    private Station sLast;                                                      //Ultima estacion de la lista
-    private Line lFirst;                                                        //Primera linea de la lista
-    private Line lLast;                                                         //Ultima linea de la lista
-    private int len;                                                            //Longitud de la lista 
+    //Lista valida tanto para lineas como para estaciones
+    private Station sFirst;
+    private Station sLast;
+    private Line lFirst;
+    private Line lLast;
+    private int len;
 
-    public List() {                                                             //Contructor de la lista
+/**
+ * constructor de listas 
+ * @author astv06
+*/    
+    public List() {
         this.sFirst = null;
         this.sLast = null;
         this.lFirst = null;
@@ -24,99 +28,146 @@ public class List {
         this.len = 0;
     }
 
-    public int getlen() {                                                       //Retorna la longitud de la lista
+/**
+ * retorna la longitud de la lista 
+ * @author astv06
+ * @return len
+*/      
+    public int getlen() {
         return this.len;
     }
 
-    public Station getsFirst() {                                                //Retorna la primera estacion de la lista
+/**
+ * retorna la primera estacion de la lista
+ * @author astv06
+ * @return sFirst
+*/      
+    public Station getsFirst() {
         return sFirst;
     }
-
-    public Line getlLast() {                                                    //Retorna la ultima estacion de la lista
+/**
+ * retorna la ultima linea de la lista
+ * @author astv06
+ * @return lLast
+*/    
+    public Line getlLast() {
         return lLast;
     }
 
-    public Line getlFirst() {                                                   //Retorna la primera linea de la lista
+/**
+ * retorna la primera linea de la lista
+ * @author astv06
+ * @return lFirst
+*/        
+    public Line getlFirst() {
         return lFirst;
     }
 
-    public Station getsLast() {                                                 //Retorna la ultima linea de la lista
+/**
+ * retorna la ultima estacion de la lista
+ * @author astv06
+ * @return sLast
+*/     
+    public Station getsLast() {
         return sLast;
     }
-
-                                                                                /*Añade una copia de la estacion que tu le diste al metodo en la 
-                                                                                    ultima posicion del mismo, tambien se puede usar para 
-                                                                                    conectar estaciones aleatorias entre si*/
+    
+/**
+ * Añade una copia de la estacion que tu le diste al metodo en la 
+ * ultima posicion del mismo, tambien se puede usar para 
+ * conectar estaciones aleatorias entre si
+ * @author astv06
+ * @param s
+*/    
     public void AddStation(Station s) {
-        Station stat = new Station(s.getsData(), s.getlData());                 //Crea una nueva estacion y pasa los datos
-        stat.setCover(s.isCover());                                             //de la estacion de entrada a la misma
+        Station stat = new Station(s.getsData(), s.getlData());
+        stat.setCover(s.isCover());
         stat.setSucursal(s.isSucursal());
         stat.setConections(s.getconections());
-        if (this.len != 0) {                                                    //En caso de que la lista no este vacia
-            Station sAux = this.sLast;                                          //Tomar temporalmente el valor de la ultima estacion
-            sAux.setnext(stat);                                                 //para hacer que la misma apunte a la nueva y 
-            this.sLast = stat;                                                  //asignar nuevo valor a la ultima de la lista
+        if (this.len != 0) {
+            Station sAux = this.sLast;
+            sAux.setnext(stat);
+            this.sLast = stat;
         } else {
-            this.sFirst = stat;                                                 //De estar vacia la lista asignar a la copia como
-            this.sLast = stat;                                                  //nuevo inicio y fin de la lista
+            this.sFirst = stat;
+            this.sLast = stat;
         }
-        this.len += 1;                                                          //Incrementar la longitud de la lista en 1
+        this.len += 1;
     }
-                                                                                /*Se emplea para confirmar la existencia de una
-                                                                                    estacion mediante su nombre*/
+                                            
+/**
+ * Se emplea para confirmar la existencia de una 
+ * estacion mediante su nombre 
+ * @author Gabriela
+ * @param s
+ * @return boolean
+*/                                                                                    
     public boolean nameInList(String s) {
 
-        Station sAux = sFirst;                                                  //Tomar el valor de la primera estacion de la lista
-        while (sAux != null) {                                                  //Iterar cada elemento de la lista hasta llegar a null
-            if (sAux.getsData().contains(s)) {                                  //En caso de que el nombre de la estacion contenga
-                return true;                                                    //el string de entrada retornar verdadero
+        Station sAux = sFirst;
+        while (sAux != null) {
+            if (sAux.getsData().contains(s)) {
+                return true;
             }
-            sAux = sAux.getNext();                                              //De ser diferente evaluar con la siguiente estacion
+            sAux = sAux.getNext();
         }
-        return false;                                                           //retornar falso 
+        return false;
     }
-        
     
-
-                                                                                /*Añade la linea proporcionada al metodo en la ultima posicion
-                                                                                    y crea una coneccion con la que previamente era la ultima*/
+/**
+ * Añade la linea proporcionada al metodo en la ultima posicion 
+ * y crea una coneccion con la que previamente era la ultima 
+ * @author astv06
+ * @param l
+*/                                                                                  
     public void AddLine(Line l) {
-        if (this.len != 0) {                                                    //Si la lista no esta vacia tomar la ultima linea
-            Line lAux = this.lLast;                                             //asignar una coneccion con la lista de entrada
-            lAux.setlNext(l);                                                   //y actualizar la ultima linea de la lista
+        if (this.len != 0) { 
+            Line lAux = this.lLast;
+            lAux.setlNext(l);
             this.lLast = l;
         } else {
-            this.lFirst = l;                                                    //De estar vacia asignar a la linea como primera
-            this.lLast = l;                                                     //y ultima de la lista
+            this.lFirst = l; 
+            this.lLast = l;
         }
-        this.len += 1;                                                          //Incrementar en uno la longitud de la lista 
+        this.len += 1;
     }
 
-                                                                                /*Busca en la lista que invoca al metodo la 
-                                                                                    estacion correspondiente al indice del
-                                                                                    dato de entrada */
+/**
+ * Busca en la lista que invoca al metodo la 
+ * estacion correspondiente al indice del
+ * dato de entrada
+ * @author astv06
+ * @param i
+ * @return sAux
+*/
     public Station getStation(int i) {
-        if (i <= this.len) {                                                    //Si el indice no es mayor a la longitud de la lista
+        if (i <= this.len) {
             int j = 1;
-            Station sAux = this.sFirst;                                         //crear una variable contador y una para la primera estacion de la lista
-            while (j <= i) {                                                    //Iterar la variable contador y comparar con
-                if (j < i) {                                                    //el dato de entrada hasta que se igualen 
-                    sAux = sAux.getNext();                                      //Cada iteracion buscar la siguiente estacion
+            Station sAux = this.sFirst;
+            while (j <= i) {           
+                if (j < i) {           
+                    sAux = sAux.getNext();
                 }
                 j += 1;
             }
-            return sAux;                                                        //Retornar la estacion 
+            return sAux;                  
         } else {
-            return null;                                                        //Retornar null 
+            return null;                  
         }
     }
 
-    public boolean sInList(Station s) {                                         //Comprueba si una estacion esta en una lista
-        if (sFirst != null) {                                                   //De ser la primera estacion diferente de null
+/**
+ * Comprueba si una estacion esta en una lista
+ * @author astv06
+ * @param s
+ * @return boolean
+*/    
+    public boolean sInList(Station s) {
+        if (sFirst != null) {          
             Station sAux = sFirst;
-            while (sAux != null) {                                              //Tomar su valor e iterar la lista
-                if (sAux.getsData().equals(s.getsData())) {                     //Comparar cada estacion con la estacion de entrada
-                    return true;                                                //de ser iguales retornar verdadero,sino falso
+            while (sAux != null) {                                      
+                if (sAux.getsData().equals(s.getsData())) {             
+                    return true;                                        
                 }
                 sAux = sAux.getNext();
             }
@@ -127,7 +178,12 @@ public class List {
 
     }
 
-    public boolean sInListdfs(Station s) {                                      //revisar
+/**
+ * LA JUSTIFICACION QUE NO ME CORRESPONDE       
+ * @author hola
+ * pd aun falta por terminar
+*/     
+    public boolean sInListdfs(Station s) {                                      
         if (sFirst != null) {
             int c = 1;
 
@@ -146,9 +202,14 @@ public class List {
 
     }
 
-    /*Serch in the list that you give to the funtion the line that have 
-    the index that you give too*/
-    public Line getLine(List l, int i) {                                        //llamar con this no con list
+/**
+ * busca en la lista la linea que cumpla con ese indice       
+ * @author astv06
+ * @param l
+ * @param i
+ * @return lAux
+*/
+    public Line getLine(List l, int i) {
         int j = 1;
         Line lAux = l.lFirst;
         while (j <= i) {
@@ -162,12 +223,17 @@ public class List {
         return lAux;
     }
 
-                                                                                /*confirma si en la lista que llamo a la funcion 
-                                                                                    esta la linea que le fue proporcionada*/
+/**
+ * confirma si en la lista que llamo a la funcion 
+ * esta la linea que le fue proporcionada
+ * @author astv06
+ * @param l
+ * @return boolean
+*/   
     public boolean lInList(Line l) {
-        Line lAux = lFirst;                                                     //Desde el primer elemento de la lista iterar la misma
-        while (lAux != null) {                                                  //si es diferente de null comparar cada elemento con el
-            if (lAux.equals(l)) {                                               // de entrada, de ser iguales retornar verdadero, sino falso
+        Line lAux = lFirst;                                                   
+        while (lAux != null) {                                                
+            if (lAux.equals(l)) {                                             
                 return true;
             }
             lAux = lAux.getlNext();
@@ -175,17 +241,28 @@ public class List {
         return false;
     }
 
-    public Station getNamedStation(String s) {                                  //se utiliza despues de confirmar la existencia de la estacion
-        Station sAux = sFirst;                                                  //para obtener el nombre de la misma
-        while (sAux != null) {                                                  //se itera desde la primera estacion hasta encontrar la estacion
-            if (sAux.getsData().contains(s)) {                                  //mediante el nombre de la misma
+/**
+ * en base al nombre de la estacion te encuentra la estacion
+ * @author Gabriela
+ * @param s
+ * @return sAux
+*/    
+    public Station getNamedStation(String s) { 
+        Station sAux = sFirst;                 
+        while (sAux != null) {                 
+            if (sAux.getsData().contains(s)) { 
                 return sAux;
             }
-            sAux = sAux.getNext();                                              //de ser contenida retornar la estacion
+            sAux = sAux.getNext();             
         }
         return null;
     }
-    
+
+/**
+ * elimina una estacion en la lista 
+ * @author astv06
+ * @param s
+*/    
     public void deleteStation(Station s){
         List lAux = new List();
         int cont = 1;
