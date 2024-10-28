@@ -179,9 +179,11 @@ public class List {
     }
 
 /**
- * LA JUSTIFICACION QUE NO ME CORRESPONDE       
- * @author hola
- * pd aun falta por terminar
+ * verifica que la estacion ya este en la lista usada por el dfs      
+ * @author gcosta
+ * @param s
+ * @return boolean
+ * @see DFS
 */     
     public boolean sInListdfs(Station s) {                                      
         if (sFirst != null) {

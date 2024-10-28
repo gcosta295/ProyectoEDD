@@ -80,6 +80,7 @@ public class ReadJSON {
 /**
  * Description permite la lectura del JSON, devuelve el parse completo de las lineas
  * @author gcosta
+ * @see ReadJSON()
  * @return List
 */  
   

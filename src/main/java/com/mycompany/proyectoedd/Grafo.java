@@ -162,6 +162,7 @@ public class Grafo {
 //            List estaciones = listaLines.getLine(listaLines, j).getStations();
         if (listaStations.nameInList(sname)) {
             Station sAux = listaStations.getNamedStation(sname);
+            sAux.setCover(true);
             sAux.setSucursal(true);
             Node nx1;
             nx1 = this.graph.getNode(sname);
@@ -170,8 +171,12 @@ public class Grafo {
 
             for (int i = 1; i <= vac.getlen(); i++) {
                 Station s = listaStations.getStation(i);
+                if (s!=null){
+                       s.setCover(true);
+                }
 //                System.out.println(s.getsData());
-                s.setCover(true);
+
+//             
 
             }
 //        
@@ -313,8 +318,9 @@ public class Grafo {
             List l2 = this.DFS(lAux, t + 1, s);
             for (int j = 1; j <= l2.getlen(); j++) {
                 if (l2.getStation(j).isCover() == false) {
-                    if (l2.nameInList(l2.getStation(j).getsData()) == false) {
-                        l.AddStation(l2.getStation(j));
+                    if (l2.getStation(j).isSucursal() == false) {
+                    l.AddStation(l2.getStation(j));
+                    l2.getStation(j).setCover(true);
                     }
                 }
             }

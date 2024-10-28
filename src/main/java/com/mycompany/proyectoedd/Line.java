@@ -15,7 +15,7 @@ class Line {
 
 /**
  * constructor de lineas 
- * @author ============================================
+ * @author  Nathaly
  * @param lName
 */     
     public Line(String lName) {    
@@ -26,7 +26,7 @@ class Line {
 
 /**
  * retorna el nombre de la linea 
- * @author ============================================
+ * @author Nathaly
  * @return lName
 */     
     public String getLname() {
@@ -35,7 +35,7 @@ class Line {
     
 /**
  * retorna la lista de estaciones de esta linea 
- * @author ============================================
+ * @author =Nathaly
  * @return stations
 */    
     public List getStations() {
@@ -44,7 +44,7 @@ class Line {
     
 /**
  * retorna la siguiente linea 
- * @author ============================================
+ * @author Nathaly
  * @return stations
 */
     public Line getlNext() {
@@ -53,7 +53,7 @@ class Line {
 
 /**
  * asigna una nueva linea siguiente 
- * @author ============================================
+ * @author Nathaly
  * @return stations
 */    
     public void setlNext(Line lNext) {

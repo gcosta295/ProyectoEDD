@@ -409,7 +409,6 @@ public class InterfazUnica extends javax.swing.JFrame {
 
         if ((G.deleteSucursal(stationName, listaLines))) { //eliminar esa estacion a la lista de sucursales
             JOptionPane.showMessageDialog(this, "Se ha eliminado la sucursal");
-            
 
         } else {
             JOptionPane.showMessageDialog(this, "No se ha encontrado la sucursal");
@@ -428,7 +427,7 @@ public class InterfazUnica extends javax.swing.JFrame {
     private void B_AñadirSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_AñadirSucursalActionPerformed
 
         String stationName = JOptionPane.showInputDialog(this, "Escribe el nombre de la station donde deseas colocar una sucursal: ");
-       
+
         if ((G.setSucursal(stationName, listaLines, t))) { //añadir esa estacion a la lista de sucursales
             JOptionPane.showMessageDialog(this, "Se ha agregado la sucursal");
 
@@ -489,8 +488,8 @@ public class InterfazUnica extends javax.swing.JFrame {
                 }
                 newlstations.AddStation(newstation);
                 newline.getStations().AddStation(newstation);
-               G.getListaStations().AddStation(newstation);
-              
+                G.getListaStations().AddStation(newstation);
+
             }
             this.listaLines.AddLine(newline);
             JOptionPane.showMessageDialog(this, "Se ha añadido una linea nueva");
@@ -520,7 +519,7 @@ public class InterfazUnica extends javax.swing.JFrame {
         if (L.isValid()) {
             listaLines = L.Parse();
             System.setProperty("org.graphstream.ui", "swing");
-            
+
             G.Graph(listaLines);
             Viewer viewer = new Viewer(G.getGraph(), Viewer.ThreadingModel.GRAPH_IN_GUI_THREAD);
             viewer.enableAutoLayout();
@@ -534,7 +533,7 @@ public class InterfazUnica extends javax.swing.JFrame {
     }//GEN-LAST:event_B_carga_JSONActionPerformed
 
     /**
-     * Boton para mostrar la cobertura de una estacion 
+     * Boton para mostrar la cobertura de una estacion
      *
      * @author gcosta
      *
@@ -544,40 +543,40 @@ public class InterfazUnica extends javax.swing.JFrame {
     private void B_CoberturaStationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_CoberturaStationActionPerformed
 
         String stationName = JOptionPane.showInputDialog(this, "Escribe el nombre de la sucursal que desea ver cobertura");
-        if (G.getlSucursals().nameInList(stationName)){
-           Object[] options = {"DFS", "BFS"};
-        JPanel panel = new JPanel();
-        int opciones = JOptionPane.showOptionDialog(null, panel, "Que método quieres usar: DFS o BFS ", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
-        if (opciones == JOptionPane.YES_OPTION) {
+        if (G.getlSucursals().nameInList(stationName)) {
+            Object[] options = {"DFS", "BFS"};
+            JPanel panel = new JPanel();
+            int opciones = JOptionPane.showOptionDialog(null, panel, "Que método quieres usar: DFS o BFS ", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
+            if (opciones == JOptionPane.YES_OPTION) {
 
-            for (int j = 1; j < listaLines.getlen(); j++) {
-                List estaciones = listaLines.getLine(listaLines, j).getStations();
-                if (estaciones.nameInList(stationName)) {
-                    Station sExists = estaciones.getNamedStation(stationName);
-                    List temporal = new List();
-                    List ayuda = G.DFS(temporal, t, sExists);
-                    System.out.println(ayuda.getlen());
-                    G.coveredSucursals(G.DFS(temporal, t, sExists));
+                for (int j = 1; j < listaLines.getlen(); j++) {
+                    List estaciones = listaLines.getLine(listaLines, j).getStations();
+                    if (estaciones.nameInList(stationName)) {
+                        Station sExists = estaciones.getNamedStation(stationName);
+                        List temporal = new List();
+                        List ayuda = G.DFS(temporal, t, sExists);
+                        System.out.println(ayuda.getlen());
+                        G.coveredSucursals(G.DFS(temporal, t, sExists));
 
+                    }
+                }
+
+            } else {
+                for (int j = 1; j < listaLines.getlen(); j++) {
+                    List estaciones = listaLines.getLine(listaLines, j).getStations();
+                    if (estaciones.nameInList(stationName)) {
+                        Station sExists = estaciones.getNamedStation(stationName);
+                        List temporal = new List();
+
+                        G.coveredSucursals(G.DFS(temporal, t, sExists));
+                    }
                 }
             }
-
         } else {
-            for (int j = 1; j < listaLines.getlen(); j++) {
-                List estaciones = listaLines.getLine(listaLines, j).getStations();
-                if (estaciones.nameInList(stationName)) {
-                    Station sExists = estaciones.getNamedStation(stationName);
-                    List temporal = new List();
-
-                    G.coveredSucursals(G.DFS(temporal, t, sExists));
-                }
-            }
-        } 
-        }else{
             JOptionPane.showMessageDialog(this, "No se ha encontrado la sucursal");
         }
-        
-        
+
+
     }//GEN-LAST:event_B_CoberturaStationActionPerformed
 
     /**
@@ -606,7 +605,8 @@ public class InterfazUnica extends javax.swing.JFrame {
             Tval.setText(st);
             Tval2.setText(st);
             G.cambioT(t);
-            
+            JOptionPane.showMessageDialog(this, "El cambio de la T dejara de mostrar las estaciones cubiertas");
+
         } catch (Exception e) {
 
             JOptionPane.showMessageDialog(this, "Por favor ingrese un numero");
@@ -615,16 +615,22 @@ public class InterfazUnica extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_B_changeTActionPerformed
-
+  /**
+     * muestra las recomendaciones de sucursal
+     *
+     * @author gcosta
+     *
+     * @param evt
+     */
     private void B_CoberturaTotal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_CoberturaTotal1ActionPerformed
         // TODO add your handling code here:
         List recomendados = G.recomendSucursal(t);
         String xx = "";
         for (int i = 1; i <= recomendados.getlen(); i++) {
             Station s = recomendados.getStation(i);
-            
-            xx += s.getsData()+ "\n";
-            
+
+            xx += s.getsData() + "\n";
+
         }
         JOptionPane.showMessageDialog(this, xx);
     }//GEN-LAST:event_B_CoberturaTotal1ActionPerformed
