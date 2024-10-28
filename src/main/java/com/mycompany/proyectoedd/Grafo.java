@@ -298,6 +298,13 @@ public class Grafo {
         return visitedNodes;
     }
 
+    /**
+     * Realiza una recomendacion de paradas para poner sucursales
+     *
+     * @author astv06
+     * @param t
+     * @return l
+     */
     public List recomendSucursal(int t) {
         List l = new List();
         for (int i = 1; i <= lSucursals.getlen(); i++) {
@@ -387,6 +394,12 @@ public class Grafo {
         }
     }
 
+    /**
+     * A la hora de cambiar el valor de la t reacrga el grafo
+     *
+     * @author gcosta
+     * @param t
+     */
     public void cambioT(int t) {
         for (int i = 1; i <= listaStations.getlen(); i++) {
 
