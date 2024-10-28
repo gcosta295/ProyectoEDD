@@ -29,6 +29,11 @@ public class Grafo {
 
     }
 
+    public List getListaStations() {
+        return listaStations;
+    }
+    
+
     public MultiGraph getGraph() {
         return graph;
     }
@@ -37,15 +42,14 @@ public class Grafo {
         return lSucursals;
     }
 
-    
     /**
-     * método para la creación del grafo. Se vuelve cada estación un nodo con color y tamaño. 
-     * 
-     * @author Nathaly 
-     * 
+     * método para la creación del grafo. Se vuelve cada estación un nodo con
+     * color y tamaño.
+     *
+     * @author Nathaly
+     *
      * @param line El parámetro line indica que recibe una Lista de lineas.
      */
-    
     public void Graph(List line) {
         this.listaLines = new List();
         this.lSucursals = new List();
@@ -159,21 +163,22 @@ public class Grafo {
 //        }
         return false;
     }
-    
+
     /**
-     * método para eliminar una sucursal. Se vuelve a poner el nodo del color original y se elimina de la lista de sucursales
-     * 
+     * método para eliminar una sucursal. Se vuelve a poner el nodo del color
+     * original y se elimina de la lista de sucursales
+     *
      * @author Nathaly
-     * 
+     *
      * @param sname
      * @param listaLines
-     * 
-     * @return 
+     *
+     * @return
      */
     
+    
     public boolean deleteSucursal(String sname, List listaLines) {
-        
-        
+
         if (lSucursals.nameInList(sname)) {
             Station sAux = listaStations.getNamedStation(sname);
             sAux.setSucursal(false);
@@ -188,10 +193,18 @@ public class Grafo {
             }
 
         }
-
-//        }
+        
+          for (int i = 1; i <= listaStations.getlen(); i++) {
+            Station s = listaStations.getStation(i);
+            Node nx1;
+            nx1 = graph.getNode(s.getsData());
+            nx1.setAttribute("ui.style", "fill-color: #42a4ff;");
+        }
+  
         return true;
     }
+    
+
 
     public List BFS(List l, int t, Station s) {
         s.setCover(true);
@@ -295,11 +308,11 @@ public class Grafo {
         Edge edd = this.graph.addEdge(y, s, station);
         edd.setAttribute("shape", "line");
     }
-    
-    public void TotalCover(int t){
-        
+
+    public void TotalCover(int t) {
+
         for (int i = 1; i <= lSucursals.getlen(); i++) {
-            List coveredS= new List();
+            List coveredS = new List();
             Station s = lSucursals.getStation(i);
             coveredSucursals(DFS(coveredS, t, s));
         }

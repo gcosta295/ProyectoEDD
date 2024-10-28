@@ -93,7 +93,7 @@ public class InterfazUnica extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(204, 246, 242));
 
         B_carga_JSON.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
-        B_carga_JSON.setText("Cagar JSON");
+        B_carga_JSON.setText("Cargar JSON");
         B_carga_JSON.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 B_carga_JSONActionPerformed(evt);
@@ -388,6 +388,7 @@ public class InterfazUnica extends javax.swing.JFrame {
 
         if ((G.deleteSucursal(stationName, listaLines))) { //eliminar esa estacion a la lista de sucursales
             JOptionPane.showMessageDialog(this, "Se ha eliminado la sucursal");
+            
 
         } else {
             JOptionPane.showMessageDialog(this, "No se ha encontrado la sucursal");
@@ -467,6 +468,8 @@ public class InterfazUnica extends javax.swing.JFrame {
                 }
                 newlstations.AddStation(newstation);
                 newline.getStations().AddStation(newstation);
+               G.getListaStations().AddStation(newstation);
+              
             }
             this.listaLines.AddLine(newline);
             JOptionPane.showMessageDialog(this, "Se ha añadido una linea nueva");
