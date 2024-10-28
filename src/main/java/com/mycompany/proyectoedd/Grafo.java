@@ -253,17 +253,11 @@ public class Grafo {
         return visitedNodes;
     }
 
-    public void changeCover(List l) {
-        for (int i = 1; i <= l.getlen(); i++) {
-            Station s = l.getStation(i);
-            //buscar el nodo y asignarle un valor de cover
-        }
-    }
-
     public List recomendSucursal(int t) {
         List l = new List();
         for (int i = 1; i <= lSucursals.getlen(); i++) {
             Station s = lSucursals.getStation(i);
+            List lAux = new List();
             List l2 = this.DFS(lSucursals, t + 1, s);
             for (int j = 1; j <= l2.getlen(); j++) {
                 if (l2.getStation(j).isCover() == false) {
