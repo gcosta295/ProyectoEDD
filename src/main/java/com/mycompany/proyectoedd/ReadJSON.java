@@ -17,7 +17,7 @@ import org.json.simple.parser.ParseException;
 
 /**
  *
- * @author gabri
+ * @author gcosta
  */
 public class ReadJSON {
 
@@ -25,13 +25,25 @@ public class ReadJSON {
     private String test;
     private boolean valid;
 
+ /**
+ * @Description constructor de ReadJSON 
+ * @author gcosta
+*/
     public ReadJSON() {
     }
-
+/**
+ * Description devuelve boolean si el JSON es valido
+ * @author gcosta
+ * @return valid
+*/  
     public boolean isValid() {
         return valid;
     }
-
+/**
+ * Description permite abrir un archivo con JFileChooser
+ * @author gcosta
+*/  
+  
     public void abrirArchivo() {
         valid = false;
         String aux = "";
