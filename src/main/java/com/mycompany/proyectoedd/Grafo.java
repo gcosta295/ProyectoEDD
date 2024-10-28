@@ -130,12 +130,7 @@ public class Grafo {
         }
     }
 
-    public void color(String sname) { //esta función se esta usando¿?
-        Node nx1;
-        nx1 = this.graph.getNode(sname);
-        nx1.setAttribute("ui.style", "fill-color: red;");
-        nx1.setAttribute("ui.style", "size: 20px, 20px;");
-    }
+    
 
     public List getListaLines() {
         return listaLines;
