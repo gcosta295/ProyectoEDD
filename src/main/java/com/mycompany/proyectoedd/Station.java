@@ -27,8 +27,8 @@ public class Station {
         this.lData = lData;
         this.next = null;
         this.conections = new List(); 
-        this.Sucursal = true;
-        this.cover = true;
+        this.Sucursal = false;
+        this.cover = false;
     }
 
 /**
