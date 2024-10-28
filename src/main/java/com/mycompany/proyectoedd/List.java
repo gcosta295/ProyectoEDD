@@ -98,7 +98,7 @@ public class List {
 /**
  * Se emplea para confirmar la existencia de una 
  * estacion mediante su nombre 
- * @author Gabriela
+ * @author gcosta
  * @param s
  * @return boolean
 */                                                                                    
@@ -201,6 +201,8 @@ public class List {
         }
 
     }
+    
+
 
 /**
  * busca en la lista la linea que cumpla con ese indice       
@@ -243,7 +245,7 @@ public class List {
 
 /**
  * en base al nombre de la estacion te encuentra la estacion
- * @author Gabriela
+ * @author gcosta
  * @param s
  * @return sAux
 */    
@@ -264,7 +266,7 @@ public class List {
  * @param s
 */    
     public void deleteStation(Station s){
-        List lAux = new List();
+     
         int cont = 1;
         for (int i = 1; i <= this.getlen(); i++) {
             Station sAux = this.getStation(i);

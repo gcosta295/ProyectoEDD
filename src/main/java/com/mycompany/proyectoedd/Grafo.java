@@ -19,25 +19,43 @@ public class Grafo {
     private List listaLines;
     private List listaStations;
 
+    /**
+     * Creacion del grafo
+     *
+     * @author Nathaly
+     *
+     */
     public Grafo() {
 
         this.graph = new MultiGraph("Grafo Metro");
     }
 
-    public Grafo(List listaLines) {
-        this.listaLines = listaLines;
-
-    }
-
+    /**
+     * Regresa la lista de estaciones que conforman al grafo
+     *
+     * @author Nathaly
+     * @return listaStations
+     */
     public List getListaStations() {
         return listaStations;
     }
-    
 
+    /**
+     * devuelve el grafo
+     *
+     * @author Nathaly
+     * @return graph
+     */
     public MultiGraph getGraph() {
         return graph;
     }
 
+    /**
+     * Regresa la lista de sucursales
+     *
+     * @author gcosta
+     * @return lSucursals
+     */
     public List getlSucursals() {
         return lSucursals;
     }
@@ -121,22 +139,24 @@ public class Grafo {
 
     }
 
-    public void changeColorNodo(Station station) { //station es el nodo que se quiere cambiar de color
-
-        if (graph.getNode(station.getsData()) != null) {
-            graph.getNode(station.getsData()).setAttribute("ui.style", "fill-color: red;");
-        } else {
-            JOptionPane.showMessageDialog(null, "La estación" + station.getsData() + "no existe en el grafo.");
-        }
-    }
-
-    
-
+    /**
+     * Regresa la lista de lineas que conforman al grafo
+     *
+     * @author Nathaly
+     * @return listaLines
+     */
     public List getListaLines() {
         return listaLines;
     }
 
-    public boolean setSucursal(String sname, List listaLines) {
+    /**
+     * Crea una sucursal, indicandote si la estacion existe la estacion
+     * seleccionada
+     *
+     * @author gcosta
+     * @return listaStations
+     */
+    public boolean setSucursal(String sname, List listaLines, int t) {
 
 //        for (int j = 1; j < listaLines.getlen(); j++) {
 //            List estaciones = listaLines.getLine(listaLines, j).getStations();
@@ -145,6 +165,16 @@ public class Grafo {
             sAux.setSucursal(true);
             Node nx1;
             nx1 = this.graph.getNode(sname);
+            List vac = new List();
+            vac = this.DFS(vac, t, sAux);
+
+            for (int i = 1; i <= vac.getlen(); i++) {
+                Station s = listaStations.getStation(i);
+//                System.out.println(s.getsData());
+                s.setCover(true);
+
+            }
+//        
 
             if (nx1 != null) {
                 nx1.setAttribute("ui.style", "fill-color: #ff42e3;");
@@ -155,13 +185,13 @@ public class Grafo {
 
         }
 
-//        }
         return false;
     }
 
     /**
      * método para eliminar una sucursal. Se vuelve a poner el nodo del color
-     * original y se elimina de la lista de sucursales
+     * original y se elimina de la lista de sucursales. Resetea los colores del
+     * grafo
      *
      * @author Nathaly
      *
@@ -170,8 +200,6 @@ public class Grafo {
      *
      * @return
      */
-    
-    
     public boolean deleteSucursal(String sname, List listaLines) {
 
         if (lSucursals.nameInList(sname)) {
@@ -188,19 +216,27 @@ public class Grafo {
             }
 
         }
-        
-          for (int i = 1; i <= listaStations.getlen(); i++) {
+
+        for (int i = 1; i <= listaStations.getlen(); i++) {
             Station s = listaStations.getStation(i);
+            s.setCover(false);
             Node nx1;
             nx1 = graph.getNode(s.getsData());
             nx1.setAttribute("ui.style", "fill-color: #42a4ff;");
         }
-  
+
         return true;
     }
-    
 
-
+    /**
+     * Realiza la busqueda por amplitud
+     *
+     * @author astv06
+     * @param l
+     * @param t
+     * @param s
+     * @return l
+     */
     public List BFS(List l, int t, Station s) {
         s.setCover(true);
         int cont = 1;
@@ -222,6 +258,15 @@ public class Grafo {
         return l;
     }
 
+    /**
+     * Realiza la busqueda por profundidad
+     *
+     * @author gcosta
+     * @param visitedNodes
+     * @param t
+     * @param u
+     * @return visitedNodes
+     */
     public List DFS(List visitedNodes, int t, Station u) {
         u.setCover(true);
         while (t > 0) {
@@ -258,16 +303,25 @@ public class Grafo {
         for (int i = 1; i <= lSucursals.getlen(); i++) {
             Station s = lSucursals.getStation(i);
             List lAux = new List();
-            List l2 = this.DFS(lSucursals, t + 1, s);
+            List l2 = this.DFS(lAux, t + 1, s);
             for (int j = 1; j <= l2.getlen(); j++) {
                 if (l2.getStation(j).isCover() == false) {
-                    l.AddStation(l2.getStation(j));
+                    if (l2.nameInList(l2.getStation(j).getsData()) == false) {
+                        l.AddStation(l2.getStation(j));
+                    }
                 }
             }
         }
         return l;
     }
 
+    /**
+     * Cambia el color de todas las sucursales cubiertas por metodo anterior
+     *
+     * @author gcosta
+     * @see BFS, DFS
+     * @param l
+     */
     public void coveredSucursals(List l) {
 
         //De ser la primera estacion diferente de null
@@ -280,15 +334,34 @@ public class Grafo {
             nx1.setAttribute("ui.style", "fill-color: #1a9136;");
             sAux = sAux.getNext();
         }
+        for (int i = 1; i <= lSucursals.getlen(); i++) {
+
+            Station s = lSucursals.getStation(i);
+            Node nx = graph.getNode(s.getsData());
+            nx.setAttribute("ui.style", "fill-color: #ff42e3;");
+        }
 
     }
 
+    /**
+     * Crea un nodo, con el nombre de una estacion
+     *
+     * @author gcosta
+     * @param s
+     */
     public void CreateNode(String s) {
         Node nx1 = this.graph.addNode(s);
         nx1.setAttribute("ui.style", "fill-color: #42a4ff;");
         nx1.setAttribute("ui.label", s);
     }
 
+    /**
+     * Crea una edge, entre dos estaciones
+     *
+     * @author gcosta
+     * @param s
+     * @param station
+     */
     public void CreateEdfe(String s, String station) {
         Node nx = this.graph.getNode(station);
         Node nx1 = this.graph.getNode(s);
@@ -298,6 +371,13 @@ public class Grafo {
         edd.setAttribute("shape", "line");
     }
 
+    /**
+     * Muestra la cobertura total de las sucursales, usando DFS
+     *
+     * @author gcosta
+     * @see DFS
+     * @param t
+     */
     public void TotalCover(int t) {
 
         for (int i = 1; i <= lSucursals.getlen(); i++) {
@@ -305,5 +385,27 @@ public class Grafo {
             Station s = lSucursals.getStation(i);
             coveredSucursals(DFS(coveredS, t, s));
         }
+    }
+
+    public void cambioT(int t) {
+        for (int i = 1; i <= listaStations.getlen(); i++) {
+
+            Station s = listaStations.getStation(i);
+            Node nx1 = this.graph.getNode(s.getsData());
+            nx1.setAttribute("ui.style", "fill-color: #42a4ff;");
+            s.setCover(false);
+        }
+        for (int i = 1; i <= lSucursals.getlen(); i++) {
+            List coveredS = new List();
+            Station s = lSucursals.getStation(i);
+            Node nx2 = this.graph.getNode(s.getsData());
+            nx2.setAttribute("ui.style", "fill-color: #ff42e3;");
+            coveredS = DFS(coveredS, t, s);
+
+            for (int j = 1; j <= coveredS.getlen(); j++) {
+                coveredS.getStation(j).setCover(true);
+            }
+        }
+
     }
 }
